@@ -5,7 +5,7 @@
 NAME = cub3D
 
 # FLAGS #
-CFLAGS = -Wall -Wextra -Werror -g3 #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 
 # INCLUDES #
 INCDIR = includes/
@@ -15,10 +15,15 @@ INCLUDES = $(INCDIR)
 OBJS = $(SRCS:.c=.o)
 
 OBJDIR := objs/
-SRCDIR := src/
+SRCDIR := srcs/
 
 # SRC #
-SRCS =	main.c			\
+SRCS =	main.c		\
+		check_map.c \
+		ft_split.c	\
+		ft_strlen.c	\
+		ft_substr.c	\
+		ft_memset.c	\
 		
 SRC := $(addprefix $(SRCDIR), $(SRCS))
 OBJS := $(addprefix $(OBJDIR), $(OBJS))
@@ -38,13 +43,13 @@ END=\033[0m
 # MAKEFILE ART #
 define CUB3D
 $(INSERT_COLOR)
- 
+
 $(END)
 endef
 export CUB3D
 
 # COMPILATION #
-remove compilation message from cli
+# remove compilation message from cli
 .SILENT:
 
 all: $(NAME) $(INCLUDES)
