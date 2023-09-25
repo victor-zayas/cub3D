@@ -49,5 +49,64 @@ char	**ft_split_map(t_map *map)
 	return (free(aux), map->map);
 }
 
-/* int ft_check_format(char **argv)
-{} */
+void	ft_check_format(char *str)
+{
+	if (!ft_strnstr(str, ".cub", 4))
+	{
+		printf("invalid format\n");
+		exit(1);
+	}
+}
+
+void	ft_init_attrb(t_attrb *attrb)
+{
+	attrb->n = 0;
+	attrb->s = 0;
+	attrb->e = 0;
+	attrb->w = 0;
+}
+
+static void ft_check_attrb(t_map *map, t_attrb *attrb)
+{
+	int		x;
+	int		y;
+
+	x = -1;
+	while (map->map[++x])
+	{
+		y = -1;
+		while (map->map[x][++y])
+		{
+			if (map->map[x][y] == 'N')
+				attrb->n++;
+			if (map->map[x][y] == 'S')
+				attrb->s++;
+			if (map->map[x][y] == 'E')
+				attrb->e++;
+			if (map->map[x][y] == 'W')
+				attrb->w++;
+		}
+	}
+	//printf("N: %d\nS: %d\nE: %d\nW: %d\n", attrb->n, attrb->s, attrb->e, attrb->w);
+}
+
+void	ft_check_init_poss(t_map *map, t_attrb *attrb)
+{
+	ft_check_attrb(map, attrb);
+	if (!(attrb->n || attrb->s || attrb->e || attrb->w))
+	{
+		printf("no starting position\n");
+		exit(1);
+	}
+	else
+	{
+		if (attrb->n && (attrb->s || attrb->e || attrb->w))
+			printf("there is more than one starting possition\n");
+		if (attrb->s && (attrb->n || attrb->e || attrb->w))
+			printf("there is more than one starting possition\n");
+		if (attrb->e && (attrb->s || attrb->n || attrb->w))
+			printf("there is more than one starting possition\n");
+		if (attrb->w && (attrb->s || attrb->e || attrb->n))
+			printf("there is more than one starting possition\n");
+	}
+}

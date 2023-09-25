@@ -23,7 +23,7 @@ SRCS =	main.c		\
 		ft_split.c	\
 		ft_strlen.c	\
 		ft_substr.c	\
-		ft_memset.c	\
+		ft_strnstr.c
 		
 SRC := $(addprefix $(SRCDIR), $(SRCS))
 OBJS := $(addprefix $(OBJDIR), $(OBJS))
@@ -42,7 +42,16 @@ END=\033[0m
 
 # MAKEFILE ART #
 define CUB3D
-$(INSERT_COLOR)
+$(CYAN)
+
+ ▄████████ ███    █▄  ▀█████████▄  ████████▄  
+███    ███ ███    ███   ███    ███ ███   ▀███ 
+███    █▀  ███    ███   ███    ███ ███    ███ 
+███        ███    ███  ▄███▄▄▄██▀  ███    ███ 
+███        ███    ███ ▀▀███▀▀▀██▄  ███    ███ 
+███    █▄  ███    ███   ███    ██▄ ███    ███ 
+███    ███ ███    ███   ███    ███ ███   ▄███ 
+████████▀  ████████▀  ▄█████████▀  ████████▀                                    
 
 $(END)
 endef
