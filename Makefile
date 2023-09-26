@@ -27,6 +27,7 @@ SRCS =	main.c		\
 		initial.c	\
 		error.c		\
 		free.c		\
+		get_map.c	\
 		
 SRC := $(addprefix $(SRCDIR), $(SRCS))
 OBJS := $(addprefix $(OBJDIR), $(OBJS))

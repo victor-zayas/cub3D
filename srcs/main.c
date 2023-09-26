@@ -16,9 +16,9 @@ int main(int argc, char **argv)
         ft_check_format(map->name);
         map->fd = open(argv[1], O_RDONLY);
         ft_check_fd(map->fd);
-        ft_empty_map(map);
-        map->map = ft_split_map(map);
-        ft_check_init_poss(map, &attrb);
+        ft_split_map(map);
+        // ft_empty_map(map);
+        ft_check(map, &attrb);
         while (map->map[i])
             printf("%s\n", map->map[i++]);
         ft_free_strcut(map);

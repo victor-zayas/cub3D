@@ -22,7 +22,7 @@ void	ft_check_format(char *str)
 
 void	ft_empty_map(t_map *map)
 {
-	if (ft_get_map(map->name) == 1)
+	if (ft_get_map(map->name) == 0)
 	{
 		printf("empty map\n");
 		exit (1);

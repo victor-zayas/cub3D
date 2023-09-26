@@ -1,58 +1,7 @@
 
 #include"../includes/cub3D.h"
 
-int ft_get_map(char *path)
-{
-	int		rd;
-	int		fd;
-	int		i;
-	char	c;
-
-    i = 0;
-	fd = open(path, O_RDONLY);
-	if (fd < 0 || fd == 2)
-		return (0);
-	rd = 1;
-	while ((rd = read(fd, &c, 1)) >= 0)
-    {
-        if (rd == 0)
-        {
-            i = 1;
-            break;
-        }
-        i++;
-    }
-	close(fd);
-    return (i);
-}
-
-char	**ft_split_map(t_map *map)
-{
-	char	*aux;
-	int		i;
-
-	i = 0;
-	aux = malloc(sizeof(char) * ft_get_map(map->name));
-	read(map->fd, aux, ft_get_map(map->name));
-	aux[ft_get_map(map->name) - 1] = '\0';
-	while (aux[i])
-	{
-		if (aux[i] == '\n')
-		{
-			if (aux[i + 1] && aux[i + 1] == '\n')
-			{
-				printf("Error: emptyline in map\n");
-				exit(1);
-			}
-		}
-		i++;
-	}
-	map->map = ft_split(aux, '\n');
-	close(map->fd);
-	return (free(aux), map->map);
-}
-
-static void ft_check_attrb(t_map *map, t_attrb *attrb)
+void ft_check_attrb(t_map *map, t_attrb *attrb)
 {
 	int		x;
 	int		y;
@@ -75,6 +24,37 @@ static void ft_check_attrb(t_map *map, t_attrb *attrb)
 	}
 }
 
+void	ft_wrong_attrb(t_map *map)
+{
+	int		x;
+	int		y;
+	int		error;
+
+	x = -1;
+	while (map->map[++x])
+	{
+		y = -1;
+		while (map->map[x][++y])
+		{
+			if (map->map[x][y] != 'N' && map->map[x][y] != 'S'
+			&& map->map[x][y] != 'E' && map->map[x][y] != 'W'
+			&& map->map[x][y] != '1' && map->map[x][y] != '0'
+			&& map->map[x][y] != '\n' && map->map[x][y] != ' ')
+			{
+				error = 1;
+				break ;
+			}
+		}
+		if (error == 1)
+			break ;
+	}
+	if (error == 1)
+	{
+		printf("wrong character in map at poss: %d, %d : %c\n", x, y, map->map[x][y]);
+		exit(1);
+	}
+}
+
 void	ft_check_init_poss(t_map *map, t_attrb *attrb)
 {
 	ft_check_attrb(map, attrb);
@@ -94,4 +74,13 @@ void	ft_check_init_poss(t_map *map, t_attrb *attrb)
 		if (attrb->w && (attrb->s || attrb->e || attrb->n))
 			printf("there is more than one starting possition\n");
 	}
+}
+
+void	ft_check(t_map *map, t_attrb *attrb)
+{
+	ft_check_attrb(map, attrb);
+	//printf("CHECK_ATTRB\nN: %d\nS: %d\nE: %d\nW: %d\n", attrb->n, attrb->s, attrb->e, attrb->w);
+	ft_wrong_attrb(map);
+	//printf("CHECK_INIT_POSS\nN: %d\nS: %d\nE: %d\nW: %d\n", attrb->n, attrb->s, attrb->e, attrb->w);
+	ft_check_init_poss(map, attrb);
 }

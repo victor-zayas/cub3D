@@ -34,10 +34,14 @@ typedef struct s_cub3D
 
 // PROTOTIPES
 // CUB3D
-// CHECK MAP
+// GET MAP
 int     ft_get_map(char *path);
-char	**ft_split_map(t_map *map);
+void    ft_split_map(t_map *map);
+// CHECK MAP
 void	ft_check_init_poss(t_map *map, t_attrb *attrb);
+void    ft_check_attrb(t_map *map, t_attrb *attrb);
+void	ft_wrong_attrb(t_map *map);
+void	ft_check(t_map *map, t_attrb *attrb);
 // INITIAL
 void	ft_init_attrb(t_attrb *attrb);
 void    ft_init_map(t_map **map);
@@ -45,7 +49,7 @@ void    ft_init_map(t_map **map);
 void    ft_free_strcut(t_map *map);
 // ERROR
 void	ft_check_fd(int fd);
-void    ft_check_format(char *str);
+void    ft_check_format(char *filename);
 void    ft_empty_map(t_map *map);
 
 
