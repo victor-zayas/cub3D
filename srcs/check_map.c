@@ -13,12 +13,15 @@ int ft_get_map(char *path)
 	if (fd < 0 || fd == 2)
 		return (0);
 	rd = 1;
-	while ((rd = read(fd, &c, 1)))
-	{
-		if (rd < 0)
-			return (0);
+	while ((rd = read(fd, &c, 1)) >= 0)
+    {
+        if (rd == 0)
+        {
+            i = 1;
+            break;
+        }
         i++;
-	}
+    }
 	close(fd);
     return (i);
 }
@@ -49,23 +52,6 @@ char	**ft_split_map(t_map *map)
 	return (free(aux), map->map);
 }
 
-void	ft_check_format(char *str)
-{
-	if (!ft_strnstr(str, ".cub", 4))
-	{
-		printf("invalid format\n");
-		exit(1);
-	}
-}
-
-void	ft_init_attrb(t_attrb *attrb)
-{
-	attrb->n = 0;
-	attrb->s = 0;
-	attrb->e = 0;
-	attrb->w = 0;
-}
-
 static void ft_check_attrb(t_map *map, t_attrb *attrb)
 {
 	int		x;
@@ -87,7 +73,6 @@ static void ft_check_attrb(t_map *map, t_attrb *attrb)
 				attrb->w++;
 		}
 	}
-	//printf("N: %d\nS: %d\nE: %d\nW: %d\n", attrb->n, attrb->s, attrb->e, attrb->w);
 }
 
 void	ft_check_init_poss(t_map *map, t_attrb *attrb)

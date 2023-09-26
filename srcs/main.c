@@ -1,39 +1,6 @@
 
 #include"../includes/cub3D.h"
 
-void    ft_free_strcut(t_map *map)
-{
-    int i;
-
-    i = 0;
-    if (map->map)
-    {
-        while (map->map[i])
-            free(map->map[i++]);
-        free(map->map);
-    }
-    free(map);
-}
-
-void    ft_init_map(t_map **map)
-{
-    *map = malloc(sizeof(t_map));
-    if (*map == NULL)
-        return ;
-    (*map)->name = NULL;
-    (*map)->fd = -1;
-}
-
-void	ft_check_fd(int fd)
-{
-	if (fd < 0 || fd == 2)
-	{
-		close(fd);
-		printf("Error: Invalid fd\n");
-		exit(1);
-	}
-}
-
 int main(int argc, char **argv)
 {
     t_map *map;
@@ -46,9 +13,10 @@ int main(int argc, char **argv)
         ft_init_map(&map);
         ft_init_attrb(&attrb);
         map->name = argv[1];
-        //ft_check_format(map->name);
+        ft_check_format(map->name);
         map->fd = open(argv[1], O_RDONLY);
         ft_check_fd(map->fd);
+        ft_empty_map(map);
         map->map = ft_split_map(map);
         ft_check_init_poss(map, &attrb);
         while (map->map[i])
