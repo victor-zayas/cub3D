@@ -9,28 +9,22 @@ CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 
 # INCLUDES #
 INCDIR = includes/
-INCLUDES = $(INCDIR)
+INCLUDES = -I $(INCDIR)
+
+# LIBFT #
+LIBFT = libft/libft.a
 
 # OBJS #
-OBJS = $(SRCS:.c=.o)
-
 OBJDIR := objs/
-SRCDIR := srcs/
+SRCDIR := src/
 
-# SRC #
-SRCS =	main.c		\
-		check_map.c \
-		ft_split.c	\
-		ft_strlen.c	\
-		ft_substr.c	\
-		ft_strnstr.c \
-		initial.c	\
-		error.c		\
-		free.c		\
-		get_map.c	\
-		
-SRC := $(addprefix $(SRCDIR), $(SRCS))
-OBJS := $(addprefix $(OBJDIR), $(OBJS))
+# SRCS #
+MAIN = main
+
+PLAIN_SRCS =	$(addsuffix .c, $(addprefix main/, $(MAIN)))	\
+
+SRCS := $(addprefix $(SRCDIR), $(PLAIN_SRCS))
+OBJS := $(addprefix $(OBJDIR), $(PLAIN_SRCS:.c=.o))
 
 # ASCII COLORS #
 BLACK=\033[0;30m
@@ -63,33 +57,30 @@ export CUB3D
 # remove compilation message from cli
 .SILENT:
 
-all: $(NAME) $(INCLUDES)
+all: $(NAME)
 
-# make all *.c have the same name as *.o 
 $(OBJDIR)%.o: $(SRCDIR)%.c
-# make a new directory objects for *.o
-	mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) -I $(INCLUDES) -c $^ -o $@
-# compile
+	mkdir -p $(@D)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $^ -o $(NAME)
-# message for compilation finished
+	make -C libft all
+	$(CC) $(CFLAGS) $(LIBFT) $^ -o $(NAME)
 	echo "$(BLUE)༺ Program compiled༻$(END)"
-# show ascii art with env variable
 	echo "$$CUB3D"
 
 # delete all objects
 clean:
-	$(RM) -rf $(OBJDIR)
+	make -C libft clean
+	rm -rf $(OBJDIR)
 	$(RM) $(OBJS)
 	echo "$(RED)༺ Objs deleted༻$(END)"
 
-# call clean and delete executable
 fclean: clean
+	make -C libft fclean
 	$(RM) $(NAME)
-		echo "$(YELLOW)༺ Executable deleted༻$(END)"
+	echo "$(YELLOW)༺ Executable deleted༻$(END)"
 
-# delete the executable, objects and recompile
 re: fclean all
 
 .PHONY: all clean fclean re
