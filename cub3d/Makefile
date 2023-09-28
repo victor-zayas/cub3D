@@ -1,3 +1,14 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/09/28 15:10:33 by vzayas-s          #+#    #+#              #
+#    Updated: 2023/09/28 21:34:21 by vzayas-s         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 # RULES #
 
@@ -19,9 +30,13 @@ OBJDIR := objs/
 SRCDIR := src/
 
 # SRCS #
-MAIN = main
+ERROR = error
+MAIN = main initial
+MAP = get_map check_map check_texture
 
-PLAIN_SRCS =	$(addsuffix .c, $(addprefix main/, $(MAIN)))	\
+PLAIN_SRCS =	$(addsuffix .c, $(addprefix error/, $(ERROR)))	\
+				$(addsuffix .c, $(addprefix main/, $(MAIN)))	\
+				$(addsuffix .c, $(addprefix map/, $(MAP)))		\
 
 SRCS := $(addprefix $(SRCDIR), $(PLAIN_SRCS))
 OBJS := $(addprefix $(OBJDIR), $(PLAIN_SRCS:.c=.o))
@@ -76,6 +91,7 @@ clean:
 	$(RM) $(OBJS)
 	echo "$(RED)༺ Objs deleted༻$(END)"
 
+# delete executable
 fclean: clean
 	make -C libft fclean
 	$(RM) $(NAME)

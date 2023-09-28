@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   initial.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/28 15:09:26 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/09/28 20:02:43 by vzayas-s         ###   ########.fr       */
+/*   Created: 2023/09/28 15:09:31 by vzayas-s          #+#    #+#             */
+/*   Updated: 2023/09/28 23:44:16 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../includes/cub3D.h"
+#include"../includes/cub3D.h"
 
-int main(int argc, char **argv)
+void    ft_init_map(t_map *map, char *name)
 {
-    int         i;
-    t_map       map;
-    t_texture   texture;
-
-    if (argc == 2)
-    {
-        ft_init_map(&map, argv[1]);
-        ft_split_args(&map, &texture);
-        // printf("HOLA!\n");
-        i = -1;
-        while (map.map[++i])
-            printf("%s\n", map.map[i]);
-    }
-    else
-        printf("TA MAL COÑO!\n");
+    map->map = NULL;
+    map->name = name;
+    map->fd = -1;
 }
+
+/* void	ft_init_attrb(t_attrb *attrb)
+{
+	attrb->n = 0;
+	attrb->s = 0;
+	attrb->e = 0;
+	attrb->w = 0;
+} */
+
+/* void	ft_init_texture(t_texture *texture)
+{
+	texture->NO = NULL;
+	texture->SO = NULL;
+	texture->EA = NULL;
+	texture->WE = NULL;
+} */
