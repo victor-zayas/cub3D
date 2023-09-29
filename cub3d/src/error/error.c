@@ -6,15 +6,20 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:36 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/09/28 20:12:51 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/09/29 13:41:14 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../includes/cub3D.h"
 
+/**
+ * @brief check the file descriptor, in error case exit the program with custom message
+ * 
+ * @param fd 
+ */
 void	ft_check_fd(int fd)
 {
-	if (fd < 0 || fd == 2)
+	if (fd < 0)
 	{
 		close(fd);
 		printf("Error: Invalid fd\n");
@@ -22,6 +27,25 @@ void	ft_check_fd(int fd)
 	}
 }
 
+/** check the read parameter of file, in error case exit the program with custom message
+ * @brief 
+ * 
+ * @param rd 
+ */
+void	ft_check_read(int rd)
+{
+	if (rd < 0)
+	{
+		printf("Error: invalid read\n");
+		exit(1);
+	}
+}
+
+/**
+ * @brief check the file format, in error case exit the program with custom message
+ * 
+ * @param str 
+ */
 void	ft_check_format(char *str)
 {
 	if (!ft_strnstr(str, ".cub", ft_strlen(str)))
@@ -31,6 +55,11 @@ void	ft_check_format(char *str)
 	}
 }
 
+/**
+ * @brief check the game map, if it's empty exit the program with custom message
+ * 
+ * @param map 
+ */
 void	ft_empty_map(t_map *map)
 {
 	if (ft_read_map(map) == 0)

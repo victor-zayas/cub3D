@@ -6,12 +6,18 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:19:39 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/09/28 20:19:40 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/09/29 13:40:58 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../includes/cub3D.h"
 
+/**
+ * @brief read the map and count the start possition characters
+ * 
+ * @param map 
+ * @param attrb 
+ */
 static	void ft_count_attrb(t_map *map, t_attrb *attrb)
 {
 	int		x;
@@ -35,7 +41,13 @@ static	void ft_count_attrb(t_map *map, t_attrb *attrb)
 	}
 }
 
-static	void	ft_chack_attrb(t_map *map)
+/**
+ * @brief check if the map has all acepted characters in map,
+ * 		  in error case return the possition of invalid character
+ * 
+ * @param map 
+ */
+static	void	ft_check_attrb(t_map *map)
 {
 	int		x;
 	int		y;
@@ -66,6 +78,13 @@ static	void	ft_chack_attrb(t_map *map)
 	}
 }
 
+/**
+ * @brief check if there is more than one starting possition & if there is no starting possition,
+ * 		  in error case return a custom message
+ * 
+ * @param map 
+ * @param attrb 
+ */
 static	void	ft_check_init_poss(t_map *map, t_attrb *attrb)
 {
 	ft_count_attrb(map, attrb);
@@ -90,8 +109,8 @@ static	void	ft_check_init_poss(t_map *map, t_attrb *attrb)
 void	ft_check_map(t_map *map, t_attrb *attrb)
 {
 	ft_count_attrb(map, attrb);
-	//printf("CHECK_ATTRB\nN: %d\nS: %d\nE: %d\nW: %d\n", attrb->n, attrb->s, attrb->e, attrb->w);
-	ft_chack_attrb(map);
-	//printf("CHECK_INIT_POSS\nN: %d\nS: %d\nE: %d\nW: %d\n", attrb->n, attrb->s, attrb->e, attrb->w);
+	ft_check_attrb(map);
 	ft_check_init_poss(map, attrb);
+	//printf("CHECK_ATTRB\nN: %d\nS: %d\nE: %d\nW: %d\n", attrb->n, attrb->s, attrb->e, attrb->w);
+	//printf("CHECK_INIT_POSS\nN: %d\nS: %d\nE: %d\nW: %d\n", attrb->n, attrb->s, attrb->e, attrb->w);
 }
