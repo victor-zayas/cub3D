@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:42 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/09/29 13:30:28 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:28:28 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,5 @@ void	ft_start(t_map *map, t_texture *texture)
 	ft_read_map(map);
 	ft_get_data(map);
 	ft_get_texture(map, texture);
-	// ft_get_color(texture);
+	ft_get_color(map, texture);
 }

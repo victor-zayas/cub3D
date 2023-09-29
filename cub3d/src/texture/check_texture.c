@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:19:53 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/09/29 13:42:19 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:34:25 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static	char	*ft_find_color(t_map *map, char id)
 {
 	int y;
 	int x;
-	char path;
+	char *path;
 
 	y = -1;
 	x = 0;
@@ -79,7 +79,7 @@ static	char	*ft_find_color(t_map *map, char id)
 		{
 			while (ft_isalnum(map->raw[y][x]))
 				x++;
-			path = ft_strdup(map->map[y]); // TODO buscar como coño hago esta mierda;
+			path = ft_strdup(ft_strtrim(map->raw[y] + 2, " "));
 		}
 	}
 	return (path);
@@ -95,7 +95,5 @@ static	char	*ft_find_color(t_map *map, char id)
 void	ft_get_color(t_map *map, t_texture *texture)
 {
 	texture->C = ft_find_color(map, 'C');
-	printf("Ceiling -> %s\n", texture->C);
 	texture->F = ft_find_color(map, 'F');
-	printf("Floor -> %s\n", texture->F);
 }
