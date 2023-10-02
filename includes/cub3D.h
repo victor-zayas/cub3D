@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
+/*   Updated: 2023/09/29 15:28:09 by vzayas-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef CUB3D_H
 #define CUB3D_H
@@ -8,54 +19,61 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include "../libft/includes/libft.h"
 
 // STRUCTS
 typedef struct s_map
 {
-    char    **map;
-    char    *name;
-    int     fd;
+    char    **raw; // raw data from .cub file
+    char    **map; // map of game
+    char    *name; // name of .cub
+    int     fd; // fd of .cub
 
 } t_map;
 
 typedef struct s_attrb
 {
-    int n;
-    int s;
-    int e;
-    int w;
+    int n; // North start possition
+    int s; // South start possition
+    int e; // East start possition
+    int w; // West start possition
 } t_attrb;
 
-typedef struct s_cub3D
+typedef struct s_texture
 {
-    t_map s_map;
-    t_attrb s_attbr;
-} t_cub3D;
+    char    *NO; // North texture path
+    char    *SO; // South texture path
+    char    *WE; // East texture path
+    char    *EA; // West texture path
+    char    *C; // RGB color code for ceiling
+    char    *F; // RGB color code for floor
+} t_texture;
+
+typedef struct s_all
+{
+    t_map       map;
+    t_attrb     attrb;
+    t_texture   texture;
+} t_all;
 
 // PROTOTIPES
-// CUB3D
-// GET MAP
-int     ft_get_map(char *path);
-void    ft_split_map(t_map *map);
-// CHECK MAP
-void	ft_check_init_poss(t_map *map, t_attrb *attrb);
-void    ft_check_attrb(t_map *map, t_attrb *attrb);
-void	ft_wrong_attrb(t_map *map);
-void	ft_check(t_map *map, t_attrb *attrb);
+// MAIN
 // INITIAL
-void	ft_init_attrb(t_attrb *attrb);
-void    ft_init_map(t_map **map);
-// FREE
-void    ft_free_strcut(t_map *map);
+void	ft_init_struct(t_all *all, char *name);
+
+// MAP
+// GET MAP
+int     ft_read_map(t_map *map);
+void	ft_get_data(t_map *map);
+void	ft_start(t_map *map, t_texture *texture);
+// CHECK MAP
+void	ft_check_map(t_map *map, t_attrb *attrb);
+// CHECK TEXTURE
+void	ft_get_texture(t_map *map, t_texture *texture);
+void	ft_get_color(t_map *map, t_texture *texture);
+
 // ERROR
 void	ft_check_fd(int fd);
-void    ft_check_format(char *filename);
-void    ft_empty_map(t_map *map);
-
-
-// LIBFT
-char	*ft_substr(char const *s, int start, int len);
-char	**ft_split(char const *s, char c);
-int	    ft_strlen(const char *str);
-void	*ft_memset(void *str, int c, size_t len);
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+void	ft_check_read(int rd);
+void	ft_check_format(char *str);
+void	ft_empty_map(t_map *map);

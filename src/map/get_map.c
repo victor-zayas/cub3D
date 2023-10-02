@@ -43,10 +43,8 @@ int	ft_read_map(t_map *map)
 void	ft_get_data(t_map *map)
 {
 	char	*aux;
-	int		i;
 	int		rd = 0;
 
-	i = 0;
 	aux = malloc((sizeof(char) * ft_read_map(map)) + 1);
 	map->fd = open(map->name, O_RDONLY);
 	rd = read(map->fd, aux, ft_read_map(map));

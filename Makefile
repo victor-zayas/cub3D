@@ -33,7 +33,7 @@ SRCDIR := src/
 ERROR = error
 MAIN = main initial
 MAP = get_map check_map
-TEXTURE = check_texture
+TEXTURE = get_texture
 
 PLAIN_SRCS =	$(addsuffix .c, $(addprefix error/, $(ERROR)))\
 				$(addsuffix .c, $(addprefix main/, $(MAIN)))\
