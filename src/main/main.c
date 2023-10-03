@@ -12,12 +12,17 @@
 
 #include"../../includes/cub3D.h"
 
+/**
+ * @brief Print all data received and parsed
+ * 
+ * @param all main struct with all structs
+ */
 static  void    print_struct(t_all *all)
 {
     int i = 0;
     //print raw datta
-    while (all->map.raw[i])
-        printf("RAW DATTA:\n%s\n", all->map.raw[i]);
+    // while (all->map.raw[i])
+    //     printf("RAW DATTA:\n%s\n", all->map.raw[i]);
     //print map
     i = 0;
     while (all->map.map[i])

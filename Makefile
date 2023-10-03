@@ -82,7 +82,7 @@ $(OBJDIR)%.o: $(SRCDIR)%.c
 
 $(NAME): $(OBJS)
 	make -C libft all
-	$(CC) $(CFLAGS) $(LIBFT) $^ -o $(NAME)
+	$(CC) $(CFLAGS) $^  $(LIBFT) -o $(NAME)
 	echo "$(BLUE)༺ Program compiled༻$(END)"
 	echo "$$CUB3D"
 

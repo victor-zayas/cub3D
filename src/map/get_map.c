@@ -16,7 +16,7 @@
  * @brief read the map
  * 
  * @param map 
- * @return int size of .cub
+ * @return int size of .cub file
  */
 int	ft_read_map(t_map *map)
 {

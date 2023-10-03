@@ -48,6 +48,7 @@ void	ft_check_read(int rd)
  */
 void	ft_check_format(char *str)
 {
+	// use ft_strrchr to reach '.' and then find cub extension
 	if (!ft_strnstr(str, ".cub", ft_strlen(str)))
 	{
 		printf("Error: invalid map format\n");
