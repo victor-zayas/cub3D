@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:19:53 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/04 20:57:31 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/05 00:10:46 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,17 @@ static	char	*ft_find_texture(t_map *map, char *id)
 				path = ft_strdup(ft_strnstr(map->raw[y], "./", ft_strlen(map->raw[y])));
 				break ;
 			}
+			else
+			{
+				printf("Error: no path '%s' \n", map->raw[y]);
+				exit(1);
+			}
 		}
+	}
+	if (!map->raw[y])
+	{
+		printf("Error: no id '%s' \n", id);
+		exit(1);
 	}
 	return (path);
 }

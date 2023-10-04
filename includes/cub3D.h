@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/04 20:56:46 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/05 00:11:45 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,3 +80,6 @@ void	ft_check_read(int rd);
 void	ft_check_extension(char *str);
 void	ft_check_ext_texture(char *str);
 void	ft_empty_map(t_map *map);
+
+
+// TODO pathing for game, check walls.

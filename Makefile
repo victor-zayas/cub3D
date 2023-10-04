@@ -6,7 +6,7 @@
 #    By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 15:10:33 by vzayas-s          #+#    #+#              #
-#    Updated: 2023/10/04 12:30:12 by vzayas-s         ###   ########.fr        #
+#    Updated: 2023/10/04 23:58:49 by vzayas-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,6 +70,25 @@ $(END)
 endef
 export CUB3D
 
+define FISH
+
+                         _.'.__
+                      _.'      .
+':'.               .''   __ __  .
+  '.:._          ./  _ ''     "-'.__
+.'''-: """-._    | .                "-"._
+ '.     .    "._.'                       "
+    '.   "-.___ .        .'          .   :o'.
+      |   .----  .      .           .'      :
+       '|  ----. '   ,.._                _-'
+        .' .---  |.""  .-:;.. _____.----'
+        |   .-""""    |      '
+      .'  _'         .'    _'		 swiming away with all objects...
+     |_.-'            '-.'
+
+endef
+export FISH
+
 # COMPILATION #
 # remove compilation message from cli
 .SILENT:
@@ -92,6 +111,7 @@ clean:
 	rm -rf $(OBJDIR)
 	$(RM) $(OBJS)
 	echo "$(RED)༺ Objs deleted༻$(END)"
+	echo "$$FISH"
 
 # delete executable
 fclean: clean
