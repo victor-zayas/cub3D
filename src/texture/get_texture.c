@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_texture.c                                    :+:      :+:    :+:   */
+/*   get_texture.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:19:53 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/09/29 15:34:25 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/04 20:57:31 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,10 @@ static	char	*ft_find_texture(t_map *map, char *id)
 	path = NULL;
 	while (map->raw[++y])
 	{
-		// printf("Entra en el bucle\n");
 		if (ft_strnstr(map->raw[y], id, ft_strlen(map->raw[y])))
 		{
-			// printf("Encuentra el ID\n");
 			if (ft_strnstr(map->raw[y], "./", ft_strlen(map->raw[y])))
 			{
-				// printf("Encuentra el PATH\n");
 				path = ft_strdup(ft_strnstr(map->raw[y], "./", ft_strlen(map->raw[y])));
 				break ;
 			}
@@ -55,6 +52,26 @@ void	ft_get_texture(t_map *map, t_texture *texture)
 	texture->SO = ft_find_texture(map, "SO");
 	texture->EA = ft_find_texture(map, "EA");
 	texture->WE = ft_find_texture(map, "WE");
+	ft_check_texture(texture);
+	ft_check_ext_texture(texture->NO);
+	ft_check_ext_texture(texture->SO);
+	ft_check_ext_texture(texture->EA);
+	ft_check_ext_texture(texture->WE);
+}
+
+/**
+ * @brief check if the path in textures is correct
+ * 
+ * @param texture 
+ */
+void	ft_check_texture(t_texture *texture)
+{
+	if (ft_strrchr(texture->NO, ' ') || ft_strrchr(texture->SO, ' ') ||
+		ft_strrchr(texture->EA, ' ') || ft_strrchr(texture->WE, ' '))
+	{
+		printf("Error: invalid texture path\n");
+		exit(1);
+	}
 }
 
 /**

@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:42 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/04 13:40:12 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/04 20:55:17 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	ft_read_map(t_map *map)
 	char	c;
 
     i = 0;
-	ft_check_extension(map->name);
 	map->fd = open(map->name, O_RDONLY);
 	ft_check_fd(map->fd);
 	rd = 1;
@@ -62,15 +61,46 @@ void	ft_get_data(t_map *map)
 }
 
 /**
+ * @brief fill the map of map->map with map->raw data
+ * 
+ * @param map 
+ * @param attrb 
+ */
+void	ft_get_map(t_map *map, t_attrb *attrb)
+{
+	int i = 0;
+	int	j = -1;
+
+	// count lines
+	i = 6;
+	while (map->raw[i])
+		i++;
+	// malloc
+	map->map = malloc(sizeof(char *) * (i));
+	if (!map->map)
+		return ;
+	while (++j<i)
+	{
+		if (j >= 6)	
+			map->map[j-6] = map->raw[j];
+	}
+	map->map[i - 6] = NULL;
+	ft_empty_map(map);
+	ft_check_map(map, attrb);
+}
+
+/**
  * @brief start all actions of program
  * 
  * @param map 
  * @param texture 
  */
-void	ft_start(t_map *map, t_texture *texture)
+void	ft_start(t_all *all)
 {
-	ft_read_map(map);
-	ft_get_data(map);
-	ft_get_texture(map, texture);
-	ft_get_color(map, texture);
+	ft_check_extension(all->map.name);
+	ft_read_map(&all->map);
+	ft_get_data(&all->map);
+	ft_get_map(&all->map, &all->attrb);
+	ft_get_texture(&all->map, &all->texture);
+	ft_get_color(&all->map, &all->texture);
 }

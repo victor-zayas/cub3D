@@ -1,6 +1,6 @@
 NO ./path_to_the_north_texture
-SO 
-
+SO ./path_to_the_north_texture
+WE
 EA ./path_to_the_east_texture
 
 F 220,100,0

@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:19:39 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/09/29 13:40:58 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:49:36 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,4 @@ void	ft_check_map(t_map *map, t_attrb *attrb)
 	ft_count_attrb(map, attrb);
 	ft_check_attrb(map);
 	ft_check_init_poss(map, attrb);
-	//printf("CHECK_ATTRB\nN: %d\nS: %d\nE: %d\nW: %d\n", attrb->n, attrb->s, attrb->e, attrb->w);
-	//printf("CHECK_INIT_POSS\nN: %d\nS: %d\nE: %d\nW: %d\n", attrb->n, attrb->s, attrb->e, attrb->w);
 }
