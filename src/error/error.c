@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:36 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/09/29 13:41:14 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:01:29 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,28 @@ void	ft_check_fd(int fd)
  */
 void	ft_check_read(int rd)
 {
-	if (rd < 0)
+	if (rd <= 0)
 	{
-		printf("Error: invalid read\n");
+		printf("Error: empty file\n");
 		exit(1);
 	}
 }
 
 /**
- * @brief check the file format, in error case exit the program with custom message
+ * @brief check the file extension, in error case exit the program with custom message
  * 
  * @param str 
  */
-void	ft_check_format(char *str)
+void	ft_check_extension(char *str)
 {
-	// use ft_strrchr to reach '.' and then find cub extension
-	if (!ft_strnstr(str, ".cub", ft_strlen(str)))
+	int i;
+
+	i = 0;
+	while (str[i] != '.')
+		i++;
+	if (!(ft_strnstr(ft_strrchr(str, '.'), ".cub", 4)) && str[i + 4] == '\0')
 	{
-		printf("Error: invalid map format\n");
+		printf("Error: invalid map extension %s\n", str);
 		exit(1);
 	}
 }

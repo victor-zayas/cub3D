@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/09/29 15:28:09 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/04 13:32:13 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,22 +58,22 @@ typedef struct s_all
 
 // PROTOTIPES
 // MAIN
-// INITIAL
+// -INITIAL
 void	ft_init_struct(t_all *all, char *name);
 
 // MAP
-// GET MAP
+// -GET MAP
 int     ft_read_map(t_map *map);
 void	ft_get_data(t_map *map);
 void	ft_start(t_map *map, t_texture *texture);
-// CHECK MAP
+// -CHECK MAP
 void	ft_check_map(t_map *map, t_attrb *attrb);
-// CHECK TEXTURE
+// -CHECK TEXTURE
 void	ft_get_texture(t_map *map, t_texture *texture);
 void	ft_get_color(t_map *map, t_texture *texture);
 
-// ERROR
+// -ERROR
 void	ft_check_fd(int fd);
 void	ft_check_read(int rd);
-void	ft_check_format(char *str);
+void	ft_check_extension(char *str);
 void	ft_empty_map(t_map *map);

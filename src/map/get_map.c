@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:42 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/09/29 15:28:28 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/04 13:40:12 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	ft_read_map(t_map *map)
 	char	c;
 
     i = 0;
+	ft_check_extension(map->name);
 	map->fd = open(map->name, O_RDONLY);
 	ft_check_fd(map->fd);
-	ft_check_format(map->name);
 	rd = 1;
 	while ((rd = read(map->fd, &c, 1)) > 0)
         i++;
@@ -43,11 +43,16 @@ int	ft_read_map(t_map *map)
 void	ft_get_data(t_map *map)
 {
 	char	*aux;
-	int		rd = 0;
-
-	aux = malloc((sizeof(char) * ft_read_map(map)) + 1);
+	int		rd;
+	int		len;
+	
+	rd = 0;
+	len = ft_read_map(map);
+	aux = malloc((sizeof(char) * len) + 1);
+	if (!aux)
+		return ;
 	map->fd = open(map->name, O_RDONLY);
-	rd = read(map->fd, aux, ft_read_map(map));
+	rd = read(map->fd, aux, len);
 	ft_check_read(rd);
 	aux[rd - 1] = '\0';
 	map->raw = ft_split(aux, '\n');

@@ -6,7 +6,7 @@
 #    By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 15:10:33 by vzayas-s          #+#    #+#              #
-#    Updated: 2023/09/29 11:51:20 by vzayas-s         ###   ########.fr        #
+#    Updated: 2023/10/04 12:30:12 by vzayas-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ $(OBJDIR)%.o: $(SRCDIR)%.c
 
 $(NAME): $(OBJS)
 	make -C libft all
-	$(CC) $(CFLAGS) $^  $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $^ $(LIBFT) -o $(NAME)
 	echo "$(BLUE)༺ Program compiled༻$(END)"
 	echo "$$CUB3D"
 
