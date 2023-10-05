@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:36 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/04 20:56:06 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/05 11:12:09 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ void	ft_check_read(int rd)
  */
 void	ft_check_extension(char *str)
 {
-    int len;
-	
+	int	len;
+
 	len = ft_strlen(str);
-    if (len >= 5 && ft_strncmp(str + len - 4, ".cub", 4) == 0)
-        return ;
+	if (len >= 5 && ft_strncmp(str + len - 4, ".cub", 4) == 0)
+		return ;
 	printf("Error: invalid map extension '%s'\n", str);
 	exit(1);
 }
@@ -64,11 +64,11 @@ void	ft_check_extension(char *str)
  */
 void	ft_check_ext_texture(char *str)
 {
-    int len;
-	
+	int	len;
+
 	len = ft_strlen(str);
-    if (len >= 5 && ft_strncmp(str + len - 4, ".xpm", 4) == 0)
-        return ;
+	if (len >= 5 && ft_strncmp(str + len - 4, ".xpm", 4) == 0)
+		return ;
 	printf("Error: invalid map extension '%s'\n", str);
 	exit(1);
 }

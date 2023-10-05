@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/05 00:11:45 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/05 11:07:56 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,15 @@ void	ft_check_ext_texture(char *str);
 void	ft_empty_map(t_map *map);
 
 
-// TODO pathing for game, check walls.
+// TODO listt
+
+// Check walls
+// learn about raycasting
+// check mlx functions to use RGB color
+// check colors
+// make mlx window
+// close mlx windows with red x & ESC case
+// lean how to change textures depending on direction
+// use mlx to make movement with direction arrows
+// use mlx to rotate camera with WASD
+

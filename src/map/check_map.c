@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:19:39 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/04 16:49:36 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/05 11:15:46 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * @param map 
  * @param attrb 
  */
-static	void ft_count_attrb(t_map *map, t_attrb *attrb)
+static	void	ft_count_attrb(t_map *map, t_attrb *attrb)
 {
 	int		x;
 	int		y;
@@ -51,7 +51,6 @@ static	void	ft_check_attrb(t_map *map)
 {
 	int		x;
 	int		y;
-	int		error;
 
 	x = -1;
 	while (map->map[++x])
@@ -64,17 +63,11 @@ static	void	ft_check_attrb(t_map *map)
 			&& map->map[x][y] != '1' && map->map[x][y] != '0'
 			&& map->map[x][y] != '\n' && map->map[x][y] != ' ')
 			{
-				error = 1;
-				break ;
+				printf("Error: invalid character in map: %d, %d : %c\n",
+					x, y, map->map[x][y]);
+				exit(1);
 			}
 		}
-		if (error == 1)
-			break ;
-	}
-	if (error == 1)
-	{
-		printf("Error: invalid character in map: %d, %d : %c\n", x, y, map->map[x][y]);
-		exit(1);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:19:53 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/05 00:10:46 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/05 11:16:45 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
  */
 static	char	*ft_find_texture(t_map *map, char *id)
 {
-	int y;
-	char *path;
+	int		y;
+	char	*path;
 
 	y = -1;
 	path = NULL;
@@ -76,8 +76,8 @@ void	ft_get_texture(t_map *map, t_texture *texture)
  */
 void	ft_check_texture(t_texture *texture)
 {
-	if (ft_strrchr(texture->NO, ' ') || ft_strrchr(texture->SO, ' ') ||
-		ft_strrchr(texture->EA, ' ') || ft_strrchr(texture->WE, ' '))
+	if (ft_strrchr(texture->NO, ' ') || ft_strrchr(texture->SO, ' ')
+		|| ft_strrchr(texture->EA, ' ') || ft_strrchr(texture->WE, ' '))
 	{
 		printf("Error: invalid texture path\n");
 		exit(1);
@@ -93,9 +93,9 @@ void	ft_check_texture(t_texture *texture)
  */
 static	char	*ft_find_color(t_map *map, char id)
 {
-	int y;
-	int x;
-	char *path;
+	int		y;
+	int		x;
+	char	*path;
 
 	y = -1;
 	x = 0;

@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:31 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/09/29 13:28:29 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/05 11:11:28 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
  * @param map map info struct
  * @param name name of .cub file
  */
-static	void    ft_init_map(t_map *map, char *name)
+static	void	ft_init_map(t_map *map, char *name)
 {
 	map->raw = NULL;
-    map->map = NULL;
-    map->name = name;
-    map->fd = -1;
+	map->map = NULL;
+	map->name = name;
+	map->fd = -1;
 }
 
 /**
