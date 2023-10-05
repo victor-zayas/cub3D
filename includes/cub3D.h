@@ -6,13 +6,12 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/05 11:07:56 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/05 15:57:57 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
-#define CUB3D_H
-#endif
+# define CUB3D_H
 
 // INCLUDES
 # include <fcntl.h>
@@ -28,7 +27,6 @@ typedef struct s_map
     char    **map; // map of game
     char    *name; // name of .cub
     int     fd; // fd of .cub
-
 } t_map;
 
 typedef struct s_attrb
@@ -81,16 +79,16 @@ void	ft_check_extension(char *str);
 void	ft_check_ext_texture(char *str);
 void	ft_empty_map(t_map *map);
 
+#endif
 
 // TODO listt
 
 // Check walls
-// learn about raycasting
 // check mlx functions to use RGB color
 // check colors
 // make mlx window
 // close mlx windows with red x & ESC case
-// lean how to change textures depending on direction
 // use mlx to make movement with direction arrows
 // use mlx to rotate camera with WASD
-
+// lean how to change textures depending on direction
+// learn about raycasting

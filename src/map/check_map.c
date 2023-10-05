@@ -6,11 +6,35 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:19:39 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/05 11:15:46 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/05 20:14:26 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../includes/cub3D.h"
+
+static	void	ft_check_wall(t_map *map)
+{
+	int		x;
+	int		y;
+
+	x = -1;
+	while (map->map[++x])
+	{
+		y = -1;
+		while (map->map[x][++y])
+		{
+			while (map->map[x][y] == ' ')
+				y++;
+			if (map->map[x][y] != '1' && map->map[x][ft_strlen(map->map[x]) - 1] != 1)
+			{
+				printf("START: [%d] CHAR:[%c]\n", y, map->map[x][y]);
+				printf("END: [%d] CHAR:[%c]\n", y, map->map[x][ft_strlen(map->map[x]) - 1]);
+				printf("Error: there is no wall SIDE\n");
+				exit(1);
+			}
+		}
+	}
+}
 
 /**
  * @brief read the map and count the start possition characters
@@ -101,6 +125,7 @@ static	void	ft_check_init_poss(t_map *map, t_attrb *attrb)
 
 void	ft_check_map(t_map *map, t_attrb *attrb)
 {
+	ft_check_wall(map);
 	ft_count_attrb(map, attrb);
 	ft_check_attrb(map);
 	ft_check_init_poss(map, attrb);
