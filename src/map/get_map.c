@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:42 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/11 21:59:06 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/11 23:45:11 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void	ft_get_data(t_map *map)
 	char	*aux;
 	int		rd;
 	int		len;
-	int		i;
+	// int		i;
 
-	i = -1;
+	// i = -1;
 	rd = 0;
 	len = ft_read_map(map);
 	aux = malloc((sizeof(char) * len) + 1);
@@ -58,8 +58,8 @@ void	ft_get_data(t_map *map)
 	aux[rd - 1] = '\0';
 	map->raw = ft_split(aux, '\n');
 	ft_empty_map(map);
-    while (map->raw[++i])
-        map->raw[i] = ft_strtrim(map->raw[i], " ");
+    // while (map->raw[++i])
+    //     map->raw[i] = ft_strtrim(map->raw[i], " ");
 	close(map->fd);
 	free(aux);
 }
