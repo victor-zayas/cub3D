@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:19:53 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/11 23:48:15 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/12 00:10:14 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,11 @@ static	char	*ft_find_color(t_map *map, char id)
 	{
 		if (ft_strchr(map->raw[y], id))
 		{
+			while (map->raw[y][x] == ' ')
+				x++;
 			while (ft_isalnum(map->raw[y][x]))
 				x++;
-			path = ft_strdup(ft_strtrim(map->raw[y] + 2, " "));
+			path = ft_strdup(ft_strtrim(map->raw[y] + 2 , " "));
 		}
 	}
 	return (path);
@@ -122,7 +124,7 @@ static	void	ft_digit(char *str)
         if (!((str[i] >= '0' && str[i] <= '9') || str[i] == ','))
         {
             printf("Error: invalid char in RGB\n");
-            exit(1);
+            // exit(1);
         }
         i++;
     }
