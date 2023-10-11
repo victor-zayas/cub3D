@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:42 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/11 18:03:02 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/11 21:59:06 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ void	ft_get_data(t_map *map)
 	char	*aux;
 	int		rd;
 	int		len;
+	int		i;
 
+	i = -1;
 	rd = 0;
 	len = ft_read_map(map);
 	aux = malloc((sizeof(char) * len) + 1);
@@ -56,8 +58,32 @@ void	ft_get_data(t_map *map)
 	aux[rd - 1] = '\0';
 	map->raw = ft_split(aux, '\n');
 	ft_empty_map(map);
+    while (map->raw[++i])
+        map->raw[i] = ft_strtrim(map->raw[i], " ");
 	close(map->fd);
 	free(aux);
+}
+
+/**
+ * @brief check if map is the last element in file
+ * 
+ * @param map 
+ */
+static	void	ft_check_order(t_map *map)
+{
+	int	x;
+	
+	x = -1;
+	while (++x < 5)
+	{
+		if (map->raw[x][0] != 'N' && map->raw[x][0] != 'S' && map->raw[x][0] != 'E'
+			&& map->raw[x][0] != 'W' && map->raw[x][0] != 'F' && map->raw[x][0] != 'C')
+		{
+			//printf("line: %d, content: %s\n", x, map->raw[x]);
+			printf("Error: map isn't the last parameter\n");
+			exit(1);
+		}
+	}
 }
 
 /**
@@ -99,6 +125,7 @@ void	ft_start(t_all *all)
 	ft_check_extension(all->map.name);
 	ft_read_map(&all->map);
 	ft_get_data(&all->map);
+	ft_check_order(&all->map);
 	ft_get_map(&all->map, &all->attrb);
 	ft_get_texture(&all->map, &all->texture);
 	ft_get_color(&all->map, &all->texture);
