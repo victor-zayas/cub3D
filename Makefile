@@ -6,7 +6,7 @@
 #    By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 15:10:33 by vzayas-s          #+#    #+#              #
-#    Updated: 2023/10/11 13:06:16 by vzayas-s         ###   ########.fr        #
+#    Updated: 2023/10/11 17:55:23 by vzayas-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,11 +97,11 @@ export FISH
 all: $(NAME)
 
 $(OBJDIR)%.o: $(SRCDIR)%.c
-	echo "$(CYAN)making directories...$(END)"
 	mkdir -p $(@D)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(NAME): $(OBJS)
+	echo "$(CYAN)making directories...$(END)"
 	make -C libft all
 	make -C mlx all 2> /dev/null
 	$(CC) $(CFLAGS) $^ $(LIBFT) $(MLXFLAGS) $(MLX) -o $(NAME)

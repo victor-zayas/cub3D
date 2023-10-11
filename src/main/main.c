@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:26 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/05 11:11:10 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/11 19:56:28 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static	void	print_struct(t_all *all)
 	
 	//print map
 	i = 0;
-	printf("\nMAP DATTA:\n");
+	printf("\nMAP:\n");
 	while (all->map.map[i])
 		printf("%s\n", all->map.map[i++]);
 	
@@ -39,7 +39,7 @@ static	void	print_struct(t_all *all)
 	
 	//print textures
 	printf("\nTEXTURES:\n");
-	printf("North: %s\nSouth: %s\nEast: %s\nWest: %s\nFloor: %s\nCeiling: %s\n",
+	printf("North: %s\nSouth: %s\nEast: %s\nWest: %s\nFloor: %s\nCeiling: %s\n\n",
 	all->texture.NO, all->texture.SO, all->texture.EA, all->texture.WE, all->texture.F, all->texture.C);
 }
 

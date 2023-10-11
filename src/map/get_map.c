@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:42 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/05 11:13:31 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/11 18:03:02 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	ft_get_map(t_map *map, t_attrb *attrb)
 	if (!map->map)
 		return ;
 	j = -1;
-	while (++j<i)
+	while (++j < i)
 	{
 		if (j >= 6)	
 			map->map[j - 6] = map->raw[j];
