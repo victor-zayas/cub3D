@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:19:39 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/12 10:37:20 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/12 10:55:51 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ static	int	ft_check_side(char *str)
 	{
 		while (str[i] == ' ')
 			i++;
-		if (str[i] == '0' && (str [i - 1] == ' ' || str[i + 1] == ' ')) // TODO add spawns to this
+		if ((str[i] == '0' || str[i] == 'N' || str[i] == 'S' || str[i] == 'E' || str[i] == 'W')
+			&& (str [i - 1] == ' ' || str[i + 1] == ' '))
 			return (1);
 		i++;
 	}
