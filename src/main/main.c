@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:26 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/11 22:00:40 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/12 10:19:18 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		ft_init_struct(&all, argv[1]);
-		ft_start(&all);
+		ft_parse(&all);
 		print_struct(&all);
 	}
 	else

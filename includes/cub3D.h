@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/12 01:52:56 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/12 10:19:11 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_init_struct(t_all *all, char *name);
 int     ft_read_map(t_map *map);
 void	ft_get_data(t_map *map);
 void	ft_get_map(t_map *map, t_attrb *attrb);
-void	ft_start(t_all *all);
+void	ft_parse(t_all *all);
 
 // -CHECK MAP
 void	ft_check_map(t_map *map, t_attrb *attrb);
@@ -88,23 +88,26 @@ void	ft_empty_map(t_map *map);
 #endif
 
 // |**** EXTENSION ****|
-// EX: Wrong extension. ✅
+// Wrong map extension / format. ✅
 
 // |**** TEXTURES ****|
-// TE1: One texture missing (EA) ✅
-// TE2: Texture path (WE) does not exist 
+// One texture missing ✅
+// Texture path does not exist ✅
+// wrong extension ✅
 
-// |**** FLOOR - CEILING ****|
-// One parameter missing in ceiling color 
+// |**** FLOOR / CEILING ****|
+// One parameter missing in ceiling color ✅
 // Floor rgb metric out of range 0 - 255 (333) ✅
 // invalid character (a) in floor ✅
 
 // |**** MAP ****|
 // Invalid character in map ✅
-// map wall is 0 ✅
+// map has no wall ✅
 // new line in map ✅
 // map not in last position ✅
 // empty map ✅
+// spaces inside walkable map ✅
+// map has no start poss ✅
 
 // TODO LIST
 // check mlx functions to use RGB color
@@ -115,4 +118,3 @@ void	ft_empty_map(t_map *map);
     // close mlx windows with red x & ESC case
     // use mlx to make movement with direction arrows
     // use mlx to rotate camera with WASD
-    

@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 01:49:02 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/12 01:53:01 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/12 10:10:24 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,11 @@ void	ft_check_color(char *str)
             printf("Error: rgb value exceed\n");
             exit(1);
         }
+    }
+    if (i != 3)
+    {
+        printf("Error: missing value in RGB code\n");
+        exit(1);
     }
     free(rgb);
 }

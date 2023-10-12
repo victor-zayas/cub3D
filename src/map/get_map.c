@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:42 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/12 00:09:49 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/12 10:19:00 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,15 @@ void	ft_get_data(t_map *map)
 	map->raw = ft_split(aux, '\n');
 	ft_empty_map(map);
 	i = -1;
-	while (++i < 5)
+	while (++i < 6)
     	map->raw[i] = ft_strtrim(map->raw[i], " ");
 	close(map->fd);
 	free(aux);
 }
 
 /**
- * @brief check if map is the last element in file
+ * @brief check the 5 first lines in map,
+ * 		  if map isn't the last element in file return custom error messagge
  * 
  * @param map 
  */
@@ -83,13 +84,13 @@ static	void	ft_check_order(t_map *map)
 	while (map->raw[++i])
 		aux[i] = map->raw[i];
 	i = -1;
-	while (++i < 5)
+	while (++i < 6)
 	{
     	aux[i] = ft_strtrim(map->raw[i], " ");
-		printf("%s\n", aux[i]);
+		// printf("%s\n", aux[i]);
 	}
 	x = -1;
-	while (++x < 5)
+	while (++x < 6)
 	{
 		if (aux[x][0] != 'N' && aux[x][0] != 'S' && aux[x][0] != 'E'
 			&& aux[x][0] != 'W' && aux[x][0] != 'F' && aux[x][0] != 'C')
@@ -136,7 +137,7 @@ void	ft_get_map(t_map *map, t_attrb *attrb)
  * @param map 
  * @param texture 
  */
-void	ft_start(t_all *all)
+void	ft_parse(t_all *all)
 {
 	ft_check_extension(all->map.name);
 	ft_read_map(&all->map);

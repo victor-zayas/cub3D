@@ -11,6 +11,7 @@ ERROR MAPS
 - char_in_color : have chars on RGB value
 - disorder : the game map isn't the last element
 - empty : is an empty map
+- missing_value_rgb : a part of 3 rgb value is mmissing
 - no_path : has no path to textures
 - no_walls : has no walls
 - pata.cubta : wrong format with large type of format
