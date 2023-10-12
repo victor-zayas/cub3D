@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:19:53 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/12 00:10:14 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/12 01:50:03 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,21 +70,6 @@ void	ft_get_texture(t_map *map, t_texture *texture)
 }
 
 /**
- * @brief check if the path in textures is correct
- * 
- * @param texture 
- */
-void	ft_check_texture(t_texture *texture)
-{
-	if (ft_strrchr(texture->NO, ' ') || ft_strrchr(texture->SO, ' ')
-		|| ft_strrchr(texture->EA, ' ') || ft_strrchr(texture->WE, ' '))
-	{
-		printf("Error: invalid texture path\n");
-		exit(1);
-	}
-}
-
-/**
  * @brief find the path to RGB colors on map->raw info
  * 
  * @param map 
@@ -112,44 +97,6 @@ static	char	*ft_find_color(t_map *map, char id)
 		}
 	}
 	return (path);
-}
-
-static	void	ft_digit(char *str)
-{
-	int	i;
-
-	i = 0;
-    while (str[i])
-    {
-        if (!((str[i] >= '0' && str[i] <= '9') || str[i] == ','))
-        {
-            printf("Error: invalid char in RGB\n");
-            // exit(1);
-        }
-        i++;
-    }
-}
-
-static	void ft_check_color(char *str)
-{
-	char	**rgb;
-	int		num;
-    int		i;
-	
-	ft_digit(str);
-    rgb = ft_split(str, ',');
-	i = -1;
-    while (rgb[++i])
-    {
-        num = ft_atoi(rgb[i]);
-        if (num < 0 || num > 255)
-        {
-            printf("Error: rgb value exceed\n");
-            exit(1);
-        }
-        // printf("num: [%d]\n", num);
-    }
-    free(rgb);
 }
 
 /**
