@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 01:49:02 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/12 10:10:24 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/12 10:38:28 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_check_texture(t_texture *texture)
 	if (ft_strrchr(texture->NO, ' ') || ft_strrchr(texture->SO, ' ')
 		|| ft_strrchr(texture->EA, ' ') || ft_strrchr(texture->WE, ' '))
 	{
-		printf("Error: invalid texture path\n");
+		printf("Error\nInvalid texture path\n");
 		exit(1);
 	}
 }
@@ -41,7 +41,7 @@ static	void	ft_digit(char *str)
     {
         if (!((str[i] >= '0' && str[i] <= '9') || str[i] == ','))
         {
-            printf("Error: invalid char in RGB\n");
+            printf("Error\nInvalid char in RGB\n");
             exit(1);
         }
         i++;
@@ -67,13 +67,13 @@ void	ft_check_color(char *str)
         num = ft_atoi(rgb[i]);
         if (num < 0 || num > 255)
         {
-            printf("Error: rgb value exceed\n");
+            printf("Error\nRGB value exceed\n");
             exit(1);
         }
     }
     if (i != 3)
     {
-        printf("Error: missing value in RGB code\n");
+        printf("Error\nMissing value in RGB code\n");
         exit(1);
     }
     free(rgb);

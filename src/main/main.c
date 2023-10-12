@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:26 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/12 10:19:18 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/12 10:34:58 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,5 @@ int	main(int argc, char **argv)
 		print_struct(&all);
 	}
 	else
-		printf("Error: expected two arguments, have %d\n", argc);
+		printf("Error\nExpected two arguments, have %d\n", argc);
 }

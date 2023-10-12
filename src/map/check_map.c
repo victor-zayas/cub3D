@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:19:39 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/11 22:00:42 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/12 10:37:20 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static	int	ft_check_side(char *str)
 	{
 		while (str[i] == ' ')
 			i++;
-		if (str[i] == '0' && (str [i - 1] == ' ' || str[i + 1] == ' '))
+		if (str[i] == '0' && (str [i - 1] == ' ' || str[i + 1] == ' ')) // TODO add spawns to this
 			return (1);
 		i++;
 	}
@@ -77,7 +77,7 @@ static	void	ft_check_wall(t_map *map)
 	if (ft_check_top_bot(map->map[x]))
 	{
 		// printf("%s\n", map->map[x]);
-		printf("Error: top\n");
+		printf("Error\nNo wall on top\n");
 		exit(1);
 	}
 	while (map->map[x])
@@ -85,7 +85,7 @@ static	void	ft_check_wall(t_map *map)
 		if (ft_check_side(map->map[x]))
 		{
 			// printf("%s\n", map->map[x]);
-			printf("Error: side\n");
+			printf("Error\nNo wall on side\n");
 			exit(1);
 		}
 		x++;
@@ -93,7 +93,7 @@ static	void	ft_check_wall(t_map *map)
 	if (ft_check_top_bot(map->map[x - 1]))
 	{
 		// printf("%s\n", map->map[x - 1]);
-		printf("Error: bot\n");
+		printf("Error\nNo wall on bottom\n");
 		exit(1);
 	}
 }
@@ -148,7 +148,7 @@ static	void	ft_check_attrb(t_map *map)
 			&& map->map[x][y] != '1' && map->map[x][y] != '0'
 			&& map->map[x][y] != '\n' && map->map[x][y] != ' ')
 			{
-				printf("Error: invalid character in map: %d, %d : %c\n",
+				printf("Error\nInvalid character in map: %d, %d : %c\n",
 					x, y, map->map[x][y]);
 				exit(1);
 			}
@@ -168,19 +168,19 @@ static	void	ft_check_init_poss(t_map *map, t_attrb *attrb)
 	ft_count_attrb(map, attrb);
 	if (!(attrb->n || attrb->s || attrb->e || attrb->w))
 	{
-		printf("Error: starting position not found\n");
+		printf("Error\nStarting position not found\n");
 		exit(1);
 	}
 	else
 	{
 		if (attrb->n && (attrb->s || attrb->e || attrb->w))
-			printf("Error: there is more than one starting possition\n");
+			printf("Error\nThere is more than one starting possition\n");
 		if (attrb->s && (attrb->n || attrb->e || attrb->w))
-			printf("Error: there is more than one starting possition\n");
+			printf("Error\nThere is more than one starting possition\n");
 		if (attrb->e && (attrb->s || attrb->n || attrb->w))
-			printf("Error: there is more than one starting possition\n");
+			printf("Error\nThere is more than one starting possition\n");
 		if (attrb->w && (attrb->s || attrb->e || attrb->n))
-			printf("Error: there is more than one starting possition\n");
+			printf("Error\nThere is more than one starting possition\n");
 	}
 }
 

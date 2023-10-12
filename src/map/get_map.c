@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:42 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/12 10:19:00 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/12 10:37:32 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ static	void	ft_check_order(t_map *map)
 			&& aux[x][0] != 'W' && aux[x][0] != 'F' && aux[x][0] != 'C')
 		{
 			//printf("line: %d, content: %s\n", x, map->raw[x]);
-			printf("Error: map isn't the last parameter\n");
+			printf("Error\nMap isn't the last parameter\n");
 			exit(1);
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:36 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/05 11:12:09 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/12 10:34:37 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_check_fd(int fd)
 	if (fd < 0)
 	{
 		close(fd);
-		printf("Error: Invalid fd\n");
+		printf("Error\nInvalid fd\n");
 		exit(1);
 	}
 }
@@ -36,7 +36,7 @@ void	ft_check_read(int rd)
 {
 	if (rd <= 0)
 	{
-		printf("Error: empty file\n");
+		printf("Error\nEmpty file\n");
 		exit(1);
 	}
 }
@@ -53,7 +53,7 @@ void	ft_check_extension(char *str)
 	len = ft_strlen(str);
 	if (len >= 5 && ft_strncmp(str + len - 4, ".cub", 4) == 0)
 		return ;
-	printf("Error: invalid map extension '%s'\n", str);
+	printf("Error\nInvalid map extension '%s'\n", str);
 	exit(1);
 }
 
@@ -69,7 +69,7 @@ void	ft_check_ext_texture(char *str)
 	len = ft_strlen(str);
 	if (len >= 5 && ft_strncmp(str + len - 4, ".xpm", 4) == 0)
 		return ;
-	printf("Error: invalid map extension '%s'\n", str);
+	printf("Error\nInvalid map extension '%s'\n", str);
 	exit(1);
 }
 
@@ -82,7 +82,7 @@ void	ft_empty_map(t_map *map)
 {
 	if (ft_read_map(map) == 0)
 	{
-		printf("Error: empty map\n");
+		printf("Error\nEmpty map\n");
 		exit (1);
 	}
 }
