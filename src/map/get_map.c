@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:42 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/18 13:47:43 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/18 18:52:59 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,12 @@ int	ft_read_map(t_map *map)
 	map->fd = open(map->name, O_RDONLY);
 	ft_check_fd(map->fd);
 	rd = 1;
-	// meter gnl
-	while ((rd = read(map->fd, &c, 1)) > 0)
+	while (rd > 0)
+	{
+		rd = read(map->fd, &c, 1);
+		ft_check_read(map->fd);
 		i++;
+	}
 	close(map->fd);
 	return (i);
 }
@@ -55,7 +58,7 @@ void	ft_get_data(t_map *map)
 	map->fd = open(map->name, O_RDONLY);
 	rd = read(map->fd, aux, len);
 	ft_check_read(rd);
-	aux[rd - 1] = '\0';
+	aux[rd] = '\0'; // before aux[rd - 1] = '\0' ????
 	map->raw = ft_split(aux, '\n');
 	ft_empty_map(map);
 	i = -1;

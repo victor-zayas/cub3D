@@ -6,6 +6,7 @@ VALID MAPS
 - mixed_imputs : have paths and colors mixed
 - spaces_betwen : have spaces and tabs betwen identifiers and paths
 - valid map : the perfect example gived by 42
+- alien_egg : randome map shape
 
 ERROR MAPS
 - char_in_color : have chars on RGB value

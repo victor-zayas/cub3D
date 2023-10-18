@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:19:39 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/12 10:55:51 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/18 18:45:51 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static	void	ft_check_wall(t_map *map)
 	{
 		if (ft_check_side(map->map[x]))
 		{
-			// printf("%s\n", map->map[x]);
+			printf("%s\n", map->map[x]);
 			printf("Error\nNo wall on side\n");
 			exit(1);
 		}

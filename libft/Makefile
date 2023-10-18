@@ -6,7 +6,7 @@
 #    By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/24 12:12:22 by vzayas-s          #+#    #+#              #
-#    Updated: 2023/09/28 23:46:54 by vzayas-s         ###   ########.fr        #
+#    Updated: 2023/10/18 18:27:52 by vzayas-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,10 @@ SRCS =	ft_isalpha.c			\
 		ft_lstlast_bonus.c      \
 		ft_lstmap_bonus.c       \
 		ft_lstnew_bonus.c       \
-		ft_lstsize_bonus.c
+		ft_lstsize_bonus.c		\
+		get_next_line.c			\
+		get_next_line_utils.c	\
+		
 
 SRC := $(addprefix $(SRCDIR), $(SRCS))
 OBJS := $(addprefix $(OBJDIR), $(OBJS))
