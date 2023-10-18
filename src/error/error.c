@@ -6,14 +6,15 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:36 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/12 10:34:37 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/18 18:59:16 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../includes/cub3D.h"
 
 /**
- * @brief check the file descriptor, in error case exit the program with custom message
+ * @brief check the file descriptor, in error case exit the program
+ * 		  with custom message
  * 
  * @param fd 
  */
@@ -27,8 +28,9 @@ void	ft_check_fd(int fd)
 	}
 }
 
-/** check the read parameter of file, in error case exit the program with custom message
- * @brief 
+/** 
+ * @brief check the read parameter of file, in error case exit the program
+ * 		  with custom message
  * 
  * @param rd 
  */
@@ -42,7 +44,8 @@ void	ft_check_read(int rd)
 }
 
 /**
- * @brief check the file extension, in error case exit the program with custom message
+ * @brief check the file extension, in error case exit the program
+ * 		  with custom message
  * 
  * @param str 
  */
@@ -58,7 +61,8 @@ void	ft_check_extension(char *str)
 }
 
 /**
- * @brief check the file extension, in error case exit the program with custom message
+ * @brief check the file extension, in error case exit the program
+ * 		  with custom message
  * 
  * @param str 
  */
@@ -74,7 +78,8 @@ void	ft_check_ext_texture(char *str)
 }
 
 /**
- * @brief check the game map, if it's empty exit the program with custom message
+ * @brief check the game map, if it's empty exit the program
+ * 		  with custom message
  * 
  * @param map 
  */

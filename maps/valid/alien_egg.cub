@@ -3,8 +3,8 @@ SO ./texture/xmp/brick_wall.xpm
 WE ./texture/xmp/grey_wall.xpm
 EA ./texture/xmp/steel_wall.xpm
 
-C 225,30,0
-F 220,100,0
+C 0,255,0
+F 255,255,0
 
        1111 1111 1111
       1000010000100001

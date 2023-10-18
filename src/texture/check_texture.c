@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 01:49:02 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/12 10:38:28 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/18 19:05:39 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,15 @@ static	void	ft_digit(char *str)
 	int	i;
 
 	i = 0;
-    while (str[i])
-    {
-        if (!((str[i] >= '0' && str[i] <= '9') || str[i] == ','))
-        {
-            printf("Error\nInvalid char in RGB\n");
-            exit(1);
-        }
-        i++;
-    }
+	while (str[i])
+	{
+		if (!((str[i] >= '0' && str[i] <= '9') || str[i] == ','))
+		{
+			printf("Error\nInvalid char in RGB\n");
+			exit(1);
+		}
+		i++;
+	}
 }
 
 /**
@@ -57,24 +57,24 @@ void	ft_check_color(char *str)
 {
 	char	**rgb;
 	int		num;
-    int		i;
-	
+	int		i;
+
 	ft_digit(str);
-    rgb = ft_split(str, ',');
+	rgb = ft_split(str, ',');
 	i = -1;
-    while (rgb[++i])
-    {
-        num = ft_atoi(rgb[i]);
-        if (num < 0 || num > 255)
-        {
-            printf("Error\nRGB value exceed\n");
-            exit(1);
-        }
-    }
-    if (i != 3)
-    {
-        printf("Error\nMissing value in RGB code\n");
-        exit(1);
-    }
-    free(rgb);
+	while (rgb[++i])
+	{
+		num = ft_atoi(rgb[i]);
+		if (num < 0 || num > 255)
+		{
+			printf("Error\nRGB value exceed\n");
+			exit(1);
+		}
+	}
+	if (i != 3)
+	{
+		printf("Error\nMissing value in RGB code\n");
+		exit(1);
+	}
+	free(rgb);
 }

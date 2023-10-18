@@ -6,11 +6,33 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:19:39 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/18 18:45:51 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/18 22:33:16 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../includes/cub3D.h"
+
+void	ft_check_inside(t_map *map)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	while (map->map[++x])
+	{
+		y = -1;
+		while (map->map[x][++y])
+		{
+			if (map->map[x][y] == '0' && (map->map[x - 1][y] == '\n'
+				|| map->map[x - 1][y] == ' ' || map->map[x - 1][y] == '\0'))
+			{
+				printf("%s\n", map->map[x]);
+				printf("Error\nNo wall closed\n");
+				exit(1);
+			}
+		}
+	}
+}
 
 /**
  * @brief check if there first and  last lines of the map are walls(1)
@@ -20,7 +42,7 @@
  */
 static	int	ft_check_top_bot(char *str)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (str[++i])
@@ -42,8 +64,8 @@ static	int	ft_check_top_bot(char *str)
  */
 static	int	ft_check_side(char *str)
 {
-	int i;
-	int len;
+	int	i;
+	int	len;
 
 	len = ft_strlen(str);
 	i = 0;
@@ -85,12 +107,13 @@ static	void	ft_check_wall(t_map *map)
 	{
 		if (ft_check_side(map->map[x]))
 		{
-			printf("%s\n", map->map[x]);
+			// printf("%s\n", map->map[x]);
 			printf("Error\nNo wall on side\n");
 			exit(1);
 		}
 		x++;
 	}
+	ft_check_inside(map);
 	if (ft_check_top_bot(map->map[x - 1]))
 	{
 		// printf("%s\n", map->map[x - 1]);
@@ -158,8 +181,9 @@ static	void	ft_check_attrb(t_map *map)
 }
 
 /**
- * @brief check if there is more than one starting possition & if there is no starting possition,
- * 		  in error case return a custom message
+ * @brief check if there is more than one starting possition,
+ * 		  if there is no starting possition, in error case
+ * 		  return a custom message
  * 
  * @param map 
  * @param attrb 

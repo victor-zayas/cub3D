@@ -22,3 +22,4 @@ ERROR MAPS
 - wrong_attrb : has wrong characters in map
 - wrong_extension : has wrong extension format .cuv
 - wrong_texture : the texture aren't ".xpm" format
+- long_line : check if there is space or outlimit map around wallkable spaces

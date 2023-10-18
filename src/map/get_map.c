@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:42 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/18 18:52:59 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/18 19:05:29 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	ft_read_map(t_map *map)
 }
 
 /**
- * @brief split the .cub file by '\n' & fill map->raw with all data to be checked
+ * @brief split the .cub file by '\n' & fill map->raw
+ * 		  with all data to be checked
  * 
  * @param map 
  */
@@ -63,7 +64,7 @@ void	ft_get_data(t_map *map)
 	ft_empty_map(map);
 	i = -1;
 	while (++i < 6)
-    	map->raw[i] = ft_strtrim(map->raw[i], " ");
+		map->raw[i] = ft_strtrim(map->raw[i], " ");
 	close(map->fd);
 	free(aux);
 }
@@ -78,8 +79,8 @@ static	void	ft_check_order(t_map *map)
 {
 	int		x;
 	int		i;
-	char 	**aux;
-	
+	char	**aux;
+
 	i = 0;
 	while (map->raw[i])
 		i++;
@@ -90,7 +91,7 @@ static	void	ft_check_order(t_map *map)
 	i = -1;
 	while (++i < 6)
 	{
-    	aux[i] = ft_strtrim(map->raw[i], " ");
+		aux[i] = ft_strtrim(map->raw[i], " ");
 		// printf("%s\n", aux[i]);
 	}
 	x = -1;
@@ -127,7 +128,7 @@ void	ft_get_map(t_map *map, t_attrb *attrb)
 	j = -1;
 	while (++j < i)
 	{
-		if (j >= 6)	
+		if (j >= 6)
 			map->map[j - 6] = map->raw[j];
 	}
 	map->map[i - 6] = NULL;
