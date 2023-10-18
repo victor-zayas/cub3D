@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/12 10:19:11 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/18 13:50:09 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,35 +86,3 @@ void	ft_check_ext_texture(char *str);
 void	ft_empty_map(t_map *map);
 
 #endif
-
-// |**** EXTENSION ****|
-// Wrong map extension / format. ✅
-
-// |**** TEXTURES ****|
-// One texture missing ✅
-// Texture path does not exist ✅
-// wrong extension ✅
-
-// |**** FLOOR / CEILING ****|
-// One parameter missing in ceiling color ✅
-// Floor rgb metric out of range 0 - 255 (333) ✅
-// invalid character (a) in floor ✅
-
-// |**** MAP ****|
-// Invalid character in map ✅
-// map has no wall ✅
-// new line in map ✅
-// map not in last position ✅
-// empty map ✅
-// spaces inside walkable map ✅
-// map has no start poss ✅
-
-// TODO LIST
-// check mlx functions to use RGB color
-// lean how to change textures depending on direction
-// learn about raycasting
-
-    // make mlx window
-    // close mlx windows with red x & ESC case
-    // use mlx to make movement with direction arrows
-    // use mlx to rotate camera with WASD
