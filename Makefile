@@ -6,7 +6,7 @@
 #    By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 15:10:33 by vzayas-s          #+#    #+#              #
-#    Updated: 2023/10/12 10:20:39 by vzayas-s         ###   ########.fr        #
+#    Updated: 2023/10/19 10:41:57 by vzayas-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SRCDIR := src/
 # SRCS #
 ERROR = error
 MAIN = main initial
-MAP = get_map check_map
+MAP = get_map check_map check_attrb
 TEXTURE = get_texture check_texture
 
 PLAIN_SRCS =	$(addsuffix .c, $(addprefix error/, $(ERROR)))\
