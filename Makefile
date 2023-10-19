@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+         #
+#    By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 15:10:33 by vzayas-s          #+#    #+#              #
-#    Updated: 2023/10/19 10:41:57 by vzayas-s         ###   ########.fr        #
+#    Updated: 2023/10/19 23:59:50 by lagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,12 @@ PLAIN_SRCS =	$(addsuffix .c, $(addprefix error/, $(ERROR)))\
 
 SRCS := $(addprefix $(SRCDIR), $(PLAIN_SRCS))
 OBJS := $(addprefix $(OBJDIR), $(PLAIN_SRCS:.c=.o))
+
+RAYCAST_SRC := src/raycast/raycaster.c\
+	src/map/*.c\
+	src/error/*.c\
+	src/main/initial.c\
+	src/opengl/*.c
 
 # ASCII COLORS #
 BLACK=\033[0;30m
@@ -106,6 +112,11 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $^ $(LIBFT) $(MLXFLAGS) $(MLX) -o $(NAME)
 	echo "$(BLUE)༺ Program compiled༻$(END)"
 	echo "$$CUB3D"
+	
+raycast:
+	make -C libft
+	$(CC) $(CFLAG) -o  raycast $(LIBFT) $(RAYCAST_SRC) -lGL -lGLU -lglut -I includes -lm -I libft/includes
+	
 
 # delete all objects
 clean:
