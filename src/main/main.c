@@ -31,6 +31,7 @@ static	void	print_struct(t_all *all)
 	printf("\nMAP:\n");
 	while (all->map.map[i])
 		printf("%s\n", all->map.map[i++]);
+	printf("Height: %d\nWidth: %d\n", all->map.height, all->map.width);
 	
 	//print attributes of map
 	printf("\nATTRIBUTES:\n");

@@ -24,6 +24,8 @@ static	void	ft_init_map(t_map *map, char *name)
 	map->map = NULL;
 	map->name = name;
 	map->fd = -1;
+	map->height = 0;
+	map->width = 0;
 }
 
 /**

@@ -127,8 +127,34 @@ static	void	ft_check_wall(t_map *map)
 	}
 }
 
+static	void	ft_map_dimensions(t_map *map)
+{
+	int		x;
+	int		y;
+	int		max;
+	int		now;
+
+	max = ft_strlen(map->map[0]);
+	x = 0;
+	while (map->map[x])
+	{
+		y = 0;
+		while (map->map[x][y])
+		{
+			now = ft_strlen(map->map[x]);
+			if (now > max)
+				max = now;
+			y++;
+		}
+		x++;
+	}
+	map->height = x;
+	map->width = now;
+}
+
 void	ft_check_map(t_map *map, t_attrb *attrb)
 {
 	ft_check_attrb(map, attrb);
 	ft_check_wall(map);
+	ft_map_dimensions(map);
 }

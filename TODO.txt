@@ -24,6 +24,7 @@
 // check mlx functions to use RGB color
 // lean how to change textures depending on direction
 // learn about raycasting
+// map dimensions ✅
 
     // make mlx window
     // close mlx windows with red x & ESC case
