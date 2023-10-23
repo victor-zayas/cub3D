@@ -18,6 +18,15 @@
 # define P32 PI * 3 / 2
 # define DEG 0.0174533
 
+typedef struct s_txt
+{
+	void	*img;	//pointer to the img of the texture
+	char	*addr;	//address pointer to the img
+	int		bpp;	//bits per pixel of the mlx image
+	int		size;	//size from mlx image
+	int		endian;	//endian from mlx image
+}	t_txt;
+
 typedef struct s_ray
 {
 	float	ra;		//ray angle
@@ -29,6 +38,8 @@ typedef struct s_ray
 	int		my; 	//maps y position of the colision
 	float	cx;		//collision position y
 	float	cy;		//collision position x
+	char	tx;		//texture type
+	t_txt	txt;	//a pointer to 
 	int		end;	//signals the raycasting to end
 }   t_ray;
 
@@ -46,5 +57,6 @@ t_ray	check_h_colision(t_playerpos *p_pos, t_map *map, float ra);
 t_ray	check_v_colision(t_playerpos *p_pos, t_map *map, float ra);
 //	-DISTACE
 float	dist(float rx, float ry, t_playerpos *p_pos, int end);
+float	fix_angle(float	angle);
 
 #endif

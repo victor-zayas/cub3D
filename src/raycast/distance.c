@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   distance.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: larra <larra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 20:11:34 by larra             #+#    #+#             */
-/*   Updated: 2023/10/21 20:43:10 by larra            ###   ########.fr       */
+/*   Updated: 2023/10/23 20:24:07 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,12 @@ float	dist(float rx, float ry, t_playerpos *p_pos, int end)
 		return(pow(rx - p_pos->px, 2) + pow(ry - p_pos->py, 2));
 	if (end == 2)
 		return (4000000000);
+}
+
+float	fix_angle(float	angle)
+{
+	if (angle >= 2 * PI)
+		return (angle - 2 * PI);
+	else if (angle < 0)
+		return (angle + 2 * PI);
 }

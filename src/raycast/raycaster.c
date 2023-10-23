@@ -83,7 +83,10 @@ t_ray	check_h_colision(t_playerpos *p_pos, t_map *map, float ra)
 			ray.ry += ray.yo;
 		}
 	}
-	return (ray);
+	if (ray.ra > PI) //looking down
+		return (ray.tx = 'S', ray);
+	else
+		return (ray.tx = 'N', ray);
 }
 
 /**
@@ -153,8 +156,19 @@ t_ray	check_v_colision(t_playerpos *p_pos, t_map *map, float ra)
 			ray.ry += ray.yo;
 		}
 	}
-	return (ray);
+	if (ray.ra > P2 && ray.ra < P32)
+		return (ray.tx = 'W', ray);
+	else
+		return (ray.tx = 'E', ray);
 }
+
+/**
+ * @brief casts the  rays and decide the texture that is needed for the column.
+ * 
+ * @param p_pos	playerposition structure
+ * @param map	map structure
+ * @param text	texture
+ */
 
 void	raycaster(t_playerpos *p_pos, t_map *map, t_texture *text)
 {
@@ -163,15 +177,24 @@ void	raycaster(t_playerpos *p_pos, t_map *map, t_texture *text)
 	float	ra;
 	int		i;
 
-	ra = p_pos->pa + (45 * DEG);
+	ra = p_pos->pa + (46 * DEG);
 	i = 0;
 	while (i < 90)
 	{
-		ra = fix_angle(ra);
+		ra = fix_angle(ra - DEG);
 		vc = check_v_colision(p_pos, map, ra);
 		hc = check_h_colision(p_pos, map, ra);
 		if (dist(vc.cx, vc.cy, p_pos, vc.end)
 			> dist(hc.cx, hc.cy, p_pos, hc.end))
-		
+		{
+			take_texture(&hc, text);
+			draw_column(hc);
+		}
+		else
+		{
+			take_texture(&vc, text);
+			draw_column(vc, text);
+		}
+		i++;
 	}
 }
