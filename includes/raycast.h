@@ -20,13 +20,16 @@
 
 typedef struct s_ray
 {
-	float	ra;	//ray angle
-	float	ry;	//ray first collision y coordinate
-	float	rx;	//ray first collision x coordinate
-	float	xo; //collision offset in x
-	float	yo;	//collision offset in y
-	int		mx;	//maps x position of the colision
-	int		my; //maps y position of the colision
+	float	ra;		//ray angle
+	float	ry;		//ray first collision y coordinate
+	float	rx;		//ray first collision x coordinate
+	float	xo; 	//collision offset in x
+	float	yo;		//collision offset in y
+	int		mx;		//maps x position of the colision
+	int		my; 	//maps y position of the colision
+	float	cx;		//collision position y
+	float	cy;		//collision position x
+	int		end;	//signals the raycasting to end
 }   t_ray;
 
 typedef struct s_playerpos
@@ -41,5 +44,7 @@ typedef struct s_playerpos
 //	-RAYCASTER
 t_ray	check_h_colision(t_playerpos *p_pos, t_map *map, float ra);
 t_ray	check_v_colision(t_playerpos *p_pos, t_map *map, float ra);
+//	-DISTACE
+float	dist(float rx, float ry, t_playerpos *p_pos, int end);
 
 #endif

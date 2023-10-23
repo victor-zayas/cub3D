@@ -19,8 +19,10 @@
  * for the next one in case is needed.
  * 
  * @param p_pos 
- * @param ray. */
-void	h_offset_calc(t_playerpos *p_pos, t_ray *ray, int end)
+ * @param ray.
+ */
+
+void	h_offset_calc(t_playerpos *p_pos, t_ray *ray)
 {
 	float	arctan;
 
@@ -43,10 +45,18 @@ void	h_offset_calc(t_playerpos *p_pos, t_ray *ray, int end)
 	{
 		ray->rx = p_pos->px;
 		ray->ry = p_pos->py;
-		end = 1;
+		ray->end = 2;
 	}
 }
 
+/**
+ * @brief Checks the collision with a horizontal lines of the map
+ * 
+ * @param p_pos	playerposition structure
+ * @param map	map structure
+ * @param ra 	ray angle
+ * @return t_ray 
+ */
 
 t_ray	check_h_colision(t_playerpos *p_pos, t_map *map, float ra)
 {
@@ -55,13 +65,18 @@ t_ray	check_h_colision(t_playerpos *p_pos, t_map *map, float ra)
 
 	end = 0;
 	ray.ra = ra;
-	h_offset_calc(p_pos, &ray, end);
+	ray.end = 0;
+	h_offset_calc(p_pos, &ray);
 	while (!end)
 	{
 		ray.mx = (int) (ray.rx) >> 6;
 		ray.my = (int) (ray.ry) >> 6;
 		if (map->map[ray.my][ray.mx] == '1') // have to add out of map control just in case
+		{
+			ray.cx = ray.rx;
+			ray.cy = ray.ry;
 			end = 1;
+		}
 		else
 		{
 			ray.rx += ray.xo;
@@ -76,9 +91,10 @@ t_ray	check_h_colision(t_playerpos *p_pos, t_map *map, float ra)
  * for the next one in case is needed.
  * 
  * @param p_pos 
- * @param ray. */
+ * @param ray.
+ */
 
-void	v_offset_calc(t_playerpos *p_pos, t_ray *ray, int end)
+void	v_offset_calc(t_playerpos *p_pos, t_ray *ray)
 {
 	float	ntan;
 
@@ -101,24 +117,36 @@ void	v_offset_calc(t_playerpos *p_pos, t_ray *ray, int end)
 	{
 		ray->rx = p_pos->px;
 		ray->ry = p_pos->py;
-		end = 1;
+		ray->end = 2;
 	}
 }
+
+/**
+ * @brief Checks the collision with a vertical lines of the map
+ * 
+ * @param p_pos	playerposition structure
+ * @param map	map structure
+ * @param ra 	ray angle
+ * @return t_ray 
+ */
 
 t_ray	check_v_colision(t_playerpos *p_pos, t_map *map, float ra)
 {
 	t_ray	ray;
-	int		end;
 
-	end = 0;
 	ray.ra = ra;
-	v_offset_calc(p_pos, &ray, end);
-	while (!end)
+	ray.end = 0;
+	v_offset_calc(p_pos, &ray);
+	while (!ray.end)
 	{
 		ray.mx = (int) (ray.rx) >> 6;
 		ray.my = (int) (ray.ry) >> 6;
 		if (map->map[ray.my][ray.mx] == '1') // have to add out of map control just in case
-			end = 1;
+		{
+			ray.cx = ray.rx;
+			ray.cy = ray.ry;
+			ray.end = 1;
+		}
 		else
 		{
 			ray.rx += ray.xo;
@@ -126,4 +154,24 @@ t_ray	check_v_colision(t_playerpos *p_pos, t_map *map, float ra)
 		}
 	}
 	return (ray);
+}
+
+void	raycaster(t_playerpos *p_pos, t_map *map, t_texture *text)
+{
+	t_ray	vc;
+	t_ray	hc;
+	float	ra;
+	int		i;
+
+	ra = p_pos->pa + (45 * DEG);
+	i = 0;
+	while (i < 90)
+	{
+		ra = fix_angle(ra);
+		vc = check_v_colision(p_pos, map, ra);
+		hc = check_h_colision(p_pos, map, ra);
+		if (dist(vc.cx, vc.cy, p_pos, vc.end)
+			> dist(hc.cx, hc.cy, p_pos, hc.end))
+		
+	}
 }
