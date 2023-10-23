@@ -27,6 +27,8 @@ typedef struct s_map
     char    **map; // map of game
     char    *name; // name of .cub
     int     fd; // fd of .cub
+    int     height;
+    int     width;
 } t_map;
 
 typedef struct s_attrb
