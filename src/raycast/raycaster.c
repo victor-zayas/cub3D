@@ -170,7 +170,7 @@ t_ray	check_v_colision(t_playerpos *p_pos, t_map *map, float ra)
  * @param text	texture
  */
 
-void	raycaster(t_playerpos *p_pos, t_map *map, t_texture *text)
+void	raycaster(t_playerpos *p_pos, t_map *map, t_texture *text) //here we need to get the big structure as we will need it later to draw the line.
 {
 	t_ray	vc;
 	t_ray	hc;
@@ -184,8 +184,7 @@ void	raycaster(t_playerpos *p_pos, t_map *map, t_texture *text)
 		ra = fix_angle(ra - DEG);
 		vc = check_v_colision(p_pos, map, ra);
 		hc = check_h_colision(p_pos, map, ra);
-		if (dist(vc.cx, vc.cy, p_pos, vc.end)
-			> dist(hc.cx, hc.cy, p_pos, hc.end))
+		if (dist(&vc, p_pos) > dist(&hc, p_pos, ))
 		{
 			take_texture(&hc, text);
 			draw_column(hc);

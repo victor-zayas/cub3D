@@ -39,7 +39,8 @@ typedef struct s_ray
 	float	cx;		//collision position y
 	float	cy;		//collision position x
 	char	tx;		//texture type
-	t_txt	txt;	//a pointer to 
+	float	dist;	//distance to the collision point
+	t_txt	txt;	//a pointer to texture to be used
 	int		end;	//signals the raycasting to end
 }   t_ray;
 
@@ -56,7 +57,10 @@ typedef struct s_playerpos
 t_ray	check_h_colision(t_playerpos *p_pos, t_map *map, float ra);
 t_ray	check_v_colision(t_playerpos *p_pos, t_map *map, float ra);
 //	-DISTACE
-float	dist(float rx, float ry, t_playerpos *p_pos, int end);
+float	dist(t_ray ray, t_playerpos *p_pos);
 float	fix_angle(float	angle);
+//	-LINE FIXER
+void	fix_fisheye(t_ray *ray, t_playerpos *p_pos);
+
 
 #endif

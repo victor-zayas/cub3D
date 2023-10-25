@@ -6,7 +6,7 @@
 /*   By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 20:11:34 by larra             #+#    #+#             */
-/*   Updated: 2023/10/23 20:24:07 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/10/25 21:18:46 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@
  * 			high number
  */
 
-float	dist(float rx, float ry, t_playerpos *p_pos, int end)
+float	dist(t_ray ray, t_playerpos *p_pos)
 {
-	if (end == 1)
-		return(pow(rx - p_pos->px, 2) + pow(ry - p_pos->py, 2));
-	if (end == 2)
-		return (4000000000);
+	if (ray->end == 1)
+		ray->dist = sqrt(pow(ray->cx - p_pos->px, 2)
+		+ pow(ray->cy - p_pos->py, 2))
+	if (ray->end == 2)
+		ray->dist = 1e30;
+	return (ray->dist);
 }
 
 float	fix_angle(float	angle)
