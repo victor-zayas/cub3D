@@ -6,7 +6,7 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 13:39:09 by lagonzal          #+#    #+#             */
-/*   Updated: 2023/10/26 18:35:24 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/10/26 20:37:04 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	floor_ceil(t_mlx *mlx, int *start, int *color, int i)
 	rgb = ((color[0] & 255) << 16) | ((color[1] & 255) << 8) | ((color[2] & 255)); //converts rgb to hex should be called before raycasting
 	while (i < end)
 	{
-	n = start[0];
+		n = start[0];
 		while (n < start[1])
 		{
 			//mlx_pixel_put(mlx->mlx, mlx->win, i, n, rgb);
@@ -35,6 +35,12 @@ void	floor_ceil(t_mlx *mlx, int *start, int *color, int i)
 	}
 }
 
+int	calc_height(t_ray *ray)
+{
+	int proyection =   (64 * 6) *  120 / ray->dist;
+	return (proyection);
+}
+
 void	draw_column(t_ray *col, t_all *all, t_mlx *mlx, int i)
 {
 	int	height;
@@ -42,13 +48,11 @@ void	draw_column(t_ray *col, t_all *all, t_mlx *mlx, int i)
 
 
 	start_stop[0] = 0;
+	height = calc_height(col);
 	fix_fisheye(col, &all->player);
-	height = 300;
 	start_stop[1] = (HEIGHT - height) / 2;
-	//height = calc_height(col, p_pos);
-
 	floor_ceil(mlx, start_stop, all->texture.C, i);
-	start_stop[0] = 300 + ((HEIGHT - height) / 2);
+	start_stop[0] = height + ((HEIGHT - height) / 2);
 	start_stop[1] = HEIGHT;
 	floor_ceil(mlx, start_stop, all->texture.F, i);
 	

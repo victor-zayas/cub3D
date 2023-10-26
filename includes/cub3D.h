@@ -6,7 +6,7 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/26 18:02:01 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:59:15 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define P2 PI / 2
 # define P32 PI * 3 / 2
 # define DEG 0.0174533
-# define HEIGHT 580
+# define HEIGHT 540
 # define WIDTH 1080
 # define C_WIDTH 1080 / 90
 

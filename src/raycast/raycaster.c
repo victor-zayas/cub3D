@@ -71,9 +71,9 @@ t_ray	check_h_colision(t_playerpos *p_pos, t_map *map, float ra)
 		//printf("horizontal iteration %d\n", i++);
 		ray.my = (int) (ray.ry) >> 6;
 		ray.mx = (int) (ray.rx) >> 6;
-		//printf("ray mx:%d ray my: %d\n", ray.mx, ray.my);
-		//printf("map in pos is %c\n", map->map[ray.my][ray.mx]);
-		if (map->height <= ray.my || (int)ft_strlen(map->map[ray.my]) <= ray.mx || ray.mx < 0 || ray.my < 0)
+		printf("horizontal=======================\nray mx:%d ray my: %d\n", ray.mx, ray.my);
+//		printf("map in pos is %s\n", map->map[ray.my]);
+		if (ray.my < 0 || ray.mx < 0 ||map->height <= ray.my || (int)ft_strlen(map->map[ray.my]) <= ray.mx)
 		{
 			//printf("first condition: %d second condition %d\n", map->height < ray.ry, map->width < ray.rx);
 			ray.end = 2;
@@ -156,6 +156,7 @@ t_ray	check_v_colision(t_playerpos *p_pos, t_map *map, float ra)
 		//printf("player position x:%d y:%d\n", (int)(p_pos->px) >> 6, (int)(p_pos->py) >> 6);
 		ray.my = (int) (ray.ry) >> 6;
 		ray.mx = (int) (ray.rx) >> 6;
+		printf("vertical========================\nray rx %f mx:%d ray ry %f my: %d\n",ray.rx >> 6, ray.mx,ray.ry >> 6, ray.my);
 		if (map->height <= ray.my || (int)ft_strlen(map->map[ray.my]) <= ray.mx || ray.mx < 0 || ray.my < 0)
 		{
 //			printf("first condition: %d second condition %d\n", map->height < ray.ry, map->width < ray.rx);
@@ -204,14 +205,23 @@ void	raycaster(t_playerpos *p_pos, t_all *all, t_mlx *mlx) //here we need to get
 		hc = check_h_colision(p_pos, &all->map, ra);
 		if (dist(&vc, p_pos) > dist(&hc, p_pos))
 		{
+			printf("horizontal %f vertical %f\n", hc.dist, vc.dist);
+			//printf("horizontal\n");
 			//take_texture(&hc, text);
+			// printf("ray.mx: %d ray.my: %d\n", hc.mx, hc.my);
+			// printf("dist: %f\n", hc.dist);
 			draw_column(&hc, all, mlx, i);
 		}
 		else
 		{
+			printf("horizontal %f vertical %f\n", hc.dist, vc.dist);
 			//take_texture(&vc, text);
+			//printf("vertical\n");
+			// printf("dist: %f\n", vc.dist);
+			// printf("ray.mx: %d ray.my: %d\n", hc.mx, hc.my);
 			draw_column(&vc, all, mlx, i);
 		}
+		printf("%d\n", i);
 		i++;
 	}
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
