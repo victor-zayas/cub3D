@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:19:39 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/26 14:40:11 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/10/26 17:17:53 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,6 @@ static	void	ft_check_wall(t_map *map)
 static	void	ft_map_dimensions(t_map *map)
 {
 	int		x;
-	int		y;
 	int		max;
 	int		now;
 
@@ -138,18 +137,13 @@ static	void	ft_map_dimensions(t_map *map)
 	x = 0;
 	while (map->map[x])
 	{
-		y = 0;
-		while (map->map[x][y])
-		{
-			now = ft_strlen(map->map[x]);
-			if (now > max)
-				max = now;
-			y++;
-		}
+		now = ft_strlen(map->map[x]);
+		if (now > max)
+			max = now;
 		x++;
 	}
 	map->height = x;
-	map->width = now;
+	map->width = max;
 }
 
 void	ft_check_map(t_map *map, t_attrb *attrb)
