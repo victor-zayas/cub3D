@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:26 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/26 16:43:45 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/26 17:29:52 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	main(int argc, char **argv)
 		get_mlx(&mlx);
 		search_playerpos(all.map.map, &p_pos);
 		raycaster(&p_pos, &all, &mlx);
+		mlx_loop(mlx.mlx);
 	}
 	else
 		printf("Error\nExpected two arguments, have %d\n", argc);

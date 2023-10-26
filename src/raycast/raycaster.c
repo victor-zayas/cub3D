@@ -150,7 +150,6 @@ t_ray	check_v_colision(t_playerpos *p_pos, t_map *map, float ra)
 	ray.end = 0;
 	i = 0;
 	v_offset_calc(p_pos, &ray);
-	printf("ray angle %f\n", ra);
 	while (!ray.end)
 	{
 		//printf("vertical iteration %d\n", i++);
@@ -200,24 +199,20 @@ void	raycaster(t_playerpos *p_pos, t_all *all, t_mlx *mlx) //here we need to get
 	i = 0;
 	while (i < 90)
 	{
-		printf("%d\n", i);
 		ra = fix_angle(ra - DEG);
 		vc = check_v_colision(p_pos, &all->map, ra);
 		hc = check_h_colision(p_pos, &all->map, ra);
 		if (dist(&vc, p_pos) > dist(&hc, p_pos))
 		{
-			printf("ray mx:%d ray my: %d\n", hc.mx, hc.my);
-			printf("map in pos is %c\n", all->map.map[hc.my][hc.mx]);
 			//take_texture(&hc, text);
 			draw_column(&hc, all, mlx, i);
 		}
 		else
 		{
-			printf("ray mx:%d ray my: %d\n", vc.mx, vc.my);
-			printf("map in pos is %c\n", all->map.map[hc.my][hc.mx]);
 			//take_texture(&vc, text);
 			draw_column(&vc, all, mlx, i);
 		}
 		i++;
 	}
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 }
