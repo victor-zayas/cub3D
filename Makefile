@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+         #
+#    By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 15:10:33 by vzayas-s          #+#    #+#              #
-#    Updated: 2023/10/19 23:59:50 by lagonzal         ###   ########.fr        #
+#    Updated: 2023/10/26 14:43:59 by lagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,20 +35,18 @@ ERROR = error
 MAIN = main initial
 MAP = get_map check_map check_attrb
 TEXTURE = get_texture check_texture
+RAYCAST = distance line_fixer raycaster
+DRAW = draw_columns
 
 PLAIN_SRCS =	$(addsuffix .c, $(addprefix error/, $(ERROR)))\
 				$(addsuffix .c, $(addprefix main/, $(MAIN)))\
 				$(addsuffix .c, $(addprefix map/, $(MAP)))\
 				$(addsuffix .c, $(addprefix texture/, $(TEXTURE)))\
+				$(addsuffix .c, $(addprefix raycast/, $(RAYCAST)))\
+				$(addsuffix .c, $(addprefix draw/, $(DRAW)))
 
 SRCS := $(addprefix $(SRCDIR), $(PLAIN_SRCS))
 OBJS := $(addprefix $(OBJDIR), $(PLAIN_SRCS:.c=.o))
-
-RAYCAST_SRC := src/raycast/raycaster.c\
-	src/map/*.c\
-	src/error/*.c\
-	src/main/initial.c\
-	src/opengl/*.c
 
 # ASCII COLORS #
 BLACK=\033[0;30m

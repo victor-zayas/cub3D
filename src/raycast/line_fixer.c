@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/raycast.h"
+#include "../../includes/cub3D.h"
 
 void	fix_fisheye(t_ray *ray, t_playerpos *p_pos)
 {

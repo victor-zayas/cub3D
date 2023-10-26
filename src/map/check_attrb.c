@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_attrb.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:33:50 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/19 10:41:00 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/26 14:40:04 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../includes/cub3D.h"
+#include"../../includes/cub3D.h"
 
 /**
  * @brief read the map and count the start possition characters

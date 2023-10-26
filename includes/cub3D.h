@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/26 12:53:39 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/26 14:45:08 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include "../libft/includes/libft.h"
+# include "raycast.h"
+# include "../mlx/mlx.h"
+# include <math.h>
+
 
 // STRUCTS
 typedef struct s_map
@@ -49,12 +53,81 @@ typedef struct s_texture
     int    *F; // RGB color code for floor
 } t_texture;
 
+typedef struct s_playerpos
+{
+	float	py;	//players y coordinate in map (take into account sprite size)
+	float	px; //players x coordinate in map (take into account sprite size)
+	float	pa;	//players angle in radians
+}	t_playerpos;
+
 typedef struct s_all
 {
     t_map       map;
     t_attrb     attrb;
     t_texture   texture;
+    t_playerpos player;
 } t_all;
+
+# define PI  3.1415926
+# define P2 PI / 2
+# define P32 PI * 3 / 2
+# define DEG 0.0174533
+# define HEIGHT 520
+# define WIDTH 1080
+
+typedef struct s_txt
+{
+	void	*img;	//pointer to the img of the texture
+	char	*addr;	//address pointer to the img
+	int		bpp;	//bits per pixel of the mlx image
+	int		size;	//size from mlx image
+	int		endian;	//endian from mlx image
+}	t_txt;
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		size;
+	int		endian;
+}	t_mlx;
+
+
+typedef struct s_ray
+{
+	float	ra;		//ray angle
+	float	ry;		//ray first collision y coordinate
+	float	rx;		//ray first collision x coordinate
+	float	xo; 	//collision offset in x
+	float	yo;		//collision offset in y
+	int		mx;		//maps x position of the colision
+	int		my; 	//maps y position of the colision
+	float	cx;		//collision position y
+	float	cy;		//collision position x
+	char	tx;		//texture type
+	float	dist;	//distance to the collision point
+	t_txt	txt;	//a pointer to texture to be used
+	int		end;	//signals the raycasting to end
+}   t_ray;
+
+
+
+//	RAYCAST
+//	-RAYCASTER
+void	raycaster(t_playerpos *p_pos, t_all *all, t_mlx *mlx);
+
+//	-DISTACE
+float	dist(t_ray *ray, t_playerpos *p_pos);
+float	fix_angle(float	angle);
+//	-LINE FIXER
+void	fix_fisheye(t_ray *ray, t_playerpos *p_pos);
+//	DRAW COLUMNS
+void	draw_column(t_ray *col, t_all *all, t_mlx *mlx, int i);
+void	get_mlx(t_mlx *mlx);
+void    search_playerpos(char **map, t_playerpos *p_pos);
 
 // PROTOTIPES
 // MAIN

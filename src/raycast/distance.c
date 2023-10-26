@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   distance.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 20:11:34 by larra             #+#    #+#             */
-/*   Updated: 2023/10/25 21:18:46 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/10/26 14:39:04 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "../../includes/raycast.h"
+#include "../../includes/cub3D.h"
 
 /**
  * @brief 
@@ -24,11 +24,11 @@
  * 			high number
  */
 
-float	dist(t_ray ray, t_playerpos *p_pos)
+float	dist(t_ray *ray, t_playerpos *p_pos)
 {
 	if (ray->end == 1)
 		ray->dist = sqrt(pow(ray->cx - p_pos->px, 2)
-		+ pow(ray->cy - p_pos->py, 2))
+		+ pow(ray->cy - p_pos->py, 2));
 	if (ray->end == 2)
 		ray->dist = 1e30;
 	return (ray->dist);
@@ -40,4 +40,5 @@ float	fix_angle(float	angle)
 		return (angle - 2 * PI);
 	else if (angle < 0)
 		return (angle + 2 * PI);
+	return (angle);
 }

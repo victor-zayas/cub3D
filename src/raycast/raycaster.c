@@ -10,9 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
 #include "../../includes/cub3D.h"
-#include "../../includes/raycast.h"
+# include "../../includes/raycast.h"
 
 /**
  * @brief Calculates the first horizontal collisions position and the offset
@@ -136,14 +135,19 @@ void	v_offset_calc(t_playerpos *p_pos, t_ray *ray)
 t_ray	check_v_colision(t_playerpos *p_pos, t_map *map, float ra)
 {
 	t_ray	ray;
+	int		i;
 
 	ray.ra = ra;
 	ray.end = 0;
+	i = 0;
 	v_offset_calc(p_pos, &ray);
+	printf("ray angle %f\n", ra);
 	while (!ray.end)
 	{
+		printf("iteration %d\n", i++);
 		ray.mx = (int) (ray.rx) >> 6;
 		ray.my = (int) (ray.ry) >> 6;
+		printf("ray mx:%d ray my%d\n", ray.mx, ray.my);
 		if (map->map[ray.my][ray.mx] == '1') // have to add out of map control just in case
 		{
 			ray.cx = ray.rx;
@@ -170,7 +174,7 @@ t_ray	check_v_colision(t_playerpos *p_pos, t_map *map, float ra)
  * @param text	texture
  */
 
-void	raycaster(t_playerpos *p_pos, t_map *map, t_texture *text) //here we need to get the big structure as we will need it later to draw the line.
+void	raycaster(t_playerpos *p_pos, t_all *all, t_mlx *mlx) //here we need to get the big structure as we will need it later to draw the line.
 {
 	t_ray	vc;
 	t_ray	hc;
@@ -182,17 +186,17 @@ void	raycaster(t_playerpos *p_pos, t_map *map, t_texture *text) //here we need t
 	while (i < 90)
 	{
 		ra = fix_angle(ra - DEG);
-		vc = check_v_colision(p_pos, map, ra);
-		hc = check_h_colision(p_pos, map, ra);
-		if (dist(&vc, p_pos) > dist(&hc, p_pos, ))
+		vc = check_v_colision(p_pos, &all->map, ra);
+		hc = check_h_colision(p_pos, &all->map, ra);
+		if (dist(&vc, p_pos) > dist(&hc, p_pos))
 		{
-			take_texture(&hc, text);
-			draw_column(hc);
+			//take_texture(&hc, text);
+			draw_column(&hc, all, mlx, i);
 		}
 		else
 		{
-			take_texture(&vc, text);
-			draw_column(vc, text);
+			//take_texture(&vc, text);
+			draw_column(&vc, all, mlx, i);
 		}
 		i++;
 	}

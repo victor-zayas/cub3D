@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   initial.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:31 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/05 11:11:28 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/26 14:39:58 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../includes/cub3D.h"
+#include"../../includes/cub3D.h"
 
 /**
  * @brief initialize map struct

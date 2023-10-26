@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:36 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/18 18:59:16 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/26 14:40:19 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../includes/cub3D.h"
+#include"../../includes/cub3D.h"
 
 /**
  * @brief check the file descriptor, in error case exit the program
