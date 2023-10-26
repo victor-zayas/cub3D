@@ -19,14 +19,16 @@
 // empty map ✅
 // spaces inside walkable map ✅
 // map has no start poss ✅
+// map dimensions ✅
 
 // TODO LIST
+// get rgb into array
+// initilize mlx and get window and texture addresses
 // check mlx functions to use RGB color
-// lean how to change textures depending on direction
-// learn about raycasting
-// map dimensions ✅
+// start drawing columns with plain colors
 
     // make mlx window
     // close mlx windows with red x & ESC case
     // use mlx to make movement with direction arrows
-    // use mlx to rotate camera with WASD
+    // use mlx to move with WASD
+    // use mlx to rotate with left/rigth arrows
