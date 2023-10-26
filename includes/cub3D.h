@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/19 10:41:13 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:53:39 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ typedef struct s_texture
     char    *SO; // South texture path
     char    *WE; // East texture path
     char    *EA; // West texture path
-    char    *C; // RGB color code for ceiling
-    char    *F; // RGB color code for floor
+    int    *C; // RGB color code for ceiling
+    int    *F; // RGB color code for floor
 } t_texture;
 
 typedef struct s_all
@@ -79,7 +79,7 @@ void	ft_check_texture(t_texture *texture);
 void	ft_get_color(t_map *map, t_texture *texture);
 // -CHECK COLOR
 void	ft_check_texture(t_texture *texture);
-void    ft_check_color(char *str);
+int     *ft_check_color(char *str);
 
 // -ERROR
 void	ft_check_fd(int fd);

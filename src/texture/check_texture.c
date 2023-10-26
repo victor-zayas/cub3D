@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 01:49:02 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/18 19:05:39 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/26 13:20:59 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static	void	ft_digit(char *str)
 	{
 		if (!((str[i] >= '0' && str[i] <= '9') || str[i] == ','))
 		{
-			printf("Error\nInvalid char in RGB\n");
+			printf("Error\nInvalid char in RGB: %c\n", str[i]);
 			exit(1);
 		}
 		i++;
@@ -53,23 +53,28 @@ static	void	ft_digit(char *str)
  * 
  * @param str string received with rgb content
  */
-void	ft_check_color(char *str)
+int	*ft_check_color(char *str)
 {
 	char	**rgb;
-	int		num;
+	int		*num;
 	int		i;
+	int		j;
 
 	ft_digit(str);
 	rgb = ft_split(str, ',');
+	num = malloc(sizeof(int) * 3);
 	i = -1;
-	while (rgb[++i])
+	j = 0;
+	while (rgb[++i] && j < 3)
 	{
-		num = ft_atoi(rgb[i]);
-		if (num < 0 || num > 255)
+		// printf("Error\nAtoi: %d\n", ft_atoi(rgb[i]));
+		num[j] = ft_atoi(rgb[i]);
+		if (num[j] < 0 || num[j] > 255)
 		{
-			printf("Error\nRGB value exceed\n");
+			printf("Error\nRGB value exceed: %d\n", num[j]);
 			exit(1);
 		}
+		j++;
 	}
 	if (i != 3)
 	{
@@ -77,4 +82,5 @@ void	ft_check_color(char *str)
 		exit(1);
 	}
 	free(rgb);
+	return (num);
 }

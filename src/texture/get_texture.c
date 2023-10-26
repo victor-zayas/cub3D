@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:19:53 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/18 18:57:24 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/26 13:17:43 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,15 @@ void	ft_get_texture(t_map *map, t_texture *texture)
  * @param id 
  * @return char* path of RGB color
  */
-static	char	*ft_find_color(t_map *map, char id)
+static	int	*ft_find_color(t_map *map, char id)
 {
-	int		y;
-	int		x;
-	char	*path;
+	int	y;
+	int	x;
+	int	*rgb;
 
 	y = -1;
 	x = 0;
-	path = NULL;
+	rgb = NULL;
 	while (map->raw[++y])
 	{
 		if (ft_strchr(map->raw[y], id))
@@ -93,10 +93,12 @@ static	char	*ft_find_color(t_map *map, char id)
 				x++;
 			while (ft_isalnum(map->raw[y][x]))
 				x++;
-			path = ft_strdup(ft_strtrim(map->raw[y] + 2, " "));
+			// path = ft_strdup(ft_strtrim(map->raw[y] + 2, " "));
+			// printf("Line: %s\n", map->raw[y]);
+			rgb = ft_check_color(ft_strtrim(map->raw[y] + 2, " "));
 		}
 	}
-	return (path);
+	return (rgb);
 }
 
 /**
@@ -110,6 +112,6 @@ void	ft_get_color(t_map *map, t_texture *texture)
 {
 	texture->C = ft_find_color(map, 'C');
 	texture->F = ft_find_color(map, 'F');
-	ft_check_color(texture->F);
-	ft_check_color(texture->C);
+	// ft_check_color(texture->F);
+	// ft_check_color(texture->C);
 }

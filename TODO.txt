@@ -22,7 +22,7 @@
 // map dimensions ✅
 
 // TODO LIST
-// get rgb into array
+// get rgb into array ✅
 // initilize mlx and get window and texture addresses
 // check mlx functions to use RGB color
 // start drawing columns with plain colors

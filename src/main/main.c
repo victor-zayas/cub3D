@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:26 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/18 19:06:28 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/26 13:18:12 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static	void	print_struct(t_all *all)
 	printf("\nMAP:\n");
 	while (all->map.map[i])
 		printf("%s\n", all->map.map[i++]);
-	printf("Height: %d\nWidth: %d\n", all->map.height, all->map.width);
+	printf("\nHeight: %d\nWidth: %d\n", all->map.height, all->map.width);
 	
 	//print attributes of map
 	printf("\nATTRIBUTES:\n");
@@ -40,8 +40,10 @@ static	void	print_struct(t_all *all)
 	
 	//print textures
 	printf("\nTEXTURES:\n");
-	printf("North: %s\nSouth: %s\nEast: %s\nWest: %s\nFloor: %s\nCeiling: %s\n\n",
-	all->texture.NO, all->texture.SO, all->texture.EA, all->texture.WE, all->texture.F, all->texture.C);
+	printf("North: %s\nSouth: %s\nEast: %s\nWest: %s\n",
+	all->texture.NO, all->texture.SO, all->texture.EA, all->texture.WE);
+	printf("Ceiling: %d, %d, %d\n", all->texture.C[0], all->texture.C[1], all->texture.C[2]);
+	printf("Floor: %d, %d, %d\n", all->texture.F[0], all->texture.F[1], all->texture.F[2]);
 }
 
 int	main(int argc, char **argv)
