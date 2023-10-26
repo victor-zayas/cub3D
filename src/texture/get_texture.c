@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:19:53 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/26 13:17:43 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:02:51 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,6 @@ static	int	*ft_find_color(t_map *map, char id)
 				x++;
 			while (ft_isalnum(map->raw[y][x]))
 				x++;
-			// path = ft_strdup(ft_strtrim(map->raw[y] + 2, " "));
-			// printf("Line: %s\n", map->raw[y]);
 			rgb = ft_check_color(ft_strtrim(map->raw[y] + 2, " "));
 		}
 	}
@@ -112,6 +110,4 @@ void	ft_get_color(t_map *map, t_texture *texture)
 {
 	texture->C = ft_find_color(map, 'C');
 	texture->F = ft_find_color(map, 'F');
-	// ft_check_color(texture->F);
-	// ft_check_color(texture->C);
 }

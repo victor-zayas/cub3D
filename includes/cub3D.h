@@ -3,34 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/26 14:45:08 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:44:57 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
+// MACROS
+# define PI  3.1415926
+# define P2 PI / 2
+# define P32 PI * 3 / 2
+# define DEG 0.0174533
+# define HEIGHT 520
+# define WIDTH 1080
+
 // INCLUDES
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include "../libft/includes/libft.h"
-# include "raycast.h"
-# include "../mlx/mlx.h"
 # include <math.h>
-
+# include "../libft/includes/libft.h"
+# include "../mlx/mlx.h"
 
 // STRUCTS
 typedef struct s_map
 {
-    char    **raw; // raw data from .cub file
-    char    **map; // map of game
-    char    *name; // name of .cub
-    int     fd; // fd of .cub
+    char    **raw;	// raw data from .cub file
+    char    **map;	// map of game
+    char    *name;	// name of .cub
+    int     fd; 	// fd of .cub
     int     height;
     int     width;
 } t_map;
@@ -49,8 +55,8 @@ typedef struct s_texture
     char    *SO; // South texture path
     char    *WE; // East texture path
     char    *EA; // West texture path
-    int    *C; // RGB color code for ceiling
-    int    *F; // RGB color code for floor
+    int    *C;	// RGB color code for ceiling
+    int    *F;	// RGB color code for floor
 } t_texture;
 
 typedef struct s_playerpos
@@ -60,29 +66,33 @@ typedef struct s_playerpos
 	float	pa;	//players angle in radians
 }	t_playerpos;
 
-typedef struct s_all
+typedef struct s_img
 {
-    t_map       map;
-    t_attrb     attrb;
-    t_texture   texture;
-    t_playerpos player;
-} t_all;
-
-# define PI  3.1415926
-# define P2 PI / 2
-# define P32 PI * 3 / 2
-# define DEG 0.0174533
-# define HEIGHT 520
-# define WIDTH 1080
-
-typedef struct s_txt
-{
-	void	*img;	//pointer to the img of the texture
-	char	*addr;	//address pointer to the img
-	int		bpp;	//bits per pixel of the mlx image
-	int		size;	//size from mlx image
-	int		endian;	//endian from mlx image
-}	t_txt;
+	// North
+	void	*img_NO;	//pointer to the img of the texture
+	char	*addr_NO;	//address pointer to the img
+	int		bpp_NO;		//bits per pixel of the mlx image
+	int		size_NO;	//size from mlx image
+	int		end_NO;		//endian from mlx image
+	// South
+	void	*img_SO;
+	char	*addr_SO;
+	int		bpp_SO;
+	int		size_SO;
+	int		end_SO;
+	// East
+	void	*img_EA;
+	char	*addr_EA;
+	int		bpp_EA;
+	int		size_EA;
+	int		end_EA;
+	// West
+	void	*img_WE;
+	char	*addr_WE;
+	int		bpp_WE;
+	int		size_WE;
+	int		end_WE;
+}	t_img;
 
 typedef struct s_mlx
 {
@@ -94,7 +104,6 @@ typedef struct s_mlx
 	int		size;
 	int		endian;
 }	t_mlx;
-
 
 typedef struct s_ray
 {
@@ -109,25 +118,19 @@ typedef struct s_ray
 	float	cy;		//collision position x
 	char	tx;		//texture type
 	float	dist;	//distance to the collision point
-	t_txt	txt;	//a pointer to texture to be used
 	int		end;	//signals the raycasting to end
 }   t_ray;
 
-
-
-//	RAYCAST
-//	-RAYCASTER
-void	raycaster(t_playerpos *p_pos, t_all *all, t_mlx *mlx);
-
-//	-DISTACE
-float	dist(t_ray *ray, t_playerpos *p_pos);
-float	fix_angle(float	angle);
-//	-LINE FIXER
-void	fix_fisheye(t_ray *ray, t_playerpos *p_pos);
-//	DRAW COLUMNS
-void	draw_column(t_ray *col, t_all *all, t_mlx *mlx, int i);
-void	get_mlx(t_mlx *mlx);
-void    search_playerpos(char **map, t_playerpos *p_pos);
+typedef struct s_all
+{
+    t_map       map;
+    t_attrb     attrb;
+    t_texture   texture;
+    t_playerpos player;
+	t_img		img;
+	t_mlx		mlx;
+	t_ray		ray;
+} t_all;
 
 // PROTOTIPES
 // MAIN
@@ -160,5 +163,20 @@ void	ft_check_read(int rd);
 void	ft_check_extension(char *str);
 void	ft_check_ext_texture(char *str);
 void	ft_empty_map(t_map *map);
+
+//	RAYCAST
+//	-RAYCASTER
+void	raycaster(t_playerpos *p_pos, t_all *all, t_mlx *mlx);
+
+//	-DISTACE
+float	dist(t_ray *ray, t_playerpos *p_pos);
+float	fix_angle(float	angle);
+//	-LINE FIXER
+void	fix_fisheye(t_ray *ray, t_playerpos *p_pos);
+//	DRAW
+//	-DRAW_COLUMNS
+void	draw_column(t_ray *col, t_all *all, t_mlx *mlx, int i);
+void	get_mlx(t_mlx *mlx);
+void    search_playerpos(char **map, t_playerpos *p_pos);
 
 #endif

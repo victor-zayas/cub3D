@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:26 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/26 14:45:21 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:43:45 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static	void	print_struct(t_all *all)
 	printf("North: %s\nSouth: %s\nEast: %s\nWest: %s\n",
 	all->texture.NO, all->texture.SO, all->texture.EA, all->texture.WE);
 	printf("Ceiling: %d, %d, %d\n", all->texture.C[0], all->texture.C[1], all->texture.C[2]);
-	printf("Floor: %d, %d, %d\n", all->texture.F[0], all->texture.F[1], all->texture.F[2]);
+	printf("Floor: %d, %d, %d\n\n", all->texture.F[0], all->texture.F[1], all->texture.F[2]);
 }
 
 int	main(int argc, char **argv)

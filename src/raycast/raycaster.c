@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
-# include "../../includes/raycast.h"
 
 /**
  * @brief Calculates the first horizontal collisions position and the offset

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_columns.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 13:39:09 by lagonzal          #+#    #+#             */
-/*   Updated: 2023/10/26 14:44:29 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:03:15 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
-# include "../../includes/raycast.h"
 
 void	floor_ceil(t_mlx *mlx, int *start, int *color, int i)
 {
