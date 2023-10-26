@@ -6,7 +6,7 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/26 14:45:08 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:00:42 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include "../libft/includes/libft.h"
-# include "raycast.h"
 # include "../mlx/mlx.h"
 # include <math.h>
 

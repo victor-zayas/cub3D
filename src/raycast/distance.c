@@ -6,11 +6,10 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 20:11:34 by larra             #+#    #+#             */
-/*   Updated: 2023/10/26 14:39:04 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:00:33 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
 #include "../../includes/cub3D.h"
 
 /**

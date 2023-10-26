@@ -6,12 +6,11 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 13:39:09 by lagonzal          #+#    #+#             */
-/*   Updated: 2023/10/26 14:44:29 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:07:54 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
-# include "../../includes/raycast.h"
 
 void	floor_ceil(t_mlx *mlx, int *start, int *color, int i)
 {
@@ -65,8 +64,8 @@ void    search_playerpos(char **map, t_playerpos *p_pos)
 		{
 			if (map[n][m] == 'N' || map[n][m] == 'E' || map[n][m] == 'W' || map[n][m] == 'S')
 			{
-				p_pos->py = 64 * m + 32;
-				p_pos->px = 64 * n + 32;
+				p_pos->py = 64 * n + 32;
+				p_pos->px = 64 * m + 32;
 			}
 			if (map[n][m] == 'N')
 				p_pos->pa = P2;
