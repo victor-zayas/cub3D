@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 01:49:02 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/26 13:20:59 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:02:56 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int	*ft_check_color(char *str)
 	j = 0;
 	while (rgb[++i] && j < 3)
 	{
-		// printf("Error\nAtoi: %d\n", ft_atoi(rgb[i]));
 		num[j] = ft_atoi(rgb[i]);
 		if (num[j] < 0 || num[j] > 255)
 		{

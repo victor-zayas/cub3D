@@ -1,34 +1,35 @@
-// |**** EXTENSION ****|
-// Wrong map extension / format. ✅
+TODO LIST
 
-// |**** TEXTURES ****|
-// One texture missing ✅
-// Texture path does not exist ✅
-// wrong extension ✅
+FILE
+- Wrong map extension / format. ✅
 
-// |**** FLOOR / CEILING ****|
-// One parameter missing in ceiling color ✅
-// Floor rgb metric out of range 0 - 255 (333) ✅
-// invalid character (a) in floor ✅
+MAP
+- Invalid character in map ✅
+- map has no wall ✅
+- new line in map ✅
+- map not in last position ✅
+- empty map ✅
+- spaces inside walkable map ✅
+- map has no start poss ✅
+- map dimensions ✅
 
-// |**** MAP ****|
-// Invalid character in map ✅
-// map has no wall ✅
-// new line in map ✅
-// map not in last position ✅
-// empty map ✅
-// spaces inside walkable map ✅
-// map has no start poss ✅
-// map dimensions ✅
+TEXTURES
+- One texture missing ✅
+- Texture path does not exist ✅
+- wrong extension ✅
 
-// TODO LIST
-// get rgb into array ✅
-// initilize mlx and get window and texture addresses
-// check mlx functions to use RGB color
-// start drawing columns with plain colors
+FLOOR / CEILING
+- One parameter missing in ceiling color ✅
+- Floor rgb metric out of range 0 - 255 (333) ✅
+- invalid character (a) in floor ✅
 
-    // make mlx window
-    // close mlx windows with red x & ESC case
-    // use mlx to make movement with direction arrows
-    // use mlx to move with WASD
-    // use mlx to rotate with left/rigth arrows
+MLX
+- make mlx window ✅
+- get rgb into array ✅
+- initilize mlx and get window and texture addresses ✅
+- close mlx windows with red x & ESC case
+- use mlx to make movement with direction arrows
+- use mlx to move with WASD
+
+RAYCAST
+- start drawing columns with plain colors
