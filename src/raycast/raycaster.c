@@ -27,17 +27,17 @@ void	h_offset_calc(t_playerpos *p_pos, t_ray *ray)
 	arctan = -1 / tan(ray->ra);
 	if (ray->ra > PI) //looking down
 	{
-		ray->rx = (((int)p_pos->px >> 6) << 6) - 0.0001;
-		ray->ry = (p_pos->px - ray->rx) * arctan + p_pos->py;
-		ray->xo = -64;
-		ray->yo = -ray->xo * arctan;
+		ray->ry = (((int)p_pos->py >> 6) << 6) - 0.0001;
+		ray->rx = (p_pos->py - ray->ry) * arctan + p_pos->px;
+		ray->yo = -64;
+		ray->xo = -ray->yo * arctan;
 	}
 	if (ray->ra < PI) //looking up
 	{
-		ray->rx = (((int)p_pos->px >> 6) << 6) +64;
-		ray->ry = (p_pos->px - ray->rx) * arctan + p_pos->py;
-		ray->xo = 64;
-		ray->yo = -ray->xo * arctan;
+		ray->ry = (((int)p_pos->py >> 6) << 6) +64;
+		ray->rx = (p_pos->py - ray->ry) * arctan + p_pos->px;
+		ray->yo = 64;
+		ray->xo = -ray->yo * arctan;
 	}
 	if (ray->ra == 0 || ray->ra == PI) //looking straight left or straight right
 	{
@@ -112,17 +112,17 @@ void	v_offset_calc(t_playerpos *p_pos, t_ray *ray)
 	ntan = -tan(ray->ra);
 	if (ray->ra > P2 && ray->ra < P32) //looking left
 	{
-		ray->ry = (((int)p_pos->py >> 6) << 6) - 0.0001;
-		ray->rx = (p_pos->py - ray->ry) * ntan + p_pos->px;
-		ray->yo = -64;
-		ray->xo = -ray->yo * ntan;
+		ray->rx = (((int)p_pos->px >> 6) << 6) - 0.0001;
+		ray->ry = (p_pos->px - ray->rx) * ntan + p_pos->py;
+		ray->xo = -64;
+		ray->yo = -ray->xo * ntan;
 	}
 	if (ray->ra < P2 || ray->ra > P32) //looking right
 	{
-		ray->ry = (((int)p_pos->py >> 6) << 6) +64;
-		ray->rx = (p_pos->py - ray->ry) * ntan + p_pos->px;
-		ray->yo = 64;
-		ray->xo = -ray->xo * ntan;
+		ray->rx = (((int)p_pos->px >> 6) << 6) +64;
+		ray->ry = (p_pos->px - ray->rx) * ntan + p_pos->py;
+		ray->xo = 64;
+		ray->yo = -ray->xo * ntan;
 	}
 	if (ray->ra == P2 || ray->ra == P32) //looking straight up or straight down
 	{
