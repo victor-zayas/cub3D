@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/26 19:59:15 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/01 18:08:34 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define PI  3.1415926
 # define P2 PI / 2
 # define P32 PI * 3 / 2
-# define DEG 0.0174533
+# define DEG 2 * PI / 360
 # define HEIGHT 540
 # define WIDTH 1080
 # define C_WIDTH 1080 / 90
@@ -167,11 +167,13 @@ void	ft_empty_map(t_map *map);
 
 //	RAYCAST
 //	-RAYCASTER
-void	raycaster(t_playerpos *p_pos, t_all *all, t_mlx *mlx);
+void	raycaster(t_playerpos *p_pos, t_all *all/*, t_mlx *mlx*/);
 
 //	-DISTACE
 float	dist(t_ray *ray, t_playerpos *p_pos);
 float	fix_angle(float	angle);
+float absolute(float in);
+
 //	-LINE FIXER
 void	fix_fisheye(t_ray *ray, t_playerpos *p_pos);
 //	DRAW

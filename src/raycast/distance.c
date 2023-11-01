@@ -6,7 +6,7 @@
 /*   By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 20:11:34 by larra             #+#    #+#             */
-/*   Updated: 2023/11/01 18:08:16 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/01 18:48:29 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,20 @@
 
 float	dist(t_ray *ray, t_playerpos *p_pos)
 {
+	printf("cx: %f cy: %f\n", ray->cx, ray->cy);
+	printf("px: %f py: %f\n", p_pos->px, p_pos->py);
+	printf("dist: (%f - %f) * (%f - %f) + (%f - %f) * (%f - %f)\n", ray->cx, p_pos->px, ray->cx, p_pos->px, ray->cy, p_pos->py, ray->cy, p_pos->py);
+	printf("%f + %f\n", (ray->cx - p_pos->px) * (ray->cx - p_pos->px), (ray->cy - p_pos->py) * (ray->cy - p_pos->py));
+	printf("sqrt %f\n", ((ray->cx - p_pos->px) * (ray->cx - p_pos->px) +
+			(ray->cy - p_pos->py) * (ray->cy - p_pos->py)));
+	printf("final %f\n", sqrt((double)((ray->cx - p_pos->px) * (ray->cx - p_pos->px) +
+			(ray->cy - p_pos->py) * (ray->cy - p_pos->py))));
 	if (ray->end == 1)
-		ray->dist = sqrt(pow(ray->cx - p_pos->px, 2)
-		+ pow(ray->cy - p_pos->py, 2)) / 10;
+		ray->dist = (float)sqrt((double)((ray->cx - p_pos->px) * (ray->cx - p_pos->px) +
+			(ray->cy - p_pos->py) * (ray->cy - p_pos->py)));
 	if (ray->end == 2)
 		ray->dist = 1e30;
-	return (ray->dist / 10);
+	return (ray->dist);
 }
 
 float	fix_angle(float	angle)

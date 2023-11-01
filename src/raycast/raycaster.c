@@ -28,27 +28,28 @@ void	h_offset_calc(t_playerpos *p_pos, t_ray *ray)
 {
 	float	arctan;
 
-	arctan = absolute(tan(ray->ra));
+	printf("horizontal=======================\n");
+	arctan = absolute(1 / tan(ray->ra));
 	printf("pi rads ra: %f\n", ray->ra / PI);
 	printf("ntan: %f\n", arctan);
 	if (ray->ra > PI) //looking down
 	{
-		ray->ry = (((int)p_pos->py >> 6) << 6) - 0.0001;
-		ray->rx = (p_pos->py - ray->ry) * arctan + p_pos->px;
-		printf("rx: %d ry: %d\n", (int)ray->rx>>6, (int)ray->ry>>6);
-		printf("px - rx: %f, * ntan: %f, + py: %f\n", p_pos->px - ray->rx, (p_pos->px - ray->rx) * arctan, (p_pos->px - ray->rx) * arctan + p_pos->py);
-		ray->yo = -64;
-		ray->xo = ray->yo * -arctan;
-		printf("xo: %f yo: %f\n", ray->xo, ray->yo);
-	}
-	if (ray->ra < PI) //looking up
-	{
-		ray->ry = (((int)p_pos->py >> 6) << 6) +64;
+		ray->ry = (((int)p_pos->py >> 6) << 6) + 64;
 		ray->rx = (p_pos->py - ray->ry) * -arctan + p_pos->px;
 		printf("rx: %d ry: %d\n", (int)ray->rx>>6, (int)ray->ry>>6);
 		printf("px - rx: %f, * ntan: %f, + py: %f\n", p_pos->px - ray->rx, (p_pos->px - ray->rx) * arctan, (p_pos->px - ray->rx) * arctan + p_pos->py);
 		ray->yo = 64;
-		ray->xo = -ray->yo * arctan;
+		ray->xo = ray->yo * arctan;
+		printf("xo: %f yo: %f\n", ray->xo, ray->yo);
+	}
+	if (ray->ra < PI) //looking up
+	{
+		ray->ry = (((int)p_pos->py >> 6) << 6) -0.0001;
+		ray->rx = (p_pos->py - ray->ry) * -arctan + p_pos->px;
+		printf("rx: %d ry: %d\n", (int)ray->rx>>6, (int)ray->ry>>6);
+		printf("px - rx: %f, * ntan: %f, + py: %f\n", p_pos->px - ray->rx, (p_pos->px - ray->rx) * arctan, (p_pos->px - ray->rx) * arctan + p_pos->py);
+		ray->yo = -64;
+		ray->xo = ray->yo * arctan;
 		printf("xo: %f yo: %f\n", ray->xo, ray->yo);
 
 	}
@@ -82,7 +83,7 @@ t_ray	check_h_colision(t_playerpos *p_pos, t_map *map, float ra)
 		//printf("horizontal iteration %d\n", i++);
 		ray.my = (int) (ray.ry) >> 6;
 		ray.mx = (int) (ray.rx) >> 6;
-		printf("horizontal=======================\nray mx:%d ray my: %d\n", ray.mx, ray.my);
+		printf("ray mx:%d ray my: %d\n", ray.mx, ray.my);
 //		printf("map in pos is %s\n", map->map[ray.my]);
 		if (ray.my < 0 || ray.mx < 0 ||map->height <= ray.my || (int)ft_strlen(map->map[ray.my]) <= ray.mx)
 		{
@@ -92,8 +93,8 @@ t_ray	check_h_colision(t_playerpos *p_pos, t_map *map, float ra)
 		else if (map->map[ray.my][ray.mx] == '1') // have to add out of map control just in case
 		{
 			//printf("hit\n");
-			ray.cx = ray.ry;
-			ray.cy = ray.rx;
+			ray.cy = ray.ry;
+			ray.cx = ray.rx;
 			ray.end = 1;
 		}
 		else
@@ -120,6 +121,7 @@ void	v_offset_calc(t_playerpos *p_pos, t_ray *ray)
 {
 	float	ntan;
 
+	printf("vertical=======================\n");
 	ntan = tan(ray->ra);
 	printf("pi rads ra: %f\n", ray->ra / PI);
 	printf("ntan: %f\n", ntan);
@@ -173,8 +175,8 @@ t_ray	check_v_colision(t_playerpos *p_pos, t_map *map, float ra)
 		//printf("player position x:%d y:%d\n", (int)(p_pos->px) >> 6, (int)(p_pos->py) >> 6);
 		ray.my = (int) (ray.ry) >> 6;
 		ray.mx = (int) (ray.rx) >> 6;
-		printf("vertical========================\nray rx %f mx:%d ray ry %f my: %d\n",ray.rx, ray.mx,ray.ry, ray.my);
-		if (map->height <= ray.my || (int)ft_strlen(map->map[ray.my]) <= ray.mx || ray.mx < 0 || ray.my < 0)
+		printf("ray rx %f mx:%d ray ry %f my: %d\n",ray.rx, ray.mx,ray.ry, ray.my);
+		if (ray.mx < 0 || ray.my < 0 || map->height <= ray.my || (int)ft_strlen(map->map[ray.my]) <= ray.mx)
 		{
 //			printf("first condition: %d second condition %d\n", map->height < ray.ry, map->width < ray.rx);
 			ray.end = 2;
@@ -182,8 +184,8 @@ t_ray	check_v_colision(t_playerpos *p_pos, t_map *map, float ra)
 		else if (map->map[ray.my][ray.mx] == '1') // have to add out of map control just in case
 		{
 			//printf("hit\n");
-			ray.cx = ray.ry;
-			ray.cy = ray.rx;
+			ray.cy = ray.ry;
+			ray.cx = ray.rx;
 			ray.end = 1;
 		}
 		else
