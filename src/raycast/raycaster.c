@@ -28,20 +28,29 @@ void	h_offset_calc(t_playerpos *p_pos, t_ray *ray)
 {
 	float	arctan;
 
-	arctan = -tan(ray->ra);
+	arctan = absolute(tan(ray->ra));
+	printf("pi rads ra: %f\n", ray->ra / PI);
+	printf("ntan: %f\n", arctan);
 	if (ray->ra > PI) //looking down
 	{
 		ray->ry = (((int)p_pos->py >> 6) << 6) - 0.0001;
 		ray->rx = (p_pos->py - ray->ry) * arctan + p_pos->px;
+		printf("rx: %d ry: %d\n", (int)ray->rx>>6, (int)ray->ry>>6);
+		printf("px - rx: %f, * ntan: %f, + py: %f\n", p_pos->px - ray->rx, (p_pos->px - ray->rx) * arctan, (p_pos->px - ray->rx) * arctan + p_pos->py);
 		ray->yo = -64;
-		ray->xo = -ray->yo * arctan;
+		ray->xo = ray->yo * -arctan;
+		printf("xo: %f yo: %f\n", ray->xo, ray->yo);
 	}
 	if (ray->ra < PI) //looking up
 	{
 		ray->ry = (((int)p_pos->py >> 6) << 6) +64;
-		ray->rx = (p_pos->py - ray->ry) * arctan + p_pos->px;
+		ray->rx = (p_pos->py - ray->ry) * -arctan + p_pos->px;
+		printf("rx: %d ry: %d\n", (int)ray->rx>>6, (int)ray->ry>>6);
+		printf("px - rx: %f, * ntan: %f, + py: %f\n", p_pos->px - ray->rx, (p_pos->px - ray->rx) * arctan, (p_pos->px - ray->rx) * arctan + p_pos->py);
 		ray->yo = 64;
 		ray->xo = -ray->yo * arctan;
+		printf("xo: %f yo: %f\n", ray->xo, ray->yo);
+
 	}
 	if (ray->ra == 0 || ray->ra == PI) //looking straight left or straight right
 	{
@@ -128,8 +137,11 @@ void	v_offset_calc(t_playerpos *p_pos, t_ray *ray)
 	{
 		ray->rx = (((int)p_pos->px >> 6) << 6) +64;
 		ray->ry = (p_pos->px - ray->rx) * ntan + p_pos->py;
+		printf("rx: %d ry: %d\n", (int)ray->rx>>6, (int)ray->ry>>6);
+		printf("px - rx: %f, * ntan: %f, + py: %f\n", p_pos->px - ray->rx, (p_pos->px - ray->rx) * ntan, (p_pos->px - ray->rx) * ntan + p_pos->py);
 		ray->xo = 64;
 		ray->yo = ray->xo * -ntan;
+		printf("xo: %f yo: %f\n", ray->xo, ray->yo);
 	}
 	if (ray->ra == P2 || ray->ra == P32) //looking straight up or straight down
 	{

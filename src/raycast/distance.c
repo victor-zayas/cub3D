@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   distance.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 20:11:34 by larra             #+#    #+#             */
-/*   Updated: 2023/10/26 20:35:22 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/01 18:08:16 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,11 @@ float	fix_angle(float	angle)
 	else if (angle < 0)
 		return (angle + 2 * PI);
 	return (angle);
+}
+
+float absolute(float in)
+{
+	if (in < 0)
+		return (-in);
+	return (in);
 }
