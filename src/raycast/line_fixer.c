@@ -12,11 +12,11 @@
 
 #include "../../includes/cub3D.h"
 
-void	fix_fisheye(t_ray *ray, t_playerpos *p_pos)
+void	fix_fisheye(t_ray *ray/*, t_playerpos *p_pos*/)
 {
-	float	cos_a;
-
-	cos_a = p_pos->pa - ray->ra;
-	cos_a = fix_angle(cos_a);
-	ray->dist = cos(cos_a) * ray->dist;
+	if ((ray->ra > P4/ 4 && ray->ra < P34) || (ray->ra > P54 && ray->ra < P74))
+		ray->dist = sin(ray->ra) * ray->dist;
+	else
+		ray->dist = cos(ray->ra) * ray->dist;
+	ray->dist = absolute(ray->dist);
 }

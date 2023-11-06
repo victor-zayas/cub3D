@@ -6,7 +6,7 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 13:39:09 by lagonzal          #+#    #+#             */
-/*   Updated: 2023/10/26 20:37:04 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/06 19:11:59 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ void	floor_ceil(t_mlx *mlx, int *start, int *color, int i)
 			n++;
 		}
 		i++;
+		printf("i: %d n: %d\n", i, n);
 	}
 }
 
 int	calc_height(t_ray *ray)
 {
-	int proyection =   (64 * 6) *  120 / ray->dist;
+	int proyection =   (64) * 280 / ray->dist;
 	return (proyection);
 }
 
@@ -48,12 +49,15 @@ void	draw_column(t_ray *col, t_all *all, t_mlx *mlx, int i)
 
 
 	start_stop[0] = 0;
+	fix_fisheye(col);
 	height = calc_height(col);
-	fix_fisheye(col, &all->player);
+	printf("height: %d\n", height);
 	start_stop[1] = (HEIGHT - height) / 2;
+	printf("ceiling start: %d, end: %d\n", start_stop[0], start_stop[1]);
 	floor_ceil(mlx, start_stop, all->texture.C, i);
 	start_stop[0] = height + ((HEIGHT - height) / 2);
 	start_stop[1] = HEIGHT;
+	printf("floor start: %d, end: %d\n", start_stop[0], start_stop[1]);
 	floor_ceil(mlx, start_stop, all->texture.F, i);
 	
 }

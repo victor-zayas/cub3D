@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/01 18:08:34 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/06 19:10:54 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 # define PI  3.1415926
 # define P2 PI / 2
 # define P32 PI * 3 / 2
+# define P4 PI / 4
+# define P34 PI * 3 / 4
+# define P54 PI * 5 / 4
+# define P74 PI * 7 / 4
 # define DEG 2 * PI / 360
 # define HEIGHT 540
 # define WIDTH 1080
@@ -167,15 +171,15 @@ void	ft_empty_map(t_map *map);
 
 //	RAYCAST
 //	-RAYCASTER
-void	raycaster(t_playerpos *p_pos, t_all *all/*, t_mlx *mlx*/);
+void	raycaster(t_playerpos *p_pos, t_all *all, t_mlx *mlx);
 
 //	-DISTACE
 float	dist(t_ray *ray, t_playerpos *p_pos);
 float	fix_angle(float	angle);
-float absolute(float in);
+float	absolute(float in);
 
 //	-LINE FIXER
-void	fix_fisheye(t_ray *ray, t_playerpos *p_pos);
+void	fix_fisheye(t_ray *ray/*, t_playerpos *p_pos*/);
 //	DRAW
 //	-DRAW_COLUMNS
 void	draw_column(t_ray *col, t_all *all, t_mlx *mlx, int i);

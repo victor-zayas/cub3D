@@ -240,13 +240,13 @@ void	print_map(t_map *map)
  * @param text	texture
  */
 
-void	raycaster(t_playerpos *p_pos, t_all *all/*, t_mlx *mlx*/) //here we need to get the big structure as we will need it later to draw the line.
+void	raycaster(t_playerpos *p_pos, t_all *all, t_mlx *mlx) //here we need to get the big structure as we will need it later to draw the line.
 {
 	t_ray	vc;
 	t_ray	hc;
 	float	ra;
 	int		i;
-	char	c;
+	//char	c;
 
 	ra = p_pos->pa + (46 * DEG);
 	i = 0;
@@ -264,7 +264,7 @@ void	raycaster(t_playerpos *p_pos, t_all *all/*, t_mlx *mlx*/) //here we need to
 			//take_texture(&hc, text);
 			// printf("ray.mx: %d ray.my: %d\n", hc.mx, hc.my);
 			// printf("dist: %f\n", hc.dist);
-			//draw_column(&hc, all, mlx, i);
+			draw_column(&hc, all, mlx, i);
 		}
 		else
 		{
@@ -273,12 +273,12 @@ void	raycaster(t_playerpos *p_pos, t_all *all/*, t_mlx *mlx*/) //here we need to
 			//printf("vertical\n");
 			// printf("dist: %f\n", vc.dist);
 			// printf("ray.mx: %d ray.my: %d\n", hc.mx, hc.my);
-			//draw_column(&vc, all, mlx, i);
+			draw_column(&vc, all, mlx, i);
 		}
 		print_map(&all->map);
-		scanf("%c\n", &c);
+		//scanf("%c\n", &c);
 		printf("%d\n", i);
 		i++;
 	}
-	//mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 }
