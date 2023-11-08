@@ -198,7 +198,7 @@ t_ray	check_v_colision(t_playerpos *p_pos, t_map *map, float ra)
 			ray.rx += ray.xo;
 		}
 	}
-	if (ray.ra > P2 && ray.ra < P3_2)
+	if (ray.ra > P_2 && ray.ra < P3_2)
 		return (ray.tx = 'W', ray);
 	else
 		return (ray.tx = 'E', ray);

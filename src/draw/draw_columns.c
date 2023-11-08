@@ -3,28 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   draw_columns.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 13:39:09 by lagonzal          #+#    #+#             */
-/*   Updated: 2023/11/08 20:23:09 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/08 20:48:11 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-void	floor_ceil(t_mlx *mlx, int *start, int *color, int i)
+void	floor_ceil(t_mlx *mlx, int *start, int color, int i)
 {
 	int	n;
-	int	rgb;
 	int addr; 
  
-	rgb = ((color[0] & 255) << 16) | ((color[1] & 255) << 8) | ((color[2] & 255)); //converts rgb to hex should be called before raycasting
 	n = start[0];
 	while (n < start[1])
 	{
 		//mlx_pixel_put(mlx->mlx, mlx->win, i, n, rgb);
 		addr = (n * mlx->size) + (i * (mlx->bpp / 8));
-		*(unsigned int*)(mlx->addr + addr) = rgb;
+		*(unsigned int*)(mlx->addr + addr) = color;
 		//printf("addr: %d\n", addr);
 		n++;
 	}

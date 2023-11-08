@@ -6,11 +6,7 @@
 #    By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 15:10:33 by vzayas-s          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2023/11/08 15:40:53 by lagonzal         ###   ########.fr        #
-=======
-#    Updated: 2023/11/08 13:55:12 by vzayas-s         ###   ########.fr        #
->>>>>>> 8154fb8d32442620b41574f4d670afb1ab41ff1b
+#    Updated: 2023/11/08 20:46:08 by vzayas-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,8 +42,8 @@ PLAIN_SRCS =	$(addsuffix .c, $(addprefix error/, $(ERROR)))\
 				$(addsuffix .c, $(addprefix main/, $(MAIN)))\
 				$(addsuffix .c, $(addprefix map/, $(MAP)))\
 				$(addsuffix .c, $(addprefix texture/, $(TEXTURE)))\
-#				$(addsuffix .c, $(addprefix raycast/, $(RAYCAST)))\
-#				$(addsuffix .c, $(addprefix draw/, $(DRAW)))
+				$(addsuffix .c, $(addprefix raycast/, $(RAYCAST)))\
+				$(addsuffix .c, $(addprefix draw/, $(DRAW)))
 
 SRCS := $(addprefix $(SRCDIR), $(PLAIN_SRCS))
 OBJS := $(addprefix $(OBJDIR), $(PLAIN_SRCS:.c=.o))
