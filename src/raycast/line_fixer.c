@@ -14,9 +14,9 @@
 
 void	fix_fisheye(t_ray *ray/*, t_playerpos *p_pos*/)
 {
-	if ((ray->ra > P4/ 4 && ray->ra < P34) || (ray->ra > P54 && ray->ra < P74))
+	if ((ray->ra > P_4 && ray->ra < P3_4) || (ray->ra > P5_4 && ray->ra < P7_4))
 		ray->dist = sin(ray->ra) * ray->dist;
 	else
-		ray->dist = cos(ray->ra) * ray->dist;
+	ray->dist = cos(ray->ra) * ray->dist;
 	ray->dist = absolute(ray->dist);
 }

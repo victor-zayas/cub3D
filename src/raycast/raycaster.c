@@ -29,27 +29,30 @@ void	h_offset_calc(t_playerpos *p_pos, t_ray *ray)
 	float	arctan;
 
 	printf("horizontal=======================\n");
-	arctan = absolute(1 / tan(ray->ra));
+	arctan = (1 / tan(ray->ra));
 	printf("pi rads ra: %f\n", ray->ra / PI);
 	printf("ntan: %f\n", arctan);
 	if (ray->ra > PI) //looking down
 	{
+		printf("looking down\n");
 		ray->ry = (((int)p_pos->py >> 6) << 6) + 64;
-		ray->rx = (p_pos->py - ray->ry) * -arctan + p_pos->px;
-		printf("rx: %d ry: %d\n", (int)ray->rx>>6, (int)ray->ry>>6);
-		printf("px - rx: %f, * ntan: %f, + py: %f\n", p_pos->px - ray->rx, (p_pos->px - ray->rx) * arctan, (p_pos->px - ray->rx) * arctan + p_pos->py);
+		ray->rx = (p_pos->py - ray->ry) * arctan + p_pos->px;
+		printf("rx: %f ry: %f\n", ray->rx, ray->ry);
+		printf("py - ry: %f, * -arctan: %f, + px: %f\n", p_pos->py - ray->ry, (p_pos->py - ray->ry) * -arctan, (p_pos->py - ray->ry) * -arctan + p_pos->px);
 		ray->yo = 64;
-		ray->xo = ray->yo * arctan;
+		ray->xo = ray->yo * -arctan;
 		printf("xo: %f yo: %f\n", ray->xo, ray->yo);
 	}
 	if (ray->ra < PI) //looking up
 	{
+		printf("looking up\n");
 		ray->ry = (((int)p_pos->py >> 6) << 6) -0.0001;
-		ray->rx = (p_pos->py - ray->ry) * -arctan + p_pos->px;
-		printf("rx: %d ry: %d\n", (int)ray->rx>>6, (int)ray->ry>>6);
-		printf("px - rx: %f, * ntan: %f, + py: %f\n", p_pos->px - ray->rx, (p_pos->px - ray->rx) * arctan, (p_pos->px - ray->rx) * arctan + p_pos->py);
+		ray->rx = (p_pos->py - ray->ry) * arctan + p_pos->px;
+		printf("rx: %d ry: %d\n", (int)ray->rx >> 6, (int)ray->ry >> 6);
+		printf("192 / 64 = %d\n", 192 / 64);
+		printf("py - ry: %f, * -arctan: %f, + px: %f\n", p_pos->py - ray->ry, (p_pos->py - ray->ry) * -arctan, (p_pos->py - ray->ry) * -arctan + p_pos->px);
 		ray->yo = -64;
-		ray->xo = ray->yo * arctan;
+		ray->xo = ray->yo * -arctan;
 		printf("xo: %f yo: %f\n", ray->xo, ray->yo);
 
 	}
@@ -73,6 +76,7 @@ void	h_offset_calc(t_playerpos *p_pos, t_ray *ray)
 t_ray	check_h_colision(t_playerpos *p_pos, t_map *map, float ra)
 {
 	t_ray	ray;
+	int 	i = 0;
 
 	ray.end = 0;
 	ray.ra = ra;
@@ -80,7 +84,7 @@ t_ray	check_h_colision(t_playerpos *p_pos, t_map *map, float ra)
 	h_offset_calc(p_pos, &ray);
 	while (!ray.end)
 	{
-		//printf("horizontal iteration %d\n", i++);
+		printf("horizontal iteration %d\n", i++);
 		ray.my = (int) (ray.ry) >> 6;
 		ray.mx = (int) (ray.rx) >> 6;
 		printf("ray mx:%d ray my: %d\n", ray.mx, ray.my);
@@ -125,7 +129,7 @@ void	v_offset_calc(t_playerpos *p_pos, t_ray *ray)
 	ntan = tan(ray->ra);
 	printf("pi rads ra: %f\n", ray->ra / PI);
 	printf("ntan: %f\n", ntan);
-	if (ray->ra > P2 && ray->ra < P32) //looking left
+	if (ray->ra > P_2 && ray->ra < P3_2) //looking left
 	{
 		ray->rx = (((int)p_pos->px >> 6) << 6) - 0.0001;
 		ray->ry = (p_pos->px - ray->rx) * ntan + p_pos->py;
@@ -135,17 +139,17 @@ void	v_offset_calc(t_playerpos *p_pos, t_ray *ray)
 		ray->yo = ray->xo * -ntan;
 		printf("xo: %f yo: %f\n", ray->xo, ray->yo);
 	}
-	if (ray->ra < P2 || ray->ra > P32) //looking right
+	if (ray->ra < P_2 || ray->ra > P3_2) //looking right
 	{
 		ray->rx = (((int)p_pos->px >> 6) << 6) +64;
 		ray->ry = (p_pos->px - ray->rx) * ntan + p_pos->py;
-		printf("rx: %d ry: %d\n", (int)ray->rx>>6, (int)ray->ry>>6);
-		printf("px - rx: %f, * ntan: %f, + py: %f\n", p_pos->px - ray->rx, (p_pos->px - ray->rx) * ntan, (p_pos->px - ray->rx) * ntan + p_pos->py);
+		//printf("rx: %d ry: %d\n", (int)ray->rx>>6, (int)ray->ry>>6);
+		//printf("px - rx: %f, * ntan: %f, + py: %f\n", p_pos->px - ray->rx, (p_pos->px - ray->rx) * ntan, (p_pos->px - ray->rx) * ntan + p_pos->py);
 		ray->xo = 64;
 		ray->yo = ray->xo * -ntan;
 		printf("xo: %f yo: %f\n", ray->xo, ray->yo);
 	}
-	if (ray->ra == P2 || ray->ra == P32) //looking straight up or straight down
+	if (ray->ra == P2 || ray->ra == P3_2) //looking straight up or straight down
 	{
 		ray->ry = p_pos->py;
 		ray->rx = p_pos->px;
@@ -175,7 +179,7 @@ t_ray	check_v_colision(t_playerpos *p_pos, t_map *map, float ra)
 		//printf("player position x:%d y:%d\n", (int)(p_pos->px) >> 6, (int)(p_pos->py) >> 6);
 		ray.my = (int) (ray.ry) >> 6;
 		ray.mx = (int) (ray.rx) >> 6;
-		printf("ray rx %f mx:%d ray ry %f my: %d\n",ray.rx, ray.mx,ray.ry, ray.my);
+		//printf("ray rx %f mx:%d ray ry %f my: %d\n",ray.rx, ray.mx,ray.ry, ray.my);
 		if (ray.mx < 0 || ray.my < 0 || map->height <= ray.my || (int)ft_strlen(map->map[ray.my]) <= ray.mx)
 		{
 //			printf("first condition: %d second condition %d\n", map->height < ray.ry, map->width < ray.rx);
@@ -194,7 +198,7 @@ t_ray	check_v_colision(t_playerpos *p_pos, t_map *map, float ra)
 			ray.rx += ray.xo;
 		}
 	}
-	if (ray.ra > P2 && ray.ra < P32)
+	if (ray.ra > P2 && ray.ra < P3_2)
 		return (ray.tx = 'W', ray);
 	else
 		return (ray.tx = 'E', ray);
@@ -248,13 +252,13 @@ void	raycaster(t_playerpos *p_pos, t_all *all, t_mlx *mlx) //here we need to get
 	int		i;
 	//char	c;
 
-	ra = p_pos->pa + (46 * DEG);
+	ra = p_pos->pa + (45 * DEG);
 	i = 0;
-	printf("playerpos: px = %f py = %f pa = %f\n", p_pos->px, p_pos->py, p_pos->pa);
-	printf("ra in rads: %f\n", ra / PI);
-	while (i < 90)
+	// printf("playerpos: px = %f py = %f pa = %f\n", p_pos->px, p_pos->py, p_pos->pa);
+	// printf("ra in rads: %f\n", ra / PI);
+	while (i < WIDTH)
 	{
-		ra = fix_angle(ra - DEG);
+		ra = fix_angle(ra - DEG * 90 / WIDTH);
 		vc = check_v_colision(p_pos, &all->map, ra);
 		hc = check_h_colision(p_pos, &all->map, ra);
 		if (dist(&vc, p_pos) > dist(&hc, p_pos))
@@ -262,7 +266,8 @@ void	raycaster(t_playerpos *p_pos, t_all *all, t_mlx *mlx) //here we need to get
 			printf("horizontal %f vertical %f\n", hc.dist, vc.dist);
 			//printf("horizontal\n");
 			//take_texture(&hc, text);
-			// printf("ray.mx: %d ray.my: %d\n", hc.mx, hc.my);
+			printf("horizontal ray.mx: %d ray.my: %d\n", hc.mx, hc.my);
+			printf("vertical ray.mx: %d ray.my: %d\n", vc.mx, vc.my);
 			// printf("dist: %f\n", hc.dist);
 			draw_column(&hc, all, mlx, i);
 		}
@@ -272,7 +277,8 @@ void	raycaster(t_playerpos *p_pos, t_all *all, t_mlx *mlx) //here we need to get
 			//take_texture(&vc, text);
 			//printf("vertical\n");
 			// printf("dist: %f\n", vc.dist);
-			// printf("ray.mx: %d ray.my: %d\n", hc.mx, hc.my);
+			printf("horizontal ray.mx: %d ray.my: %d\n", hc.mx, hc.my);
+			printf("vertical ray.mx: %d ray.my: %d\n", vc.mx, vc.my);
 			draw_column(&vc, all, mlx, i);
 		}
 		print_map(&all->map);

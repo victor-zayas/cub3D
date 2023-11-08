@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   distance.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 20:11:34 by larra             #+#    #+#             */
-/*   Updated: 2023/11/01 18:48:29 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/06 20:37:21 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@
 
 float	dist(t_ray *ray, t_playerpos *p_pos)
 {
-	printf("cx: %f cy: %f\n", ray->cx, ray->cy);
-	printf("px: %f py: %f\n", p_pos->px, p_pos->py);
-	printf("dist: (%f - %f) * (%f - %f) + (%f - %f) * (%f - %f)\n", ray->cx, p_pos->px, ray->cx, p_pos->px, ray->cy, p_pos->py, ray->cy, p_pos->py);
-	printf("%f + %f\n", (ray->cx - p_pos->px) * (ray->cx - p_pos->px), (ray->cy - p_pos->py) * (ray->cy - p_pos->py));
-	printf("sqrt %f\n", ((ray->cx - p_pos->px) * (ray->cx - p_pos->px) +
-			(ray->cy - p_pos->py) * (ray->cy - p_pos->py)));
-	printf("final %f\n", sqrt((double)((ray->cx - p_pos->px) * (ray->cx - p_pos->px) +
-			(ray->cy - p_pos->py) * (ray->cy - p_pos->py))));
+	// printf("cx: %f cy: %f\n", ray->cx, ray->cy);
+	// printf("px: %f py: %f\n", p_pos->px, p_pos->py);
+	// printf("dist: (%f - %f) * (%f - %f) + (%f - %f) * (%f - %f)\n", ray->cx, p_pos->px, ray->cx, p_pos->px, ray->cy, p_pos->py, ray->cy, p_pos->py);
+	// printf("%f + %f\n", (ray->cx - p_pos->px) * (ray->cx - p_pos->px), (ray->cy - p_pos->py) * (ray->cy - p_pos->py));
+	// printf("sqrt %f\n", ((ray->cx - p_pos->px) * (ray->cx - p_pos->px) +
+	// 		(ray->cy - p_pos->py) * (ray->cy - p_pos->py)));
+	// printf("final %f\n", sqrt((double)((ray->cx - p_pos->px) * (ray->cx - p_pos->px) +
+	// 		(ray->cy - p_pos->py) * (ray->cy - p_pos->py))));
 	if (ray->end == 1)
 		ray->dist = (float)sqrt((double)((ray->cx - p_pos->px) * (ray->cx - p_pos->px) +
 			(ray->cy - p_pos->py) * (ray->cy - p_pos->py)));
@@ -43,10 +43,10 @@ float	dist(t_ray *ray, t_playerpos *p_pos)
 
 float	fix_angle(float	angle)
 {
-	if (angle >= 2 * PI)
-		return (angle - 2 * PI);
+	if (angle >= P2)
+		return (angle - P2);
 	else if (angle < 0)
-		return (angle + 2 * PI);
+		return (angle + P2);
 	return (angle);
 }
 

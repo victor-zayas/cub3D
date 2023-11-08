@@ -6,7 +6,7 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/06 19:10:54 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/07 17:40:31 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,19 @@
 
 // MACROS
 # define PI  3.1415926
-# define P2 PI / 2
-# define P32 PI * 3 / 2
-# define P4 PI / 4
-# define P34 PI * 3 / 4
-# define P54 PI * 5 / 4
-# define P74 PI * 7 / 4
+# define P2  2 * PI
+# define P_2 PI / 2
+# define P3_2 PI * 3 / 2
+# define P_4 PI / 4
+# define P3_4 PI * 3 / 4
+# define P5_4 PI * 5 / 4
+# define P7_4 PI * 7 / 4
 # define DEG 2 * PI / 360
+# define ANGLE 90 * DEG
 # define HEIGHT 540
 # define WIDTH 1080
 # define C_WIDTH 1080 / 90
+# define HOP DEG * C_WIDTH
 
 // INCLUDES
 # include <fcntl.h>
