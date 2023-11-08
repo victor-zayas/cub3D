@@ -6,7 +6,7 @@
 #    By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 15:10:33 by vzayas-s          #+#    #+#              #
-#    Updated: 2023/10/26 14:43:59 by lagonzal         ###   ########.fr        #
+#    Updated: 2023/11/08 15:40:53 by lagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ SRCDIR := src/
 ERROR = error
 MAIN = main initial
 MAP = get_map check_map check_attrb
-TEXTURE = get_texture check_texture
+TEXTURE = get_texture check_texture mlx_img
 RAYCAST = distance line_fixer raycaster
 DRAW = draw_columns
 

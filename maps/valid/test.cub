@@ -1,16 +1,13 @@
-NO ./texture/xmp/blue_wall.xpm
-SO ./texture/xmp/brick_wall.xpm
-WE ./texture/xmp/grey_wall.xpm
-EA ./texture/xmp/steel_wall.xpm
+NO ./texture/xpm/blue_wall.xpm
+SO ./texture/xpm/brick_wall.xpm
+WE ./texture/xpm/grey_wall.xpm
+EA ./texture/xpm/steel_wall.xpm
 
 C 0,255,255
 F 160,160,160
 
-11111111
-10001101
-1100S011
-11000011
-10100001
-10000001
-100S0001
-11111111
+11111111111111111111
+10000000000000000001
+100000000000000000W1
+10000000000000000001
+11111111111111111111

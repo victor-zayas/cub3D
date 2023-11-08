@@ -6,7 +6,7 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/08 14:39:37 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/08 15:40:32 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,9 @@ void	ft_get_color(t_map *map, t_texture *texture);
 // -CHECK COLOR
 void	ft_check_texture(t_texture *texture);
 int     *ft_check_color(char *str);
+// -MLX IMG
+void	ft_get_img(t_all *all);
+
 
 // -ERROR
 void	ft_check_fd(int fd);

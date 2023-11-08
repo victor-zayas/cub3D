@@ -6,7 +6,7 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:26 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/08 14:14:25 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/08 15:38:41 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	main(int argc, char **argv)
 		ft_parse(&all);
 		print_struct(&all);
 		get_mlx(&all.mlx);
+		ft_get_img(&all);
 		search_playerpos(all.map.map, &all.player);
 		raycaster(&all.player, &all, &all.mlx);
 		mlx_loop(all.mlx.mlx);

@@ -6,7 +6,7 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 13:39:09 by lagonzal          #+#    #+#             */
-/*   Updated: 2023/11/08 14:50:45 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/08 20:23:09 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	floor_ceil(t_mlx *mlx, int *start, int *color, int i)
 		//mlx_pixel_put(mlx->mlx, mlx->win, i, n, rgb);
 		addr = (n * mlx->size) + (i * (mlx->bpp / 8));
 		*(unsigned int*)(mlx->addr + addr) = rgb;
+		//printf("addr: %d\n", addr);
 		n++;
 	}
 
@@ -32,14 +33,12 @@ void	floor_ceil(t_mlx *mlx, int *start, int *color, int i)
 
 int	calc_height(t_ray *ray)
 {
-	int proyection =   (64) * 280 / ray->dist;
+	int proyection =   (64) * 2.5 * 280 / ray->dist;
 	return (proyection);
 }
 
-int get_pixel(int n, int i, t_all *all, char dir)
+unsigned get_pixel(int n, int y_pos, t_all *all, char dir)
 {
-	int		addr;
-	int		color;
 	t_img	img;
 	int		addr;
 
@@ -51,23 +50,41 @@ int get_pixel(int n, int i, t_all *all, char dir)
 		img = all->east;
 	else if (dir == 'W')
 		img = all->west;
+	if (n >= 64)
+		n = 63;
+	printf("===========================\n");
+	printf("y_pos: %d n: %d\n", y_pos, n);
+	addr = (y_pos * img.size) + (n * (img.bpp / 8));
+	printf("img size: %d, img bpp %d\n", img.size, img.bpp);
+	printf("txt addr: %d final address %u\n", addr, *(unsigned int *)img.addr + addr);
+	return (*(unsigned int*)(img.addr + addr));
 	
 }
 
 void	draw_wall(t_ray *col, t_all *all, int *start_stop, int i)
 {
 	int		n;
-	float	delta_y;
-	int		color;
+	float	delta_y[2];
 	int		addr;
+	int 	pos;
+	float	n2;
 
 	n = start_stop[0];
-	delta_y = 64.0 / (float)col->height;
+	n2 = 0;
+	delta_y[0] = 64.0 / (float)col->height;
+	delta_y[1] = delta_y[0];
+	printf("col cx: %f, cy: %f\n", col->cx, col->cy);
+	if (col->tx == 'N' || col->tx == 'S')
+		pos = ((int)col->cx % 64);
+	else
+		pos = ((int)col->cy % 64);
+	printf("pos: %d\n", pos);
 	while (n < start_stop[1])
 	{
-		color = get_pixel(n, i, all, col->tx);
 		addr = (n * all->mlx.size) + (i * (all->mlx.bpp / 8));
-		*(unsigned int*)(all->mlx.addr + addr) = color;
+		*(unsigned int*)(all->mlx.addr + addr) = get_pixel((int)delta_y[0], pos, all, col->tx);
+		delta_y[0] += delta_y[1];
+		n++;
 	}
 }
 
@@ -79,13 +96,13 @@ void	draw_column(t_ray *col, t_all *all, t_mlx *mlx, int i)
 	start_stop[0] = 0;
 	fix_fisheye(col);
 	col->height = calc_height(col);
-	//printf("height: %d\n", height);
+	printf("height: %d\n", col->height);
 	start_stop[1] = (HEIGHT - col->height) / 2;
-	//printf("ceiling start: %d, end: %d\n", start_stop[0], start_stop[1]);
+	printf("ceiling start: %d, end: %d\n", start_stop[0], start_stop[1]);
 	floor_ceil(mlx, start_stop, all->texture.C, i);
 	start_stop[0] = start_stop[1];
 	start_stop[1] = col->height + ((HEIGHT - col->height) / 2);
-	//printf("wall start: %d, end: %d\n", start_stop[0], start_stop[1]);
+	printf("wall start: %d, end: %d\n", start_stop[0], start_stop[1]);
 	draw_wall(col, all, start_stop, i);
 	start_stop[0] = start_stop[1];
 	start_stop[1] = HEIGHT;
