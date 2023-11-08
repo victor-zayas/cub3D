@@ -6,7 +6,7 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/07 17:40:31 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/08 14:39:37 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,30 +76,11 @@ typedef struct s_playerpos
 
 typedef struct s_img
 {
-	// North
-	void	*img_NO;	//pointer to the img of the texture
-	char	*addr_NO;	//address pointer to the img
-	int		bpp_NO;		//bits per pixel of the mlx image
-	int		size_NO;	//size from mlx image
-	int		end_NO;		//endian from mlx image
-	// South
-	void	*img_SO;
-	char	*addr_SO;
-	int		bpp_SO;
-	int		size_SO;
-	int		end_SO;
-	// East
-	void	*img_EA;
-	char	*addr_EA;
-	int		bpp_EA;
-	int		size_EA;
-	int		end_EA;
-	// West
-	void	*img_WE;
-	char	*addr_WE;
-	int		bpp_WE;
-	int		size_WE;
-	int		end_WE;
+	void	*img;	//pointer to the img of the texture
+	char	*addr;	//address pointer to the img
+	int		bpp;		//bits per pixel of the mlx image
+	int		size;	//size from mlx image
+	int		end;		//endian from mlx image
 }	t_img;
 
 typedef struct s_mlx
@@ -127,10 +108,15 @@ typedef struct s_ray
 	char	tx;		//texture type
 	float	dist;	//distance to the collision point
 	int		end;	//signals the raycasting to end
+	int		height;	//height of the wall
 }   t_ray;
 
 typedef struct s_all
 {
+	t_img		north;
+	t_img		south;
+	t_img		east;
+	t_img		west;
     t_map       map;
     t_attrb     attrb;
     t_texture   texture;

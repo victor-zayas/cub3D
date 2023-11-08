@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initial.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:31 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/26 16:45:51 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/08 14:38:30 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,26 +58,11 @@ static	void	ft_init_texture(t_texture *texture)
 
 static	void	ft_init_img(t_img *img)
 {
-	img->img_NO = NULL;
-	img->img_SO = NULL;
-	img->img_EA = NULL;
-	img->img_WE = NULL;
-	img->addr_NO = NULL;
-	img->addr_SO = NULL;
-	img->addr_EA = NULL;
-	img->addr_WE = NULL;
-	img->bpp_NO = 0;
-	img->bpp_SO = 0;
-	img->bpp_EA = 0;
-	img->bpp_WE = 0;
-	img->size_NO = 0;
-	img->size_SO = 0;
-	img->size_EA = 0;
-	img->size_WE = 0;
-	img->end_NO = 0;
-	img->end_SO = 0;
-	img->end_EA = 0;
-	img->end_WE = 0;
+	img->addr = NULL;
+	img->bpp = 0;
+	img->end = 0;
+	img->img = 0;
+	img->size = 0;
 }
 
 /**

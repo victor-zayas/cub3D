@@ -6,7 +6,7 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:26 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/06 19:40:38 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/08 14:14:25 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,16 @@ static	void	print_struct(t_all *all)
 int	main(int argc, char **argv)
 {
 	t_all		all;
-	t_mlx   	mlx;
-	t_playerpos	p_pos;
 
 	if (argc == 2)
 	{
 		ft_init_struct(&all, argv[1]);
 		ft_parse(&all);
 		print_struct(&all);
-		get_mlx(&mlx);
-		search_playerpos(all.map.map, &p_pos);
-		raycaster(&p_pos, &all, &mlx);
-		mlx_loop(mlx.mlx);
+		get_mlx(&all.mlx);
+		search_playerpos(all.map.map, &all.player);
+		raycaster(&all.player, &all, &all.mlx);
+		mlx_loop(all.mlx.mlx);
 	}
 	else
 		printf("Error\nExpected two arguments, have %d\n", argc);

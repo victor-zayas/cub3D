@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_img.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 16:10:01 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/26 16:33:00 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/08 14:45:23 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	ft_get_img(t_all *all)
 {
 	// IMAGE
-	all->img.img_NO = mlx_xpm_file_to_image(all->mlx.mlx, all->texture.NO, 64, 64);
-	all->img.img_SO = mlx_xpm_file_to_image(all->mlx.mlx, all->texture.SO, 64, 64);
-	all->img.img_EA = mlx_xpm_file_to_image(all->mlx.mlx, all->texture.EA, 64, 64);
-	all->img.img_WE = mlx_xpm_file_to_image(all->mlx.mlx, all->texture.WE, 64, 64);
+	all->north.img = mlx_xpm_file_to_image(all->mlx.mlx, all->texture.NO, 64, 64);
+	all->south.img = mlx_xpm_file_to_image(all->mlx.mlx, all->texture.SO, 64, 64);
+	all->east.img = mlx_xpm_file_to_image(all->mlx.mlx, all->texture.EA, 64, 64);
+	all->west.img = mlx_xpm_file_to_image(all->mlx.mlx, all->texture.WE, 64, 64);
 	// ADDRESS
-	all->img.addr_NO = mlx_get_data_addr(all->img.img_NO, &all->img.bpp_NO, &all->img.size_NO, &all->img.end_NO);
-	all->img.addr_SO = mlx_get_data_addr(all->img.img_SO, &all->img.bpp_SO, &all->img.size_SO, &all->img.end_SO);
-	all->img.addr_EA = mlx_get_data_addr(all->img.img_EA, &all->img.bpp_EA, &all->img.size_EA, &all->img.end_EA);
-	all->img.addr_WE = mlx_get_data_addr(all->img.img_WE, &all->img.bpp_WE, &all->img.size_WE, &all->img.end_WE);
+	all->north.addr = mlx_get_data_addr(all->north.img, &all->north.bpp, &all->north.size, &all->north.end);
+	all->south.addr = mlx_get_data_addr(all->south.img, &all->south.bpp, &all->south.size, &all->south.end);
+	all->east.addr = mlx_get_data_addr(all->east.img, &all->east.bpp, &all->east.size, &all->east.end);
+	all->west.addr = mlx_get_data_addr(all->west.img, &all->west.bpp, &all->west.size, &all->west.end);
 }
