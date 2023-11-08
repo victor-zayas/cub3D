@@ -6,7 +6,7 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/08 15:40:32 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/08 20:42:19 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ typedef struct s_texture
     char    *SO; // South texture path
     char    *WE; // East texture path
     char    *EA; // West texture path
-    int    *C;	// RGB color code for ceiling
-    int    *F;	// RGB color code for floor
+    int    C;	// RGB color code for ceiling
+    int    F;	// RGB color code for floor
 } t_texture;
 
 typedef struct s_playerpos
