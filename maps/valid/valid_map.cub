@@ -1,7 +1,7 @@
-NO ./texture/xmp/blue_wall.xpm
-SO ./texture/xmp/brick_wall.xpm
-WE ./texture/xmp/grey_wall.xpm
-EA ./texture/xmp/steel_wall.xpm
+SO ./texture/xpm/brick_wall.xpm
+NO ./texture/xpm/blue_wall.xpm
+WE ./texture/xpm/grey_wall.xpm
+EA ./texture/xpm/steel_wall.xpm
 
 C 0,255,255
 F 160,160,160

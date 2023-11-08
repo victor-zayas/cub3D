@@ -1,7 +1,7 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_north_texture
-WE
-EA ./path_to_the_east_texture
+SO ./texture/xpm/brick_wall.xpm
+NO ./texture/xpm/blue_wall.xpm
+WE 
+EA ./texture/xpm/steel_wall.xpm
 
 F 220,100,0
 C 225,30,0

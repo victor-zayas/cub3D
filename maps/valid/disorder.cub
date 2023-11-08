@@ -1,12 +1,12 @@
        F       220,100,0
-    NO ./textures/red.xpm
-      SO ./textures/bluestone.xpm
-          WE          ./textures/greystone.xpm
+    NO ./textures/xpm/red.xpm
+      SO ./textures/xpm/bluestone.xpm
+          WE          ./textures/xpm/greystone.xpm
    C 225,30,0
 
 
 
-               EA ./textures/eagle.xpm
+               EA ./textures/xpm/eagle.xpm
 
 
         1111111111111111111111111
