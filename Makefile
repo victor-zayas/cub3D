@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+         #
+#    By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 15:10:33 by vzayas-s          #+#    #+#              #
-#    Updated: 2023/10/26 14:43:59 by lagonzal         ###   ########.fr        #
+#    Updated: 2023/11/08 13:55:12 by vzayas-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 NAME = cub3D
 
 # FLAGS #
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 #-fsanitize=address
 MLXFLAGS = -framework OpenGL -framework AppKit
 
 # INCLUDES #
@@ -35,15 +35,15 @@ ERROR = error
 MAIN = main initial
 MAP = get_map check_map check_attrb
 TEXTURE = get_texture check_texture
-RAYCAST = distance line_fixer raycaster
-DRAW = draw_columns
+#RAYCAST = distance line_fixer raycaster
+#DRAW = draw_columns
 
 PLAIN_SRCS =	$(addsuffix .c, $(addprefix error/, $(ERROR)))\
 				$(addsuffix .c, $(addprefix main/, $(MAIN)))\
 				$(addsuffix .c, $(addprefix map/, $(MAP)))\
 				$(addsuffix .c, $(addprefix texture/, $(TEXTURE)))\
-				$(addsuffix .c, $(addprefix raycast/, $(RAYCAST)))\
-				$(addsuffix .c, $(addprefix draw/, $(DRAW)))
+#				$(addsuffix .c, $(addprefix raycast/, $(RAYCAST)))\
+#				$(addsuffix .c, $(addprefix draw/, $(DRAW)))
 
 SRCS := $(addprefix $(SRCDIR), $(PLAIN_SRCS))
 OBJS := $(addprefix $(OBJDIR), $(PLAIN_SRCS:.c=.o))

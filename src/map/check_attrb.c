@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_attrb.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:33:50 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/26 14:40:04 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:59:33 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static	void	ft_count_attrb(t_map *map, t_attrb *attrb)
 {
 	int		x;
 	int		y;
+
 	x = -1;
 	while (map->map[++x])
 	{
@@ -58,14 +59,14 @@ static	void	ft_check_init_poss(t_map *map, t_attrb *attrb)
 	}
 	else
 	{
-		if (attrb->n && (attrb->s || attrb->e || attrb->w))
+		if ((attrb->n && (attrb->s || attrb->e || attrb->w))
+			|| (attrb->s && (attrb->n || attrb->e || attrb->w))
+			|| (attrb->e && (attrb->s || attrb->n || attrb->w))
+			|| (attrb->w && (attrb->s || attrb->e || attrb->n)))
+		{
 			printf("Error\nThere is more than one starting possition\n");
-		if (attrb->s && (attrb->n || attrb->e || attrb->w))
-			printf("Error\nThere is more than one starting possition\n");
-		if (attrb->e && (attrb->s || attrb->n || attrb->w))
-			printf("Error\nThere is more than one starting possition\n");
-		if (attrb->w && (attrb->s || attrb->e || attrb->n))
-			printf("Error\nThere is more than one starting possition\n");
+			exit(1);
+		}
 	}
 }
 

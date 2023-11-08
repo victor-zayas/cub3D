@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:31 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/26 16:45:51 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/08 14:50:38 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ static	void	ft_init_texture(t_texture *texture)
 	texture->SO = NULL;
 	texture->EA = NULL;
 	texture->WE = NULL;
-	texture->C = NULL;
-	texture->F = NULL;
+	texture->C = 0;
+	texture->F = 0;
 }
 
 static	void	ft_init_img(t_img *img)

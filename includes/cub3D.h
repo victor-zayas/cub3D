@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/07 17:40:31 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/08 14:49:47 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ typedef struct s_texture
     char    *SO; // South texture path
     char    *WE; // East texture path
     char    *EA; // West texture path
-    int    *C;	// RGB color code for ceiling
-    int    *F;	// RGB color code for floor
+    int    C;	// RGB color code for ceiling
+    int    F;	// RGB color code for floor
 } t_texture;
 
 typedef struct s_playerpos
