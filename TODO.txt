@@ -12,6 +12,7 @@ MAP
 - spaces inside walkable map ✅
 - map has no start poss ✅
 - map dimensions ✅
+- leaks 
 
 TEXTURES
 - One texture missing ✅
@@ -28,8 +29,12 @@ MLX
 - get rgb into array ✅
 - initilize mlx and get window and texture addresses ✅
 - close mlx windows with red x & ESC case
-- use mlx to make movement with direction arrows
+- use mlx to rotate camera with direction arrows
 - use mlx to move with WASD
 
 RAYCAST
-- start drawing columns with plain colors
+- start drawing columns with plain colors ✅
+- put textures
+- solve sawteeth
+
+valgrind --leak-check=full --track-origins=yes --log-file=log ./cub3D maps/valid/test.cub

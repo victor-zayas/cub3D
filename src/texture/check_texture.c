@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 01:49:02 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/26 16:02:56 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/08 15:30:40 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,17 @@
  */
 void	ft_check_texture(t_texture *texture)
 {
+	printf("check %s\n", texture->NO);
 	if (ft_strrchr(texture->NO, ' ') || ft_strrchr(texture->SO, ' ')
 		|| ft_strrchr(texture->EA, ' ') || ft_strrchr(texture->WE, ' '))
 	{
 		printf("Error\nInvalid texture path\n");
 		exit(1);
 	}
+	ft_check_ext_texture(texture->NO);
+	ft_check_ext_texture(texture->SO);
+	ft_check_ext_texture(texture->EA);
+	ft_check_ext_texture(texture->WE);
 }
 
 /**
@@ -80,6 +85,7 @@ int	*ft_check_color(char *str)
 		printf("Error\nMissing value in RGB code\n");
 		exit(1);
 	}
-	free(rgb);
+	free(str);
+	ft_doublefree(rgb);
 	return (num);
 }

@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:19:53 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/08 14:48:34 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/08 15:38:34 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,6 @@ void	ft_get_texture(t_map *map, t_texture *texture)
 	texture->EA = ft_find_texture(map, "EA");
 	texture->WE = ft_find_texture(map, "WE");
 	ft_check_texture(texture);
-	ft_check_ext_texture(texture->NO);
-	ft_check_ext_texture(texture->SO);
-	ft_check_ext_texture(texture->EA);
-	ft_check_ext_texture(texture->WE);
 }
 
 /**

@@ -6,7 +6,7 @@
 #    By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/24 12:12:22 by vzayas-s          #+#    #+#              #
-#    Updated: 2023/10/18 18:27:52 by vzayas-s         ###   ########.fr        #
+#    Updated: 2023/11/08 15:11:15 by vzayas-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,10 @@ SRCS =	ft_isalpha.c			\
 		ft_lstsize_bonus.c		\
 		get_next_line.c			\
 		get_next_line_utils.c	\
-		
+		ft_doublefree.c			\
+		ft_doublestrdup.c		\
+		ft_doublestrlen.c		\
+		ft_getfilesize.c		\
 
 SRC := $(addprefix $(SRCDIR), $(SRCS))
 OBJS := $(addprefix $(OBJDIR), $(OBJS))

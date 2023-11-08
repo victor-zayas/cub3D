@@ -6,7 +6,7 @@
 #    By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 15:10:33 by vzayas-s          #+#    #+#              #
-#    Updated: 2023/11/08 13:55:12 by vzayas-s         ###   ########.fr        #
+#    Updated: 2023/11/08 16:26:15 by vzayas-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -121,14 +121,13 @@ clean:
 	make -C libft clean
 	make -C mlx clean
 	rm -rf $(OBJDIR)
-	$(RM) $(OBJS)
 	echo "$(RED)༺ Objs deleted༻$(END)"
 	echo "$$FISH"
 
 # delete executable
 fclean: clean
 	make -C libft fclean
-	$(RM) $(NAME)
+	rm $(NAME)
 	echo "$(YELLOW)༺ Executable deleted༻$(END)"
 
 re: fclean all

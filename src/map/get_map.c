@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:42 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/18 19:05:29 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/08 16:10:11 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_get_data(t_map *map)
 	map->fd = open(map->name, O_RDONLY);
 	rd = read(map->fd, aux, len);
 	ft_check_read(rd);
-	aux[rd] = '\0'; // before aux[rd - 1] = '\0' ????
+	aux[rd] = '\0';
 	map->raw = ft_split(aux, '\n');
 	ft_empty_map(map);
 	i = -1;
@@ -90,17 +90,13 @@ static	void	ft_check_order(t_map *map)
 		aux[i] = map->raw[i];
 	i = -1;
 	while (++i < 6)
-	{
 		aux[i] = ft_strtrim(map->raw[i], " ");
-		// printf("%s\n", aux[i]);
-	}
 	x = -1;
 	while (++x < 6)
 	{
 		if (aux[x][0] != 'N' && aux[x][0] != 'S' && aux[x][0] != 'E'
 			&& aux[x][0] != 'W' && aux[x][0] != 'F' && aux[x][0] != 'C')
 		{
-			//printf("line: %d, content: %s\n", x, map->raw[x]);
 			printf("Error\nMap isn't the last parameter\n");
 			exit(1);
 		}

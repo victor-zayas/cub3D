@@ -16,6 +16,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <errno.h>
 # include "get_next_line.h"
 
 typedef struct s_list
@@ -68,5 +69,9 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
+char	**ft_doublefree(char **str);
+char	**ft_doublestrdup(const char **str);
+int		ft_doublestrlen(const char **str);
+int		ft_getfile_size(int fd);
 
 #endif
