@@ -12,7 +12,8 @@ MAP
 - spaces inside walkable map ✅
 - map has no start poss ✅
 - map dimensions ✅
-- leaks 
+- leaks
+- free map at close (check if need to move on close window)
 
 TEXTURES
 - One texture missing ✅
@@ -35,6 +36,6 @@ MLX
 RAYCAST
 - start drawing columns with plain colors ✅
 - put textures
-- solve sawteeth
+- solve sawteeth (optional)
 
 valgrind --leak-check=full --track-origins=yes --log-file=log ./cub3D maps/valid/test.cub

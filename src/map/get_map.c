@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:42 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/08 16:10:11 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/08 16:53:33 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	ft_read_map(t_map *map)
 void	ft_get_data(t_map *map)
 {
 	char	*aux;
+	char	*tmp;
 	int		rd;
 	int		len;
 	int		i;
@@ -64,7 +65,11 @@ void	ft_get_data(t_map *map)
 	ft_empty_map(map);
 	i = -1;
 	while (++i < 6)
-		map->raw[i] = ft_strtrim(map->raw[i], " ");
+	{
+		tmp = ft_strtrim(map->raw[i], " ");
+		free(map->raw[i]);
+		map->raw[i] = tmp;
+	}
 	close(map->fd);
 	free(aux);
 }
@@ -101,6 +106,9 @@ static	void	ft_check_order(t_map *map)
 			exit(1);
 		}
 	}
+	i = -1;
+	while (++i < 6)
+		free(aux[i]);
 	free(aux);
 }
 
@@ -125,7 +133,7 @@ void	ft_get_map(t_map *map, t_attrb *attrb)
 	while (++j < i)
 	{
 		if (j >= 6)
-			map->map[j - 6] = map->raw[j];
+			map->map[j - 6] = ft_strdup(map->raw[j]);
 	}
 	map->map[i - 6] = NULL;
 	ft_empty_map(map);
@@ -147,4 +155,5 @@ void	ft_parse(t_all *all)
 	ft_get_map(&all->map, &all->attrb);
 	ft_get_texture(&all->map, &all->texture);
 	ft_get_color(&all->map, &all->texture);
+	ft_doublefree(all->map.raw);
 }
