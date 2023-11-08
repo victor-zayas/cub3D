@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 01:49:02 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/08 15:30:40 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/08 17:21:50 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,7 @@ int	*ft_check_color(char *str)
 		j++;
 	}
 	if (i != 3)
-	{
-		printf("Error\nMissing value in RGB code\n");
-		exit(1);
-	}
+		ft_exit("Missing value in RGB code");
 	free(str);
 	ft_doublefree(rgb);
 	return (num);

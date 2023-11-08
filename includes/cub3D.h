@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/08 16:16:24 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/08 17:22:53 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,31 +127,34 @@ typedef struct s_all
 } t_all;
 
 // PROTOTIPES
-// MAIN
 // -INITIAL
 void	ft_init_struct(t_all *all, char *name);
 
 // MAP
-// -GET MAP
+// -GET_MAP
 int     ft_read_map(t_map *map);
 void	ft_get_data(t_map *map);
 void	ft_get_map(t_map *map, t_attrb *attrb);
 void	ft_parse(t_all *all);
-// -CHECK MAP
+// -CHECK_MAP
 void	ft_check_map(t_map *map, t_attrb *attrb);
 // -CHECK_ATTRB
 void	ft_check_attrb(t_map *map, t_attrb *attrb);
 
 // TEXTURE
-// -GE TEXTURE
+// -GE_TEXTURE
 void	ft_get_texture(t_map *map, t_texture *texture);
 void	ft_check_texture(t_texture *texture);
 void	ft_get_color(t_map *map, t_texture *texture);
-// -CHECK COLOR
+// -CHECK_COLOR
 void	ft_check_texture(t_texture *texture);
 int     *ft_check_color(char *str);
+// -MLX_IMG
+void	ft_get_img(t_all *all);
 
+// ERROR
 // -ERROR
+void	ft_exit(char *str);
 void	ft_check_fd(int fd);
 void	ft_check_read(int rd);
 void	ft_check_extension(char *str);
@@ -161,14 +164,13 @@ void	ft_empty_map(t_map *map);
 //	RAYCAST
 //	-RAYCASTER
 void	raycaster(t_playerpos *p_pos, t_all *all, t_mlx *mlx);
-
 //	-DISTACE
 float	dist(t_ray *ray, t_playerpos *p_pos);
 float	fix_angle(float	angle);
 float	absolute(float in);
+//	-LINE_FIXER
+void	fix_fisheye(t_ray *ray);
 
-//	-LINE FIXER
-void	fix_fisheye(t_ray *ray/*, t_playerpos *p_pos*/);
 //	DRAW
 //	-DRAW_COLUMNS
 void	draw_column(t_ray *col, t_all *all, t_mlx *mlx, int i);
