@@ -12,6 +12,13 @@
 
 #include "../../includes/cub3D.h"
 
+/**
+ * @brief fixes the fisheye effect caused by the ray distance calculation
+ * 
+ * @param ray 
+ * @param player 
+ */
+
 void	fix_fisheye(t_ray *ray/*, t_playerpos *p_pos*/)
 {
 	if ((ray->ra > P_4 && ray->ra < P3_4) || (ray->ra > P5_4 && ray->ra < P7_4))

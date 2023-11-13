@@ -25,14 +25,6 @@
 
 float	dist(t_ray *ray, t_playerpos *p_pos)
 {
-	// printf("cx: %f cy: %f\n", ray->cx, ray->cy);
-	// printf("px: %f py: %f\n", p_pos->px, p_pos->py);
-	// printf("dist: (%f - %f) * (%f - %f) + (%f - %f) * (%f - %f)\n", ray->cx, p_pos->px, ray->cx, p_pos->px, ray->cy, p_pos->py, ray->cy, p_pos->py);
-	// printf("%f + %f\n", (ray->cx - p_pos->px) * (ray->cx - p_pos->px), (ray->cy - p_pos->py) * (ray->cy - p_pos->py));
-	// printf("sqrt %f\n", ((ray->cx - p_pos->px) * (ray->cx - p_pos->px) +
-	// 		(ray->cy - p_pos->py) * (ray->cy - p_pos->py)));
-	// printf("final %f\n", sqrt((double)((ray->cx - p_pos->px) * (ray->cx - p_pos->px) +
-	// 		(ray->cy - p_pos->py) * (ray->cy - p_pos->py))));
 	if (ray->end == 1)
 		ray->dist = (float)sqrt((double)((ray->cx - p_pos->px) * (ray->cx - p_pos->px) +
 			(ray->cy - p_pos->py) * (ray->cy - p_pos->py)));
@@ -40,6 +32,13 @@ float	dist(t_ray *ray, t_playerpos *p_pos)
 		ray->dist = 1e30;
 	return (ray->dist);
 }
+
+/**
+ * @brief This function fixes the angle between 0 and 2 * pi
+ * 
+ * @param angle the angle that has been modified
+ * @return float the fixed angle
+ */
 
 float	fix_angle(float	angle)
 {
@@ -49,6 +48,13 @@ float	fix_angle(float	angle)
 		return (angle + P2);
 	return (angle);
 }
+
+/**
+ * @brief reutrns the absolute value o the inputed number
+ * 
+ * @param in 
+ * @return float 
+ */
 
 float absolute(float in)
 {

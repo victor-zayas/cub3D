@@ -59,6 +59,9 @@ int	main(int argc, char **argv)
 		ft_get_img(&all);
 		search_playerpos(all.map.map, &all.player);
 		raycaster(&all.player, &all, &all.mlx);
+		//mlx_hook(mlx.win_ptr, 17, 1L << 17, ft_freed, &all); este es para el manejo del cierre y hay que gestionar el liberar la memoria de la mlx aquí
+		mlx_hook(all.mlx.win, 2, 1L << 0, keypress, &all); //
+		mlx_hook(all.mlx.win, 3, 1L << 1, keyrelease, &all); //
 		mlx_loop(all.mlx.mlx);
 	}
 	else

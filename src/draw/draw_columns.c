@@ -12,6 +12,15 @@
 
 #include "../../includes/cub3D.h"
 
+/**
+ * @brief paints the ceiling and the floor with plain colors
+ * 
+ * @param mlx	mlx struct
+ * @param start	a pointer that has the info of start and stop points
+ * @param color	the color to be used to paint
+ * @param i		the column of the window that will be painted. also ray number
+ */
+
 void	floor_ceil(t_mlx *mlx, int *start, int color, int i)
 {
 	int	n;
@@ -20,20 +29,36 @@ void	floor_ceil(t_mlx *mlx, int *start, int color, int i)
 	n = start[0];
 	while (n < start[1])
 	{
-		//mlx_pixel_put(mlx->mlx, mlx->win, i, n, rgb);
 		addr = (n * mlx->size) + (i * (mlx->bpp / 8));
 		*(unsigned int*)(mlx->addr + addr) = color;
-		//printf("addr: %d\n", addr);
 		n++;
 	}
 
 }
+
+/**
+ * @brief Calculates the height of the coulmn based on distance, texture
+ 			size and distance to the proyection plane
+ * 
+ * @param ray	
+ * @return int the proyections height
+ */
 
 int	calc_height(t_ray *ray)
 {
 	int proyection =   (64) * 2.5 * 280 / ray->dist;
 	return (proyection);
 }
+
+/**
+ * @brief Gets the pixel from the texture
+ * 
+ * @param n 
+ * @param i 
+ * @param all 
+ * @param dir 
+ * @return int 
+ */
 
 unsigned get_pixel(int n, int y_pos, t_all *all, char dir)
 {
@@ -50,11 +75,7 @@ unsigned get_pixel(int n, int y_pos, t_all *all, char dir)
 		img = all->west;
 	if (n >= 64)
 		n = 63;
-	printf("===========================\n");
-	printf("y_pos: %d n: %d\n", y_pos, n);
 	addr = (y_pos * img.size) + (n * (img.bpp / 8));
-	printf("img size: %d, img bpp %d\n", img.size, img.bpp);
-	printf("txt addr: %d final address %u\n", addr, *(unsigned int *)img.addr + addr);
 	return (*(unsigned int*)(img.addr + addr));
 	
 }
