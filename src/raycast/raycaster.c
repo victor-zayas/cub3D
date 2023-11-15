@@ -203,6 +203,7 @@ void	print_map(t_map *map)
 		i++;
 	}
 }
+
 /**
  * @brief casts the  rays and decide the texture that is needed for the column.
  * 
@@ -217,7 +218,7 @@ void	raycaster(t_all *all) //here we need to get the big structure as we will ne
 	t_ray	hc;
 	float	ra;
 	int		i;
-	char c;
+	//char c;
 	
 	ra = all->player.pa + (30 * DEG);
 	i = 0;
@@ -236,9 +237,11 @@ void	raycaster(t_all *all) //here we need to get the big structure as we will ne
 			draw_column(&vc, all, &all->mlx, i);
 			printf("horizontal hit\n");
 		}
-		print_map(&all->map);
+		// print_map(&all->map);
+		printf("position px %f py %f\n", all->player.px, all->player.py);
 		i++;
 	}
-	scanf("%c", &c);
+	//scanf("%c", &c);
 	mlx_put_image_to_window(all->mlx.mlx, all->mlx.win, all->mlx.img, 0, 0);
+	return ;
 }

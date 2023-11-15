@@ -31,13 +31,18 @@
 # define FOV_A 60
 # define FOV_R FOV_A * DEG
 // KEYCODES
-// # define W 13
-// # define S 1
-// # define D 2
-// # define A 0
+# define W 13
+# define S 1
+# define D 2
+# define A 0
 # define RA 124
 # define LA 123
 # define ESC 53
+
+//SPEED
+#define MS 5
+#define MF 10
+#define RS 0.1
 
 // INCLUDES
 # include <fcntl.h>
@@ -155,6 +160,10 @@ void	ft_check_attrb(t_map *map, t_attrb *attrb);
 // MLX
 // -KEYHOOKS
 void	keyrelease(int keycode, t_all *all);
+void	keypress(int keycode, t_all *all);
+void	move(t_all *all);
+void	move_manage(t_all *all);
+
 
 // TEXTURE
 // -GE TEXTURE

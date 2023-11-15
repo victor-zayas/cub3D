@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_columns.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 13:39:09 by lagonzal          #+#    #+#             */
-/*   Updated: 2023/11/15 13:05:56 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:51:02 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,10 +119,14 @@ void	draw_column(t_ray *col, t_all *all, t_mlx *mlx, int i)
 	printf("post fish eye ray dist: %f\n", col->dist);
 	printf("height: %d\n", col->height);
 	start_stop[1] = (HEIGHT - col->height) / 2;
+	if (start_stop[1] < 0)
+		start_stop[1] = 0;
 	printf("ceiling start: %d, end: %d\n", start_stop[0], start_stop[1]);
 	floor_ceil(mlx, start_stop, all->texture.C, i);
 	start_stop[0] = start_stop[1];
 	start_stop[1] = col->height + ((HEIGHT - col->height) / 2);
+	if (start_stop[1] > HEIGHT)
+		start_stop[1] = HEIGHT;
 	printf("wall start: %d, end: %d\n", start_stop[0], start_stop[1]);
 	draw_wall(col, all, start_stop, i);
 	start_stop[0] = start_stop[1];
