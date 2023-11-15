@@ -29,8 +29,8 @@ MLX
 - make mlx window ✅
 - get rgb into array ✅
 - initilize mlx and get window and texture addresses ✅
-- close mlx windows with red x & ESC case
-- use mlx to rotate camera with direction arrows
+- close mlx windows with red x & ESC case (handle mlx memory like closing destroying the window and freeing images.)
+- use mlx to make movement with direction arrows
 - use mlx to move with WASD
 
 RAYCAST

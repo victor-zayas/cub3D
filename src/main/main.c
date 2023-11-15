@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:26 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/08 16:55:36 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:26:29 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,15 @@ int	main(int argc, char **argv)
 		ft_init_struct(&all, argv[1]);
 		ft_parse(&all);
 		print_struct(&all);
-		// get_mlx(&all.mlx);
-		// search_playerpos(all.map.map, &all.player);
-		// raycaster(&all.player, &all, &all.mlx);
-		// mlx_loop(all.mlx.mlx);
-		ft_doublefree(all.map.map);
+		get_mlx(&all.mlx);
+		ft_get_img(&all);
+		search_playerpos(all.map.map, &all.player);
+		raycaster(&all);
+		//mlx_hook(&all.mlx.win, 17, 1L << 17, NULL, NULL); //este es para el manejo del cierre y hay que gestionar el liberar la memoria de la mlx aquí
+		//move(&all);
+		mlx_loop_hook(all.mlx.mlx, (void *) &move_manage, &all); //
+		//mlx_loop_hook(all.mlx.mlx, (void *) &raycaster, &all);
+		mlx_loop(all.mlx.mlx);
 	}
 	else
 		printf("Error\nExpected two arguments, have %d\n", argc);
