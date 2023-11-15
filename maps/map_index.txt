@@ -8,6 +8,10 @@ VALID MAPS
 - valid map : the perfect example gived by 42
 - alien_egg : randome map shape
 
+~backrooms
+ > default : a backrooms
+ > pools : a backrooms pool
+
 ERROR MAPS
 - char_in_color : have chars on RGB value
 - disorder : the game map isn't the last element

@@ -1,10 +1,10 @@
-NO ./path_to_the_north_texture
-SO ./path_to/
-WE ./path_to / 
-EA ./path       to_the east_texture
+NO ./texture/xpm/wolfestein/blue_wall.xpm
+SO ./texture/xpm/
+WE ./texture/xpm/wolfestein/
+EA ./texture/
 
-F 220,100,0
-C 225,30,0
+C 0,255,255
+F 160,160,160
 
         1111111111111111111111111
         1000000000110000000000001

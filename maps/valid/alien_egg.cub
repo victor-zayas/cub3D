@@ -1,10 +1,10 @@
-NO ./texture/xpm/blue_wall.xpm
-SO ./texture/xpm/brick_wall.xpm
-WE ./texture/xpm/grey_wall.xpm
-EA ./texture/xpm/steel_wall.xpm
+NO ./texture/xpm/wolfestein/blue_wall.xpm
+SO ./texture/xpm/wolfestein/brick_wall.xpm
+WE ./texture/xpm/wolfestein/grey_wall.xpm
+EA ./texture/xpm/wolfestein/steel_wall.xpm
 
-C 0,255,0
-F 255,255,0
+C 0,255,255
+F 160,160,160
 
        1111 1111 1111
       1000010000100001
@@ -18,5 +18,5 @@ F 255,255,0
     100000001 1000000001
      100000001000000001
       1000000000000001
-       1111110111111
+       11111101111111
              1

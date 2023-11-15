@@ -38,11 +38,10 @@
 # define RA 124
 # define LA 123
 # define ESC 53
-
-//SPEED
-#define MS 5
-#define MF 10
-#define RS 0.1
+// MOVE SPEED
+# define MS 5
+# define MF 10
+# define RS 0.1
 
 // INCLUDES
 # include <fcntl.h>
@@ -163,7 +162,6 @@ void	keypress(int keycode, t_all *all);
 void	move(t_all *all);
 void	move_manage(t_all *all);
 
-
 // TEXTURE
 // -GE_TEXTURE
 void	ft_get_texture(t_map *map, t_texture *texture);
@@ -174,7 +172,6 @@ void	ft_check_texture(t_texture *texture);
 int     *ft_check_color(char *str);
 // -MLX IMG
 void	ft_get_img(t_all *all);
-
 
 // ERROR
 // -ERROR
@@ -188,14 +185,10 @@ void	ft_empty_map(t_map *map);
 //	RAYCAST
 //	-RAYCASTER
 void	raycaster(t_all *all);
-
 //	-DISTACE
 float	dist(t_ray *ray, t_playerpos *p_pos);
 float	fix_angle(float	angle);
 float	absolute(float in);
-//	-LINE_FIXER
-void	fix_fisheye(t_ray *ray);
-
 //	-LINE FIXER
 void	fix_fisheye(t_ray *ray, t_playerpos *p_pos);
 //	DRAW

@@ -1,10 +1,10 @@
-NO ./textures/xpm/red.xpm
-SO ./textures/xpm/bluestone.xpm
-WE ./textures/xpm/greystone.xpm
-EA ./textures/xpm/eagle.xpm
+NO ./texture/xpm/wolfestein/blue_wall.xpm
+SO ./texture/xpm/wolfestein/brick_wall.xpm
+WE ./texture/xpm/wolfestein/grey_wall.xpm
+EA ./texture/xpm/wolfestein/steel_wall.xpm
 
-F 220,100,0
-C 225,30,0
+C 0,255,255
+F 160,160,160
 
 11111111111111111111111111111
 10010000000000000000000000001

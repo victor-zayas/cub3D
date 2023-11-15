@@ -1,19 +1,26 @@
-SO ./texture/xpm/brick_wall.xpm
-
-
-NO ./texture/xpm/blue_wall.xpm
-
-WE ./texture/xpm/grey_wall.xpm
 
 
 
-
-EA ./texture/xpm/steel_wall.xpm
-
+NO ./texture/xpm/wolfestein/blue_wall.xpm
 
 
-C 225,30,0
-F 220,100,0
+
+
+
+SO ./texture/xpm/wolfestein/brick_wall.xpm
+
+
+
+WE ./texture/xpm/wolfestein/grey_wall.xpm
+
+
+
+
+EA ./texture/xpm/wolfestein/steel_wall.xpm
+
+C 0,255,255
+
+F 160,160,160
 
 
 
