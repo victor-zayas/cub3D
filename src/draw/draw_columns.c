@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_columns.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 13:39:09 by lagonzal          #+#    #+#             */
-/*   Updated: 2023/11/08 20:48:11 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/15 13:05:56 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,10 @@ void	draw_column(t_ray *col, t_all *all, t_mlx *mlx, int i)
 
 
 	start_stop[0] = 0;
-	fix_fisheye(col);
+	printf("pre fish eye ray dist: %f\n", col->dist);
+	fix_fisheye(col, &all->player);
 	col->height = calc_height(col);
+	printf("post fish eye ray dist: %f\n", col->dist);
 	printf("height: %d\n", col->height);
 	start_stop[1] = (HEIGHT - col->height) / 2;
 	printf("ceiling start: %d, end: %d\n", start_stop[0], start_stop[1]);

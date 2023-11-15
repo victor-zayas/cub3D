@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:26 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/08 20:45:46 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/15 12:45:06 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,11 @@ int	main(int argc, char **argv)
 		get_mlx(&all.mlx);
 		ft_get_img(&all);
 		search_playerpos(all.map.map, &all.player);
-		raycaster(&all.player, &all, &all.mlx);
+		raycaster(&all);
 		//mlx_hook(mlx.win_ptr, 17, 1L << 17, ft_freed, &all); este es para el manejo del cierre y hay que gestionar el liberar la memoria de la mlx aquí
-		mlx_hook(all.mlx.win, 2, 1L << 0, keypress, &all); //
+		//mlx_hook(all.mlx.win, 2, 1L << 0, keypress, &all); //
 		mlx_hook(all.mlx.win, 3, 1L << 1, keyrelease, &all); //
+		mlx_loop_hook(all.mlx.mlx, (void *) &raycaster, &all);
 		mlx_loop(all.mlx.mlx);
 	}
 	else

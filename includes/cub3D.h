@@ -28,6 +28,16 @@
 # define WIDTH 1080
 # define C_WIDTH 1080 / 90
 # define HOP DEG * C_WIDTH
+# define FOV_A 60
+# define FOV_R FOV_A * DEG
+// KEYCODES
+// # define W 13
+// # define S 1
+// # define D 2
+// # define A 0
+# define RA 124
+# define LA 123
+# define ESC 53
 
 // INCLUDES
 # include <fcntl.h>
@@ -142,6 +152,10 @@ void	ft_check_map(t_map *map, t_attrb *attrb);
 // -CHECK_ATTRB
 void	ft_check_attrb(t_map *map, t_attrb *attrb);
 
+// MLX
+// -KEYHOOKS
+void	keyrelease(int keycode, t_all *all);
+
 // TEXTURE
 // -GE TEXTURE
 void	ft_get_texture(t_map *map, t_texture *texture);
@@ -163,7 +177,7 @@ void	ft_empty_map(t_map *map);
 
 //	RAYCAST
 //	-RAYCASTER
-void	raycaster(t_playerpos *p_pos, t_all *all, t_mlx *mlx);
+void	raycaster(t_all *all);
 
 //	-DISTACE
 float	dist(t_ray *ray, t_playerpos *p_pos);
@@ -171,7 +185,7 @@ float	fix_angle(float	angle);
 float	absolute(float in);
 
 //	-LINE FIXER
-void	fix_fisheye(t_ray *ray/*, t_playerpos *p_pos*/);
+void	fix_fisheye(t_ray *ray, t_playerpos *p_pos);
 //	DRAW
 //	-DRAW_COLUMNS
 void	draw_column(t_ray *col, t_all *all, t_mlx *mlx, int i);

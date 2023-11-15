@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+         #
+#    By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 15:10:33 by vzayas-s          #+#    #+#              #
-#    Updated: 2023/11/08 20:46:08 by vzayas-s         ###   ########.fr        #
+#    Updated: 2023/11/15 12:46:23 by lagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,13 +37,15 @@ MAP = get_map check_map check_attrb
 TEXTURE = get_texture check_texture mlx_img
 RAYCAST = distance line_fixer raycaster
 DRAW = draw_columns
+MLX_SRC = keyhooks
 
 PLAIN_SRCS =	$(addsuffix .c, $(addprefix error/, $(ERROR)))\
 				$(addsuffix .c, $(addprefix main/, $(MAIN)))\
 				$(addsuffix .c, $(addprefix map/, $(MAP)))\
 				$(addsuffix .c, $(addprefix texture/, $(TEXTURE)))\
 				$(addsuffix .c, $(addprefix raycast/, $(RAYCAST)))\
-				$(addsuffix .c, $(addprefix draw/, $(DRAW)))
+				$(addsuffix .c, $(addprefix draw/, $(DRAW)))\
+				$(addsuffix .c, $(addprefix mlx/, $(MLX_SRC)))
 
 SRCS := $(addprefix $(SRCDIR), $(PLAIN_SRCS))
 OBJS := $(addprefix $(OBJDIR), $(PLAIN_SRCS:.c=.o))

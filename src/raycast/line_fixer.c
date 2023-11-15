@@ -19,11 +19,8 @@
  * @param player 
  */
 
-void	fix_fisheye(t_ray *ray/*, t_playerpos *p_pos*/)
+void	fix_fisheye(t_ray *ray, t_playerpos *p_pos)
 {
-	if ((ray->ra > P_4 && ray->ra < P3_4) || (ray->ra > P5_4 && ray->ra < P7_4))
-		ray->dist = sin(ray->ra) * ray->dist;
-	else
-	ray->dist = cos(ray->ra) * ray->dist;
+	ray->dist = ray->dist * cos(ray->ra - p_pos->pa);
 	ray->dist = absolute(ray->dist);
 }

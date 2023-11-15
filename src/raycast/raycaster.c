@@ -63,7 +63,6 @@ void	h_offset_calc(t_playerpos *p_pos, t_ray *ray)
 t_ray	check_h_colision(t_playerpos *p_pos, t_map *map, float ra)
 {
 	t_ray	ray;
-	int 	i = 0;
 
 	ray.end = 0;
 	ray.ra = ra;
@@ -212,30 +211,34 @@ void	print_map(t_map *map)
  * @param text	texture
  */
 
-void	raycaster(t_playerpos *p_pos, t_all *all, t_mlx *mlx) //here we need to get the big structure as we will need it later to draw the line.
+void	raycaster(t_all *all) //here we need to get the big structure as we will need it later to draw the line.
 {
 	t_ray	vc;
 	t_ray	hc;
 	float	ra;
 	int		i;
+	char c;
 	
-	ra = p_pos->pa + (45 * DEG);
+	ra = all->player.pa + (30 * DEG);
 	i = 0;
 	while (i < WIDTH)
 	{
-		ra = fix_angle(ra - DEG * 90 / WIDTH);
-		vc = check_v_colision(p_pos, &all->map, ra);
-		hc = check_h_colision(p_pos, &all->map, ra);
-		if (dist(&vc, p_pos) > dist(&hc, p_pos))
+		ra = fix_angle(ra - DEG * 60 / WIDTH);
+		vc = check_v_colision(&all->player, &all->map, ra);
+		hc = check_h_colision(&all->player, &all->map, ra);
+		if (dist(&vc, &all->player) > dist(&hc, &all->player))
 		{
-			draw_column(&hc, all, mlx, i);
+			printf("vertical hit\n");
+			draw_column(&hc, all, &all->mlx, i);
 		}
 		else
 		{
-			draw_column(&vc, all, mlx, i);
+			draw_column(&vc, all, &all->mlx, i);
+			printf("horizontal hit\n");
 		}
 		print_map(&all->map);
 		i++;
 	}
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
+	scanf("%c", &c);
+	mlx_put_image_to_window(all->mlx.mlx, all->mlx.win, all->mlx.img, 0, 0);
 }
