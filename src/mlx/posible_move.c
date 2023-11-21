@@ -6,26 +6,21 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:57:14 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/21 21:00:19 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/21 21:08:34 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-int	p_m(t_all *all, int direction)
+int	p_m(t_all *all, int direction, int rev)
 {
 	float	new_x;
 	float	new_y;
 
-	if (direction == 2)
+	if (direction == 2 || direction == 4)
 	{
-		new_y = all->player.py - (MS * 10 * (sin(all->player.pa)));
-		new_x = all->player.px + (MS * 10 * (cos(all->player.pa)));
-	}
-	else if (direction == 4)
-	{
-		new_y = all->player.py + (MF * 10 * (sin(all->player.pa)));
-		new_x = all->player.px - (MF * 10 * (cos(all->player.pa)));
+		new_y = all->player.py - (MS * 10 * rev * (sin(all->player.pa)));
+		new_x = all->player.px + (MS * 10 * rev * (cos(all->player.pa)));
 	}
 	else if (direction == 3)
 	{

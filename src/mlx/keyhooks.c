@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:33:30 by lagonzal          #+#    #+#             */
-/*   Updated: 2023/11/21 20:29:18 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/21 21:07:49 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,22 +81,22 @@ void	move(t_all *all)
 		all->player.pa -= RS;
 	else if (movement_activation(2, 3) == 2)
 		all->player.pa += RS;
-	if (movement_activation(1, 5) == 2 && p_m(all, 2))
+	if (movement_activation(1, 5) == 2 && p_m(all, 2, 1))
 	{
 		all->player.py -= MF * (sin(all->player.pa));
 		all->player.px += MF * (cos(all->player.pa));
 	}
-	else if (movement_activation(1, 5) == 4 && p_m(all, 4))
+	else if (movement_activation(1, 5) == 4 && p_m(all, 4, -1))
 	{
 		all->player.py += MF * (sin(all->player.pa));
 		all->player.px -= MF * (cos(all->player.pa));
 	}
-	else if (movement_activation(1, 5) == 3 && p_m(all, 3))
+	else if (movement_activation(1, 5) == 3 && p_m(all, 3, 1))
 	{
 		all->player.py -= MS * (sin(all->player.pa + P_2));
 		all->player.px += MS * (cos(all->player.pa + P_2));
 	}
-	else if (movement_activation(1, 5) == 1 && p_m(all, 1))
+	else if (movement_activation(1, 5) == 1 && p_m(all, 1, 1))
 	{
 		all->player.py -= MS * (sin(all->player.pa - P_2));
 		all->player.px += MS * (cos(all->player.pa - P_2));

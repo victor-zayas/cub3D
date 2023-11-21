@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/21 20:39:53 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/21 21:11:15 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@
 # define ESC 53
 
 // MOVE SPEED
-# define MS 2
-# define MF 5
-# define RS 0.1
+# define MS 0.5
+# define MF 2
+# define RS 0.001
 
 // INCLUDES
 # include <fcntl.h>
@@ -163,7 +163,7 @@ void	keypress(int keycode, t_all *all);
 void	move(t_all *all);
 void	move_manage(t_all *all);
 // -POSIBLE MOVES
-int	p_m(t_all *all, int direction);
+int	p_m(t_all *all, int direction, int rev);
 
 // TEXTURE
 // -GE_TEXTURE
