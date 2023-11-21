@@ -6,7 +6,7 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 20:11:34 by larra             #+#    #+#             */
-/*   Updated: 2023/11/06 20:37:21 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:55:54 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@
 float	dist(t_ray *ray, t_playerpos *p_pos)
 {
 	if (ray->end == 1)
-		ray->dist = (float)sqrt((double)((ray->cx - p_pos->px) * (ray->cx - p_pos->px) +
-			(ray->cy - p_pos->py) * (ray->cy - p_pos->py)));
+		ray->dist = (float)sqrt((double)((ray->cx - p_pos->px)
+					* (ray->cx - p_pos->px) + (ray->cy - p_pos->py)
+					* (ray->cy - p_pos->py)));
 	if (ray->end == 2)
 		ray->dist = 1e30;
 	return (ray->dist);
@@ -40,7 +41,7 @@ float	dist(t_ray *ray, t_playerpos *p_pos)
  * @return float the fixed angle
  */
 
-float	fix_angle(float	angle)
+float	fix_angle(float angle)
 {
 	if (angle >= P2)
 		return (angle - P2);
@@ -56,7 +57,7 @@ float	fix_angle(float	angle)
  * @return float 
  */
 
-float absolute(float in)
+float	absolute(float in)
 {
 	if (in < 0)
 		return (-in);

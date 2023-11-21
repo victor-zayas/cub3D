@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/21 16:27:25 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/21 17:01:57 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,6 +186,7 @@ void	ft_check_read(int rd);
 void	ft_check_extension(char *str);
 void	ft_check_ext_texture(char *str);
 void	ft_empty_map(t_map *map);
+void	ft_close(void *all);
 
 //	RAYCAST
 //	-RAYCASTER
@@ -196,6 +197,7 @@ float	fix_angle(float angle);
 float	absolute(float in);
 //	-LINE FIXER
 void	fix_fisheye(t_ray *ray, t_playerpos *p_pos);
+
 //	DRAW
 //	-DRAW_COLUMNS
 void	draw_column(t_ray *col, t_all *all, t_mlx *mlx, int i);

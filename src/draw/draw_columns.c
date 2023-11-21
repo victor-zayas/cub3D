@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_columns.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 13:39:09 by lagonzal          #+#    #+#             */
-/*   Updated: 2023/11/21 16:31:01 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/21 17:02:27 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	calc_height(t_ray *ray)
  * @return int 
  */
 
-unsigned	get_pixel(int n, int y_pos, t_all *all, char dir)
+unsigned int	get_pixel(int n, int y_pos, t_all *all, char dir)
 {
 	t_img	img;
 	int		addr;
