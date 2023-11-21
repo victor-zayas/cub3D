@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_texture.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:19:53 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/08 17:22:30 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/21 13:59:24 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	ft_get_texture(t_map *map, t_texture *texture)
  * @param id 
  * @return char* path of RGB color
  */
-static	int	*ft_find_color(t_map *map, char id)
+static	int	*ft_find_color(t_map *map, char *id)
 {
 	int	y;
 	int	x;
@@ -83,7 +83,8 @@ static	int	*ft_find_color(t_map *map, char id)
 	rgb = NULL;
 	while (map->raw[++y])
 	{
-		if (ft_strchr(map->raw[y], id))
+		printf("in find color %s\n", map->raw[y]);
+		if (ft_strnstr(map->raw[y], id, ft_strlen(map->raw[y])))
 		{
 			while (map->raw[y][x] == ' ')
 				x++;
@@ -106,10 +107,10 @@ void	ft_get_color(t_map *map, t_texture *texture)
 {
 	int *rgb;
 	
-	rgb = ft_find_color(map, 'C');
+	rgb = ft_find_color(map, "C ");
 	texture->C = ((rgb[0] & 255) << 16) | ((rgb[1] & 255) << 8) | ((rgb[2] & 255));
 	free(rgb);
-	rgb = ft_find_color(map, 'F');
+	rgb = ft_find_color(map, "F ");
 	texture->F = ((rgb[0] & 255) << 16) | ((rgb[1] & 255) << 8) | ((rgb[2] & 255));
 	free(rgb);
 }

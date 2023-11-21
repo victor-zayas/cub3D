@@ -6,7 +6,7 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 13:39:09 by lagonzal          #+#    #+#             */
-/*   Updated: 2023/11/21 13:31:12 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/21 14:15:21 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,30 +83,35 @@ unsigned get_pixel(int n, int y_pos, t_all *all, char dir)
 	
 }
 
+int	rev_check(int rev, t_ray *col)
+{
+	if (col->tx == 'S' || col->tx == 'W')
+		return (63 - rev);
+	else
+		return (rev);
+}
+
 void	draw_wall(t_ray *col, t_all *all, int *start_stop, int i)
 {
 	int		n;
 	float	delta_y[2];
 	int		addr;
 	int 	pos;
-	float	n2;
 
 	n = start_stop[0];
-	n2 = 0;
 	delta_y[0] = 64.0 / (float)col->height;
 	delta_y[1] = delta_y[0];
-	printf("col cx: %f, cy: %f\n", col->cx, col->cy);
 	if (col->tx == 'N' || col->tx == 'S')
 		pos = ((int)col->cx % 64);
 	else
 		pos = ((int)col->cy % 64);
-	printf("pos: %d\n", pos);
 	while (n < start_stop[1])
 	{
 		if (n >= 0 && n < HEIGHT && i >= 0 && i < WIDTH)
 		{
 			addr = (n * all->mlx.size) + (i * (all->mlx.bpp / 8));
-			*(unsigned int*)(all->mlx.addr + addr) = get_pixel((int)delta_y[0], pos, all, col->tx);	
+			*(unsigned int*)(all->mlx.addr + addr) =
+				get_pixel((int)delta_y[0], rev_check(pos, col), all, col->tx);
 		}
 		delta_y[0] += delta_y[1];
 		n++;
@@ -119,25 +124,15 @@ void	draw_column(t_ray *col, t_all *all, t_mlx *mlx, int i)
 
 
 	start_stop[0] = 0;
-	printf("pre fish eye ray dist: %f\n", col->dist);
 	fix_fisheye(col, &all->player);
 	col->height = calc_height(col);
-	printf("post fish eye ray dist: %f\n", col->dist);
-	printf("height: %d\n", col->height);
 	start_stop[1] = (HEIGHT - col->height) / 2;
-	// if (start_stop[1] < 0)
-	// 	start_stop[1] = 0;
-	printf("ceiling start: %d, end: %d\n", start_stop[0], start_stop[1]);
 	floor_ceil(mlx, start_stop, all->texture.C, i);
 	start_stop[0] = start_stop[1];
 	start_stop[1] = col->height + ((HEIGHT - col->height) / 2);
-	// if (start_stop[1] > HEIGHT)
-	// 	start_stop[1] = HEIGHT;
-	printf("wall start: %d, end: %d\n", start_stop[0], start_stop[1]);
 	draw_wall(col, all, start_stop, i);
 	start_stop[0] = start_stop[1];
 	start_stop[1] = HEIGHT;
-	//printf("floor start: %d, end: %d\n", start_stop[0], start_stop[1]);
 	floor_ceil(mlx, start_stop, all->texture.F, i);
 	
 }

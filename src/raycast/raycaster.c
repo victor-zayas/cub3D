@@ -218,7 +218,6 @@ void	raycaster(t_all *all) //here we need to get the big structure as we will ne
 	t_ray	hc;
 	float	ra;
 	int		i;
-	//char c;
 	
 	ra = all->player.pa + (30 * DEG);
 	i = 0;
@@ -229,19 +228,14 @@ void	raycaster(t_all *all) //here we need to get the big structure as we will ne
 		hc = check_h_colision(&all->player, &all->map, ra);
 		if (dist(&vc, &all->player) > dist(&hc, &all->player))
 		{
-			printf("vertical hit\n");
 			draw_column(&hc, all, &all->mlx, i);
 		}
 		else
 		{
 			draw_column(&vc, all, &all->mlx, i);
-			printf("horizontal hit\n");
 		}
-		// print_map(&all->map);
-		printf("position px %f py %f\n", all->player.px, all->player.py);
 		i++;
 	}
-	//scanf("%c", &c);
 	mlx_put_image_to_window(all->mlx.mlx, all->mlx.win, all->mlx.img, 0, 0);
 	return ;
 }

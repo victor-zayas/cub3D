@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+         #
+#    By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 15:10:33 by vzayas-s          #+#    #+#              #
-#    Updated: 2023/11/15 17:25:58 by vzayas-s         ###   ########.fr        #
+#    Updated: 2023/11/21 15:00:44 by lagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 NAME = cub3D
 
 # FLAGS #
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 #-fsanitize=address
 MLXFLAGS = -framework OpenGL -framework AppKit
 
 # INCLUDES #
@@ -112,10 +112,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $^ $(LIBFT) $(MLXFLAGS) $(MLX) -o $(NAME)
 	echo "$(BLUE)༺ Program compiled༻$(END)"
 	echo "$$CUB3D"
-	
-raycast:
-	make -C libft
-	$(CC) $(CFLAG) -o  raycast $(LIBFT) $(RAYCAST_SRC) -lGL -lGLU -lglut -I includes -lm -I libft/includes
+
 	
 
 # delete all objects

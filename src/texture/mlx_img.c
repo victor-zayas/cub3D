@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_img.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 16:10:01 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/15 17:27:10 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/21 14:51:42 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,12 @@ void	ft_get_img(t_all *all)
 	free(all->texture.SO);
 	free(all->texture.EA);
 	free(all->texture.WE);
+}
+
+void	ft_free_img(t_all *all)
+{
+	mlx_destroy_image(all->mlx.mlx ,all->north.img);
+	mlx_destroy_image(all->mlx.mlx ,all->south.img);
+	mlx_destroy_image(all->mlx.mlx ,all->east.img);
+	mlx_destroy_image(all->mlx.mlx ,all->west.img);
 }

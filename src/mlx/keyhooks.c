@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   keyhooks.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:33:30 by lagonzal          #+#    #+#             */
-/*   Updated: 2023/11/15 17:05:29 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/21 15:10:39 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
+
+void	ft_close(void *all)
+{
+	t_all	*aux;
+
+	aux = (t_all *)all;
+	mlx_destroy_window(aux->mlx.mlx, aux->mlx.win);
+	mlx_destroy_image(aux->mlx.mlx, aux->mlx.img);
+	ft_free_img(aux);
+	ft_doublefree(aux->map.map);
+	exit(0);
+}
 
 char	movement_activation(char type, char direction)
 {
@@ -77,6 +89,8 @@ void	keyrelease(int keycode, t_all *all)
 		movement_activation(1, 0);
 	else if (keycode == D)
 		movement_activation(1, 0);
+	else if (keycode == ESC)
+		ft_close(all);
 }
 
 void	keypress(int keycode, t_all *all)
@@ -101,22 +115,10 @@ void	keypress(int keycode, t_all *all)
 
 void	move(t_all *all)
 {
-	// char	aux;
-	
-	// printf("rotation check result %d\n", movement_activation(2, 3));
-	// scanf("%c\n", &aux);
 	if (movement_activation(2, 3) == 1)
-	{
 		all->player.pa -= RS;
-		printf("rotating\n");
-		//scanf("%c\n", &aux);
-	}
 	else if (movement_activation(2, 3) == 2)
-	{
-		printf("rotating\n");
-		//scanf("%c\n", &aux);
 		all->player.pa += RS;
-	}	
 	if (movement_activation(1, 5) == 2)
 	{
 		all->player.py -= MF * (sin(all->player.pa));
@@ -137,11 +139,11 @@ void	move(t_all *all)
 		all->player.py -= MS * (sin(all->player.pa - P_2));
 		all->player.px += MS * (cos(all->player.pa - P_2));
 	}
-
 }
 
 void move_manage(t_all *all)
 {
+	mlx_hook(all->mlx.win, 17, 1L << 17, (void *)ft_close, (void *) all);
 	mlx_hook(all->mlx.win, 2, 1L << 0, (void *) &keypress, all);
 	move(all);
 	mlx_hook(all->mlx.win, 3, 1L << 1, (void *) &keyrelease, all);

@@ -172,6 +172,8 @@ void	ft_check_texture(t_texture *texture);
 int     *ft_check_color(char *str);
 // -MLX IMG
 void	ft_get_img(t_all *all);
+void	ft_free_img(t_all *all);
+
 
 // ERROR
 // -ERROR
