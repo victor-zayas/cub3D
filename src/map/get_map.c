@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:42 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/08 16:53:33 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:36:58 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,14 @@ void	ft_get_data(t_map *map)
 	char	*aux;
 	char	*tmp;
 	int		rd;
-	int		len;
 	int		i;
 
 	rd = 0;
-	len = ft_read_map(map);
-	aux = malloc((sizeof(char) * len) + 1);
+	aux = malloc((sizeof(char) * ft_read_map(map)) + 1);
 	if (!aux)
 		return ;
 	map->fd = open(map->name, O_RDONLY);
-	rd = read(map->fd, aux, len);
+	rd = read(map->fd, aux, ft_read_map(map));
 	ft_check_read(rd);
 	aux[rd] = '\0';
 	map->raw = ft_split(aux, '\n');
@@ -70,8 +68,7 @@ void	ft_get_data(t_map *map)
 		free(map->raw[i]);
 		map->raw[i] = tmp;
 	}
-	close(map->fd);
-	free(aux);
+	return (close(map->fd), free(aux));
 }
 
 /**
@@ -86,10 +83,7 @@ static	void	ft_check_order(t_map *map)
 	int		i;
 	char	**aux;
 
-	i = 0;
-	while (map->raw[i])
-		i++;
-	aux = malloc(sizeof(char *) * i);
+	aux = malloc(sizeof(char *) * ft_read_map(map));
 	i = -1;
 	while (map->raw[++i])
 		aux[i] = map->raw[i];

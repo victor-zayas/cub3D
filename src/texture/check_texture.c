@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 01:49:02 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/21 13:54:33 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:21:52 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@
  */
 void	ft_check_texture(t_texture *texture)
 {
-	printf("check %s\n", texture->NO);
-	if (ft_strrchr(texture->NO, ' ') || ft_strrchr(texture->SO, ' ')
-		|| ft_strrchr(texture->EA, ' ') || ft_strrchr(texture->WE, ' '))
+	printf("check %s\n", texture->no);
+	if (ft_strrchr(texture->no, ' ') || ft_strrchr(texture->so, ' ')
+		|| ft_strrchr(texture->ea, ' ') || ft_strrchr(texture->we, ' '))
 	{
 		printf("Error\nInvalid texture path\n");
 		exit(1);
 	}
-	ft_check_ext_texture(texture->NO);
-	ft_check_ext_texture(texture->SO);
-	ft_check_ext_texture(texture->EA);
-	ft_check_ext_texture(texture->WE);
+	ft_check_ext_texture(texture->no);
+	ft_check_ext_texture(texture->so);
+	ft_check_ext_texture(texture->ea);
+	ft_check_ext_texture(texture->we);
 }
 
 /**

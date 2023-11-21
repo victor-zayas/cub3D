@@ -1,12 +1,12 @@
-	/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/08 20:42:19 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:27:25 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define HOP DEG * C_WIDTH
 # define FOV_A 60
 # define FOV_R FOV_A * DEG
+
 // KEYCODES
 # define W 13
 # define S 1
@@ -38,6 +39,7 @@
 # define RA 124
 # define LA 123
 # define ESC 53
+
 // MOVE SPEED
 # define MS 5
 # define MF 10
@@ -55,46 +57,46 @@
 // STRUCTS
 typedef struct s_map
 {
-    char    **raw;	// raw data from .cub file
-    char    **map;	// map of game
-    char    *name;	// name of .cub
-    int     fd; 	// fd of .cub
-    int     height;
-    int     width;
-} t_map;
+	char	**raw;
+	char	**map;
+	char	*name;
+	int		fd;
+	int		height;
+	int		width;
+}	t_map;
 
 typedef struct s_attrb
 {
-    int n; // North start possition
-    int s; // South start possition
-    int e; // East start possition
-    int w; // West start possition
-} t_attrb;
+	int	n;
+	int	s;
+	int	e;
+	int	w;
+}	t_attrb;
 
 typedef struct s_texture
 {
-    char    *NO; // North texture path
-    char    *SO; // South texture path
-    char    *WE; // East texture path
-    char    *EA; // West texture path
-    int    C;	// RGB color code for ceiling
-    int    F;	// RGB color code for floor
-} t_texture;
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	int		c;
+	int		f;
+}	t_texture;
 
 typedef struct s_playerpos
 {
-	float	py;	//players y coordinate in map (take into account sprite size)
-	float	px; //players x coordinate in map (take into account sprite size)
-	float	pa;	//players angle in radians
+	float	py;
+	float	px;
+	float	pa;
 }	t_playerpos;
 
 typedef struct s_img
 {
-	void	*img;	//pointer to the img of the texture
-	char	*addr;	//address pointer to the img
-	int		bpp;		//bits per pixel of the mlx image
-	int		size;	//size from mlx image
-	int		end;		//endian from mlx image
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		size;
+	int		end;
 }	t_img;
 
 typedef struct s_mlx
@@ -110,20 +112,20 @@ typedef struct s_mlx
 
 typedef struct s_ray
 {
-	float	ra;		//ray angle
-	float	ry;		//ray first collision y coordinate
-	float	rx;		//ray first collision x coordinate
-	float	xo; 	//collision offset in x
-	float	yo;		//collision offset in y
-	int		mx;		//maps x position of the colision
-	int		my; 	//maps y position of the colision
-	float	cx;		//collision position y
-	float	cy;		//collision position x
-	char	tx;		//texture type
-	float	dist;	//distance to the collision point
-	int		end;	//signals the raycasting to end
-	int		height;	//height of the wall
-}   t_ray;
+	float	ra;
+	float	ry;
+	float	rx;
+	float	xo;
+	float	yo;
+	int		mx;
+	int		my;
+	float	cx;
+	float	cy;
+	char	tx;
+	float	dist;
+	int		end;
+	int		height;
+}	t_ray;
 
 typedef struct s_all
 {
@@ -131,14 +133,14 @@ typedef struct s_all
 	t_img		south;
 	t_img		east;
 	t_img		west;
-    t_map       map;
-    t_attrb     attrb;
-    t_texture   texture;
-    t_playerpos player;
+	t_map		map;
+	t_attrb		attrb;
+	t_texture	texture;
+	t_playerpos	player;
 	t_img		img;
 	t_mlx		mlx;
 	t_ray		ray;
-} t_all;
+}	t_all;
 
 // PROTOTIPES
 // -INITIAL
@@ -146,12 +148,14 @@ void	ft_init_struct(t_all *all, char *name);
 
 // MAP
 // -GET_MAP
-int     ft_read_map(t_map *map);
+int		ft_read_map(t_map *map);
 void	ft_get_data(t_map *map);
 void	ft_get_map(t_map *map, t_attrb *attrb);
 void	ft_parse(t_all *all);
 // -CHECK_MAP
 void	ft_check_map(t_map *map, t_attrb *attrb);
+void	ft_map_dimensions(t_map *map);
+void	ft_check_wall(t_map *map);
 // -CHECK_ATTRB
 void	ft_check_attrb(t_map *map, t_attrb *attrb);
 
@@ -169,11 +173,10 @@ void	ft_check_texture(t_texture *texture);
 void	ft_get_color(t_map *map, t_texture *texture);
 // -CHECK_COLOR
 void	ft_check_texture(t_texture *texture);
-int     *ft_check_color(char *str);
+int		*ft_check_color(char *str);
 // -MLX IMG
 void	ft_get_img(t_all *all);
 void	ft_free_img(t_all *all);
-
 
 // ERROR
 // -ERROR
@@ -189,14 +192,17 @@ void	ft_empty_map(t_map *map);
 void	raycaster(t_all *all);
 //	-DISTACE
 float	dist(t_ray *ray, t_playerpos *p_pos);
-float	fix_angle(float	angle);
+float	fix_angle(float angle);
 float	absolute(float in);
 //	-LINE FIXER
 void	fix_fisheye(t_ray *ray, t_playerpos *p_pos);
 //	DRAW
 //	-DRAW_COLUMNS
 void	draw_column(t_ray *col, t_all *all, t_mlx *mlx, int i);
+void	floor_ceil(t_mlx *mlx, int *start, int color, int i);
+int		calc_height(t_ray *ray);
+void	draw_wall(t_ray *col, t_all *all, int *start_stop, int i);
 void	get_mlx(t_mlx *mlx);
-void    search_playerpos(char **map, t_playerpos *p_pos);
+void	search_playerpos(char **map, t_playerpos *p_pos);
 
 #endif

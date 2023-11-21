@@ -6,22 +6,11 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:36 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/08 17:20:43 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:05:35 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../includes/cub3D.h"
-
-/**
- * @brief put an error message and exit program
- * 
- * @param str string received
- */
-void	ft_exit(char *str)
-{
-	printf("Error\n%s\n", str);
-	exit(1);
-}
 
 /**
  * @brief check the file descriptor, in error case exit the program

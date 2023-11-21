@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+         #
+#    By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 15:10:33 by vzayas-s          #+#    #+#              #
-#    Updated: 2023/11/21 15:00:44 by lagonzal         ###   ########.fr        #
+#    Updated: 2023/11/21 16:28:13 by vzayas-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,12 +31,12 @@ OBJDIR := objs/
 SRCDIR := src/
 
 # SRCS #
-ERROR = error
+ERROR = error exit
 MAIN = main initial
 MAP = get_map check_map check_attrb
 TEXTURE = get_texture check_texture mlx_img
 RAYCAST = distance line_fixer raycaster
-DRAW = draw_columns
+DRAW = draw_columns player_poss
 MLX_SRC = keyhooks
 
 PLAIN_SRCS =	$(addsuffix .c, $(addprefix error/, $(ERROR)))\

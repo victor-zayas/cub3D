@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:33:50 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/08 13:59:33 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:11:52 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,17 @@ void	ft_check_attrb(t_map *map, t_attrb *attrb)
 		}
 	}
 	ft_check_init_poss(map, attrb);
+}
+
+/**
+ * @brief call check_map functions
+ * 
+ * @param map map struct
+ * @param attrb attributes struct
+ */
+void	ft_check_map(t_map *map, t_attrb *attrb)
+{
+	ft_check_attrb(map, attrb);
+	ft_check_wall(map);
+	ft_map_dimensions(map);
 }

@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:19:39 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/26 17:17:53 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:13:05 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ static	int	ft_check_side(char *str)
 	{
 		while (str[i] == ' ')
 			i++;
-		if ((str[i] == '0' || str[i] == 'N' || str[i] == 'S' || str[i] == 'E' || str[i] == 'W')
+		if ((str[i] == '0' || str[i] == 'N' || str[i] == 'S' || str[i] == 'E'
+				|| str[i] == 'W')
 			&& (str [i - 1] == ' ' || str[i + 1] == ' '))
 			return (1);
 		i++;
@@ -97,14 +98,13 @@ static	int	ft_check_side(char *str)
  * 
  * @param map 
  */
-static	void	ft_check_wall(t_map *map)
+void	ft_check_wall(t_map *map)
 {
 	int	x;
 
 	x = 0;
 	if (ft_check_top_bot(map->map[x]))
 	{
-		// printf("%s\n", map->map[x]);
 		printf("Error\nNo wall on top\n");
 		exit(1);
 	}
@@ -112,7 +112,6 @@ static	void	ft_check_wall(t_map *map)
 	{
 		if (ft_check_side(map->map[x]))
 		{
-			// printf("%s\n", map->map[x]);
 			printf("Error\nNo wall on side\n");
 			exit(1);
 		}
@@ -121,13 +120,17 @@ static	void	ft_check_wall(t_map *map)
 	ft_check_inside(map);
 	if (ft_check_top_bot(map->map[x - 1]))
 	{
-		// printf("%s\n", map->map[x - 1]);
 		printf("Error\nNo wall on bottom\n");
 		exit(1);
 	}
 }
 
-static	void	ft_map_dimensions(t_map *map)
+/**
+ * @brief gives the longest line of map to limit raycast
+ * 
+ * @param map 
+ */
+void	ft_map_dimensions(t_map *map)
 {
 	int		x;
 	int		max;
@@ -144,11 +147,4 @@ static	void	ft_map_dimensions(t_map *map)
 	}
 	map->height = x;
 	map->width = max;
-}
-
-void	ft_check_map(t_map *map, t_attrb *attrb)
-{
-	ft_check_attrb(map, attrb);
-	ft_check_wall(map);
-	ft_map_dimensions(map);
 }

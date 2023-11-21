@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_texture.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:19:53 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/21 13:59:24 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:20:30 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ static	char	*ft_find_texture(t_map *map, char *id)
 		{
 			if (ft_strnstr(map->raw[y], "./", ft_strlen(map->raw[y])))
 			{
-				path = ft_strdup(ft_strnstr(map->raw[y], "./", ft_strlen(map->raw[y])));
+				path = ft_strdup(ft_strnstr(map->raw[y],
+							"./", ft_strlen(map->raw[y])));
 				break ;
 			}
 			else
@@ -43,10 +44,7 @@ static	char	*ft_find_texture(t_map *map, char *id)
 		}
 	}
 	if (!map->raw[y])
-	{
-		printf("Error\nNo id '%s' \n", id);
-		exit(1);
-	}
+		ft_exit("Error\nNo texture");
 	return (path);
 }
 
@@ -58,10 +56,10 @@ static	char	*ft_find_texture(t_map *map, char *id)
  */
 void	ft_get_texture(t_map *map, t_texture *texture)
 {
-	texture->NO = ft_find_texture(map, "NO");
-	texture->SO = ft_find_texture(map, "SO");
-	texture->EA = ft_find_texture(map, "EA");
-	texture->WE = ft_find_texture(map, "WE");
+	texture->no = ft_find_texture(map, "NO");
+	texture->so = ft_find_texture(map, "SO");
+	texture->ea = ft_find_texture(map, "EA");
+	texture->we = ft_find_texture(map, "WE");
 	ft_check_texture(texture);
 }
 
@@ -105,12 +103,14 @@ static	int	*ft_find_color(t_map *map, char *id)
  */
 void	ft_get_color(t_map *map, t_texture *texture)
 {
-	int *rgb;
-	
+	int	*rgb;
+
 	rgb = ft_find_color(map, "C ");
-	texture->C = ((rgb[0] & 255) << 16) | ((rgb[1] & 255) << 8) | ((rgb[2] & 255));
+	texture->c = ((rgb[0] & 255) << 16) | ((rgb[1] & 255) << 8)
+		| ((rgb[2] & 255));
 	free(rgb);
 	rgb = ft_find_color(map, "F ");
-	texture->F = ((rgb[0] & 255) << 16) | ((rgb[1] & 255) << 8) | ((rgb[2] & 255));
+	texture->f = ((rgb[0] & 255) << 16) | ((rgb[1] & 255) << 8)
+		| ((rgb[2] & 255));
 	free(rgb);
 }
