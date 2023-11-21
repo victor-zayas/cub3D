@@ -86,7 +86,8 @@ void	check_h_colision(t_playerpos *p_pos, t_map *map, float ra, t_ray *ray)
 	}
 	if (ray->ra > PI) //looking down
 		ray->tx = 'S';
-	ray->tx = 'N';
+	else
+		ray->tx = 'N';
 }
 
 /**
@@ -136,7 +137,6 @@ void	v_offset_calc(t_playerpos *p_pos, t_ray *ray)
 void	check_v_colision(t_playerpos *p_pos, t_map *map, float ra, t_ray *ray)
 {
 	ray->ra = ra;
-	ray->end = 0;
 	v_offset_calc(p_pos, ray);
 	while (!ray->end)
 	{
@@ -159,7 +159,8 @@ void	check_v_colision(t_playerpos *p_pos, t_map *map, float ra, t_ray *ray)
 	}
 	if (ray->ra > P_2 && ray->ra < P3_2)
 		ray->tx = 'W';
-	ray->tx = 'E';
+	else
+		ray->tx = 'E';
 }
 
 // void	print_map(t_map *map)
@@ -214,6 +215,8 @@ void	raycaster(t_all *all)
 	while (i < WIDTH)
 	{
 		ra = fix_angle(ra - DEG * 60 / WIDTH);
+		vc.end = 0;
+		hc.end = 0;
 		check_v_colision(&all->player, &all->map, ra, &vc);
 		check_h_colision(&all->player, &all->map, ra, &hc);
 		if (dist(&vc, &all->player) > dist(&hc, &all->player))

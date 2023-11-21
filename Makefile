@@ -6,7 +6,7 @@
 #    By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 15:10:33 by vzayas-s          #+#    #+#              #
-#    Updated: 2023/11/21 16:28:13 by vzayas-s         ###   ########.fr        #
+#    Updated: 2023/11/21 20:10:33 by vzayas-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 NAME = cub3D
 
 # FLAGS #
-CFLAGS = -Wall -Wextra -Werror -g3 #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 MLXFLAGS = -framework OpenGL -framework AppKit
 
 # INCLUDES #
@@ -37,7 +37,7 @@ MAP = get_map check_map check_attrb
 TEXTURE = get_texture check_texture mlx_img
 RAYCAST = distance line_fixer raycaster
 DRAW = draw_columns player_poss
-MLX_SRC = keyhooks
+MLX_SRC = keyhooks posible_move
 
 PLAIN_SRCS =	$(addsuffix .c, $(addprefix error/, $(ERROR)))\
 				$(addsuffix .c, $(addprefix main/, $(MAIN)))\

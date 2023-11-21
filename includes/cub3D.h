@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/21 17:01:57 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/21 20:39:53 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,11 @@
 # define P_2 PI / 2
 # define P3_2 PI * 3 / 2
 # define P_4 PI / 4
-# define P3_4 PI * 3 / 4
-# define P5_4 PI * 5 / 4
-# define P7_4 PI * 7 / 4
 # define DEG 2 * PI / 360
 # define ANGLE 90 * DEG
 # define HEIGHT 540
 # define WIDTH 1080
-# define C_WIDTH 1080 / 90
+# define C_WIDTH 12
 # define HOP DEG * C_WIDTH
 # define FOV_A 60
 # define FOV_R FOV_A * DEG
@@ -41,8 +38,8 @@
 # define ESC 53
 
 // MOVE SPEED
-# define MS 5
-# define MF 10
+# define MS 2
+# define MF 5
 # define RS 0.1
 
 // INCLUDES
@@ -165,6 +162,8 @@ void	keyrelease(int keycode, t_all *all);
 void	keypress(int keycode, t_all *all);
 void	move(t_all *all);
 void	move_manage(t_all *all);
+// -POSIBLE MOVES
+int	p_m(t_all *all, int direction);
 
 // TEXTURE
 // -GE_TEXTURE
@@ -175,7 +174,7 @@ void	ft_get_color(t_map *map, t_texture *texture);
 void	ft_check_texture(t_texture *texture);
 int		*ft_check_color(char *str);
 // -MLX IMG
-void	ft_get_img(t_all *all);
+void	ft_get_img(t_all *all, int *txt_size);
 void	ft_free_img(t_all *all);
 
 // ERROR

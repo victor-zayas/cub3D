@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:26 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/21 16:17:20 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/21 19:49:08 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,16 @@ static	void	print_struct(t_all *all)
 int	main(int argc, char **argv)
 {
 	t_all		all;
+	int			txt_size;
 
+	txt_size = 64;
 	if (argc == 2)
 	{
 		ft_init_struct(&all, argv[1]);
 		ft_parse(&all);
 		print_struct(&all);
 		get_mlx(&all.mlx);
-		ft_get_img(&all);
+		ft_get_img(&all, &txt_size);
 		search_playerpos(all.map.map, &all.player);
 		raycaster(&all);
 		mlx_loop_hook(all.mlx.mlx, (void *) &move_manage, &all);
