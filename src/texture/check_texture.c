@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 01:49:02 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/21 16:21:52 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/22 13:11:56 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
  */
 void	ft_check_texture(t_texture *texture)
 {
-	printf("check %s\n", texture->no);
 	if (ft_strrchr(texture->no, ' ') || ft_strrchr(texture->so, ' ')
 		|| ft_strrchr(texture->ea, ' ') || ft_strrchr(texture->we, ' '))
 	{
@@ -42,7 +41,6 @@ static	void	ft_digit(char *str)
 	int	i;
 
 	i = 0;
-	printf("check %s\n", str);
 	while (str[i])
 	{
 		if (!((str[i] >= '0' && str[i] <= '9') || str[i] == ','))

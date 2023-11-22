@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+         #
+#    By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 15:10:33 by vzayas-s          #+#    #+#              #
-#    Updated: 2023/11/22 12:26:00 by vzayas-s         ###   ########.fr        #
+#    Updated: 2023/11/22 12:41:22 by lagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 NAME = cub3D
 
 # FLAGS #
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 -pthread -fsanitize=address 
 MLXFLAGS = -framework OpenGL -framework AppKit
 
 #ifeq ($(UNAME), Linux)

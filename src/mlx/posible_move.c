@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   posible_move.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:57:14 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/21 21:08:34 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/22 13:27:41 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
+
+/**
+ * @brief It checks if the movements are possible before doing them
+ * 
+ * @param all game struct
+ * @param direction the movement direction do be checked
+ * @param rev a variable in order to be able to use W and S as the same case
+ * to compliment the norm.
+ * @return int 1 if movement is possible 0 if not
+ */
 
 int	p_m(t_all *all, int direction, int rev)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/22 10:26:05 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/22 13:08:58 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,16 @@
 # define CUB3D_H
 
 // MACROS
-# define PI  3.1415926
-# define P2  2 * PI
-# define P_2 PI / 2
-# define P3_2 PI * 3 / 2
-# define P_4 PI / 4
-# define DEG 2 * PI / 360
-# define ANGLE 90 * DEG
+# define PI   3.1415926
+# define P2   6.2831853
+# define P_2  1.5707963
+# define P3_2 4.7123889
+# define P_4  0.7853981
+# define DEG  0.0174532
+# define ANGLE 1.570788
 # define HEIGHT 540
 # define WIDTH 1080
 # define C_WIDTH 12
-# define HOP DEG * C_WIDTH
-# define FOV_A 60
-# define FOV_R FOV_A * DEG
 
 // KEYCODES
 # define W 13
@@ -38,9 +35,9 @@
 # define ESC 53
 
 // MOVE SPEED
-# define MS 0.5
-# define MF 2
-# define RS 0.001
+# define MS 2
+# define MF 4
+# define RS 0.05
 
 // INCLUDES
 # include <fcntl.h>
@@ -50,6 +47,7 @@
 # include <math.h>
 # include "../libft/includes/libft.h"
 # include "../mlx/mlx.h"
+# include <pthread.h>
 
 // STRUCTS
 typedef struct s_map
@@ -126,17 +124,19 @@ typedef struct s_ray
 
 typedef struct s_all
 {
-	t_img		north;
-	t_img		south;
-	t_img		east;
-	t_img		west;
-	t_map		map;
-	t_attrb		attrb;
-	t_texture	texture;
-	t_playerpos	player;
-	t_img		img;
-	t_mlx		mlx;
-	t_ray		ray;
+	t_img			north;
+	t_img			south;
+	t_img			east;
+	t_img			west;
+	t_map			map;
+	t_attrb			attrb;
+	t_texture		texture;
+	t_playerpos		player;
+	t_img			img;
+	t_mlx			mlx;
+	t_ray			ray;
+	pthread_t		thread;
+	pthread_mutex_t	mut;
 }	t_all;
 
 // PROTOTIPES
@@ -159,7 +159,7 @@ void	ft_check_attrb(t_map *map, t_attrb *attrb);
 // MLX
 // -KEYHOOKS
 void	keyrelease(int keycode, t_all *all);
-void	keypress(int keycode, t_all *all);
+void	keypress(int keycode);
 void	move(t_all *all);
 void	move_manage(t_all *all);
 // -POSIBLE MOVES
@@ -205,5 +205,8 @@ int		calc_height(t_ray *ray);
 void	draw_wall(t_ray *col, t_all *all, int *start_stop, int i);
 void	get_mlx(t_mlx *mlx);
 void	search_playerpos(char **map, t_playerpos *p_pos);
+// -COLOR_EVOLUTION
+void	color_evo(void *param);
+
 
 #endif
