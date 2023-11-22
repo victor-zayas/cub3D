@@ -30,21 +30,21 @@ void	h_offset_calc(t_playerpos *p_pos, t_ray *ray)
 
 	ray->end = 0;
 	arctan = (1 / tan(ray->ra));
-	if (ray->ra > PI) //looking down
+	if (ray->ra > PI)
 	{
 		ray->ry = (((int)p_pos->py >> 6) << 6) + 64;
 		ray->rx = (p_pos->py - ray->ry) * arctan + p_pos->px;
 		ray->yo = 64;
 		ray->xo = ray->yo * -arctan;
 	}
-	if (ray->ra < PI) //looking up
+	if (ray->ra < PI)
 	{
 		ray->ry = (((int)p_pos->py >> 6) << 6) - 0.0001;
 		ray->rx = (p_pos->py - ray->ry) * arctan + p_pos->px;
 		ray->yo = -64;
 		ray->xo = ray->yo * -arctan;
 	}
-	if (ray->ra == 0 || ray->ra == PI) //looking straight left or straight right
+	if (ray->ra == 0 || ray->ra == PI)
 	{
 		ray->ry = p_pos->py;
 		ray->rx = p_pos->px;
@@ -84,7 +84,7 @@ void	check_h_colision(t_playerpos *p_pos, t_map *map, float ra, t_ray *ray)
 			ray->rx += ray->xo;
 		}
 	}
-	if (ray->ra > PI) //looking down
+	if (ray->ra > PI)
 		ray->tx = 'S';
 	else
 		ray->tx = 'N';
@@ -103,21 +103,21 @@ void	v_offset_calc(t_playerpos *p_pos, t_ray *ray)
 	float	ntan;
 
 	ntan = tan(ray->ra);
-	if (ray->ra > P_2 && ray->ra < P3_2) //looking left
+	if (ray->ra > P_2 && ray->ra < P3_2)
 	{
 		ray->rx = (((int)p_pos->px >> 6) << 6) - 0.0001;
 		ray->ry = (p_pos->px - ray->rx) * ntan + p_pos->py;
 		ray->xo = -64;
 		ray->yo = ray->xo * -ntan;
 	}
-	if (ray->ra < P_2 || ray->ra > P3_2) //looking right
+	if (ray->ra < P_2 || ray->ra > P3_2)
 	{
 		ray->rx = (((int)p_pos->px >> 6) << 6) + 64;
 		ray->ry = (p_pos->px - ray->rx) * ntan + p_pos->py;
 		ray->xo = 64;
 		ray->yo = ray->xo * -ntan;
 	}
-	if (ray->ra == P2 || ray->ra == P3_2) //looking straight up or straight down
+	if (ray->ra == P2 || ray->ra == P3_2)
 	{
 		ray->ry = p_pos->py;
 		ray->rx = p_pos->px;
@@ -162,38 +162,6 @@ void	check_v_colision(t_playerpos *p_pos, t_map *map, float ra, t_ray *ray)
 	else
 		ray->tx = 'E';
 }
-
-// void	print_map(t_map *map)
-// {
-// 	int	i;
-// 	int	j;
-// 	int	k;
-
-// 	i = 0;
-// 	printf("   ");
-// 	while (i < map->width)
-// 		printf("%s|%s%03d", CY, BL, i++);
-// 	printf("%s|\n", CY);
-// 	i = 0;
-// 	while (map->map[i])
-// 	{
-// 		k = 0;
-// 		while (k < map->width * 3)
-// 		{
-// 			printf("%s__", CY);
-// 			k++;
-// 		}
-// 		printf("\n");
-// 		printf("%s%03d", BL, i);
-// 		j = 0;
-// 		while (map->map[i][j])
-// 		{
-// 			printf("%s|%s %c ", CY, WT, map->map[i][j++]);
-// 		}
-// 		printf("%s|\n%s", CY, WT);
-// 		i++;
-// 	}
-// }
 
 /**
  * @brief casts the  rays and decide the texture that is needed for the column.

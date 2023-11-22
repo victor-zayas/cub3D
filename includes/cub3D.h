@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/22 13:08:58 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/22 14:55:39 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ void	ft_init_struct(t_all *all, char *name);
 // -GET_MAP
 int		ft_read_map(t_map *map);
 void	ft_get_data(t_map *map);
+void	ft_check_order(t_map *map);
 void	ft_get_map(t_map *map, t_attrb *attrb);
 void	ft_parse(t_all *all);
 // -CHECK_MAP
@@ -205,8 +206,5 @@ int		calc_height(t_ray *ray);
 void	draw_wall(t_ray *col, t_all *all, int *start_stop, int i);
 void	get_mlx(t_mlx *mlx);
 void	search_playerpos(char **map, t_playerpos *p_pos);
-// -COLOR_EVOLUTION
-void	color_evo(void *param);
-
 
 #endif

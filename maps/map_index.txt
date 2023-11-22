@@ -1,3 +1,10 @@
+PLAYABLE MAPS
+> valid map : the perfect example gived by 42
+> alien_egg : randome map shape
+> space : a dark room with space textures
+~backrooms
+ > default : a backrooms
+ > pools : a backrooms pool
 
 VALID MAPS
 - disorder : the path textures and colors are mixed and have spaces and tabs
@@ -5,12 +12,6 @@ VALID MAPS
 - empty_lines : have some empty lines betwen paths
 - mixed_imputs : have paths and colors mixed
 - spaces_betwen : have spaces and tabs betwen identifiers and paths
-- valid map : the perfect example gived by 42
-- alien_egg : randome map shape
-
-~backrooms
- > default : a backrooms
- > pools : a backrooms pool
 
 ERROR MAPS
 - char_in_color : have chars on RGB value

@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:42 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/21 16:36:58 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/22 14:56:46 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,39 +71,59 @@ void	ft_get_data(t_map *map)
 	return (close(map->fd), free(aux));
 }
 
+static	char	**ft_reformat(char **map, int n)
+{
+	char	*aux;
+	int		i;
+	int		j;
+
+	i = 0;
+	while (map[i] && n < 6)
+	{
+		aux = ft_strtrim(map[i], " ");
+		if (ft_strlen(aux) != 0)
+		{
+			map[i] = aux;
+			n++;
+			i++;
+		}
+		else
+		{
+			free(aux);
+			free(map[i]);
+			j = i;
+			while (map[++j])
+				map[j - 1] = map[j];
+			map[j - 1] = NULL;
+		}
+	}
+	return (map);
+}
+
 /**
  * @brief check the 5 first lines in map,
  * 		  if map isn't the last element in file return custom error messagge
  * 
  * @param map 
  */
-static	void	ft_check_order(t_map *map)
+void	ft_check_order(t_map *map)
 {
 	int		x;
-	int		i;
 	char	**aux;
 
-	aux = malloc(sizeof(char *) * ft_read_map(map));
-	i = -1;
-	while (map->raw[++i])
-		aux[i] = map->raw[i];
-	i = -1;
-	while (++i < 6)
-		aux[i] = ft_strtrim(map->raw[i], " ");
+	aux = malloc(sizeof(char *) * 6);
 	x = -1;
+	map->raw = ft_reformat(map->raw, 0);
 	while (++x < 6)
 	{
-		if (aux[x][0] != 'N' && aux[x][0] != 'S' && aux[x][0] != 'E'
-			&& aux[x][0] != 'W' && aux[x][0] != 'F' && aux[x][0] != 'C')
+		if (map->raw[x][0] != 'N' && map->raw[x][0] != 'S'
+			&& map->raw[x][0] != 'E' && map->raw[x][0] != 'W'
+			&& map->raw[x][0] != 'F' && map->raw[x][0] != 'C')
 		{
-			printf("Error\nMap isn't the last parameter\n");
+			printf("Error\nMap isn't the last parameter\n %s\n", map->raw[x]);
 			exit(1);
 		}
 	}
-	i = -1;
-	while (++i < 6)
-		free(aux[i]);
-	free(aux);
 }
 
 /**
@@ -132,22 +152,4 @@ void	ft_get_map(t_map *map, t_attrb *attrb)
 	map->map[i - 6] = NULL;
 	ft_empty_map(map);
 	ft_check_map(map, attrb);
-}
-
-/**
- * @brief load all functions of program
- * 
- * @param map 
- * @param texture 
- */
-void	ft_parse(t_all *all)
-{
-	ft_check_extension(all->map.name);
-	ft_read_map(&all->map);
-	ft_get_data(&all->map);
-	ft_check_order(&all->map);
-	ft_get_map(&all->map, &all->attrb);
-	ft_get_texture(&all->map, &all->texture);
-	ft_get_color(&all->map, &all->texture);
-	ft_doublefree(all->map.raw);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 01:49:02 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/22 13:11:56 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/22 15:13:49 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,29 @@ static	void	ft_digit(char *str)
 	{
 		if (!((str[i] >= '0' && str[i] <= '9') || str[i] == ','))
 		{
-			printf("Error\nInvalid char in RGB: %c\n", str[i]);
+			printf("Error\nInvalid char in RGB: [%c], line: %s\n", str[i], str);
 			exit(1);
 		}
 		i++;
 	}
+}
+
+char	**ft_format(char *str)
+{
+	char	**rgb;
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	rgb = ft_split(str, ',');
+	while (rgb[++i])
+	{
+		tmp = ft_strtrim(rgb[i], " ");
+		free(rgb[i]);
+		rgb[i] = tmp;
+		ft_digit(rgb[i]);
+	}
+	return (rgb);
 }
 
 /**
@@ -64,8 +82,7 @@ int	*ft_check_color(char *str)
 	int		i;
 	int		j;
 
-	ft_digit(str);
-	rgb = ft_split(str, ',');
+	rgb = ft_format(str);
 	num = malloc(sizeof(int) * 3);
 	i = -1;
 	j = 0;

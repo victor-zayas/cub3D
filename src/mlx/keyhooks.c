@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyhooks.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:33:30 by lagonzal          #+#    #+#             */
-/*   Updated: 2023/11/22 13:17:36 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/22 13:57:17 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,5 @@ void	move_manage(t_all *all)
 	mlx_hook(all->mlx.win, 2, 1L << 0, (void *) &keypress, NULL);
 	move(all);
 	mlx_hook(all->mlx.win, 3, 1L << 1, (void *) &keyrelease, all);
-	//pthread_mutex_lock(&all->mut);
 	raycaster(all);
-	//pthread_mutex_unlock(&all->mut);
 }
