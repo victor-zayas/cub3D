@@ -6,7 +6,7 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/22 12:38:45 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:46:04 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@
 # define ESC 53
 
 // MOVE SPEED
-# define MS 0.5
-# define MF 2
-# define RS 0.001
+# define MS 2
+# define MF 4
+# define RS 0.05
 
 // INCLUDES
 # include <fcntl.h>

@@ -6,7 +6,7 @@
 #    By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 15:10:33 by vzayas-s          #+#    #+#              #
-#    Updated: 2023/11/22 12:38:08 by lagonzal         ###   ########.fr        #
+#    Updated: 2023/11/22 12:41:22 by lagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ MAP = get_map check_map check_attrb
 TEXTURE = get_texture check_texture mlx_img
 RAYCAST = distance line_fixer raycaster
 DRAW = draw_columns player_poss
-MLX_SRC = keyhooks
+MLX_SRC = keyhooks posible_move
 
 PLAIN_SRCS =	$(addsuffix .c, $(addprefix error/, $(ERROR)))\
 				$(addsuffix .c, $(addprefix main/, $(MAIN)))\
