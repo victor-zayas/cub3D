@@ -6,7 +6,7 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/22 12:46:04 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/22 13:08:58 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ void	ft_check_attrb(t_map *map, t_attrb *attrb);
 // MLX
 // -KEYHOOKS
 void	keyrelease(int keycode, t_all *all);
-void	keypress(int keycode, t_all *all);
+void	keypress(int keycode);
 void	move(t_all *all);
 void	move_manage(t_all *all);
 // -POSIBLE MOVES

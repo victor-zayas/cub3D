@@ -6,7 +6,7 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 16:10:01 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/22 12:49:23 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/22 13:10:49 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	ft_get_img(t_all *all, int *txt_size)
 			txt_size, txt_size);
 	all->west.img = mlx_xpm_file_to_image(all->mlx.mlx, all->texture.we,
 			txt_size, txt_size);
-	printf("north: %p east: %p west: %p south: %p\n", all->north.img, all->east.img, all->west.img, all->south.img);
 	if (!all->north.img || !all->south.img || !all->west.img || !all->east.img)
 		return (ft_putstr_fd("Texture error, only 64x64px\n", 2), ft_close(all));
 	all->north.addr = mlx_get_data_addr(all->north.img, &all->north.bpp,

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_texture.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:19:53 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/21 16:20:30 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/22 13:11:12 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ static	int	*ft_find_color(t_map *map, char *id)
 	rgb = NULL;
 	while (map->raw[++y])
 	{
-		printf("in find color %s\n", map->raw[y]);
 		if (ft_strnstr(map->raw[y], id, ft_strlen(map->raw[y])))
 		{
 			while (map->raw[y][x] == ' ')
