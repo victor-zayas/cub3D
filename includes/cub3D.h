@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/21 21:11:15 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/22 10:26:05 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ void	keypress(int keycode, t_all *all);
 void	move(t_all *all);
 void	move_manage(t_all *all);
 // -POSIBLE MOVES
-int	p_m(t_all *all, int direction, int rev);
+int		p_m(t_all *all, int direction, int rev);
 
 // TEXTURE
 // -GE_TEXTURE

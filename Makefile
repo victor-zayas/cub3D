@@ -6,7 +6,7 @@
 #    By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 15:10:33 by vzayas-s          #+#    #+#              #
-#    Updated: 2023/11/21 20:10:33 by vzayas-s         ###   ########.fr        #
+#    Updated: 2023/11/22 10:47:29 by vzayas-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,10 @@ NAME = cub3D
 # FLAGS #
 CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 MLXFLAGS = -framework OpenGL -framework AppKit
+
+ifeq ($(UNAME), Linux)
+	MLXFLAGS = -lmlx -lXext -lX11 -lm
+endif
 
 # INCLUDES #
 INCDIR = includes/
@@ -112,8 +116,6 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $^ $(LIBFT) $(MLXFLAGS) $(MLX) -o $(NAME)
 	echo "$(BLUE)༺ Program compiled༻$(END)"
 	echo "$$CUB3D"
-
-	
 
 # delete all objects
 clean:
