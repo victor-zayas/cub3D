@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 16:10:01 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/21 16:25:25 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/21 19:49:26 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,18 @@
  * 
  * @param all principal struct
  */
-void	ft_get_img(t_all *all)
+void	ft_get_img(t_all *all, int *txt_size)
 {
-	int	width;
-	int	height;
-
-	width = 64;
-	height = 64;
 	all->north.img = mlx_xpm_file_to_image(all->mlx.mlx, all->texture.no,
-			&width, &height);
+			txt_size, txt_size);
 	all->south.img = mlx_xpm_file_to_image(all->mlx.mlx, all->texture.so,
-			&width, &height);
+			txt_size, txt_size);
 	all->east.img = mlx_xpm_file_to_image(all->mlx.mlx, all->texture.ea,
-			&width, &height);
+			txt_size, txt_size);
 	all->west.img = mlx_xpm_file_to_image(all->mlx.mlx, all->texture.we,
-			&width, &height);
+			txt_size, txt_size);
+	if (!all->north.img || !all->south.img || !all->west.img || !all->east.img)
+		return (ft_putstr_fd("Texture error, only 64x64px\n", 2), ft_close(all));
 	all->north.addr = mlx_get_data_addr(all->north.img, &all->north.bpp,
 			&all->north.size, &all->north.end);
 	all->south.addr = mlx_get_data_addr(all->south.img, &all->south.bpp,
@@ -53,8 +50,12 @@ void	ft_get_img(t_all *all)
  */
 void	ft_free_img(t_all *all)
 {
-	mlx_destroy_image(all->mlx.mlx, all->north.img);
-	mlx_destroy_image(all->mlx.mlx, all->south.img);
-	mlx_destroy_image(all->mlx.mlx, all->east.img);
-	mlx_destroy_image(all->mlx.mlx, all->west.img);
+	if (all->north.img)
+		mlx_destroy_image(all->mlx.mlx, all->north.img);
+	if (all->south.img)
+		mlx_destroy_image(all->mlx.mlx, all->south.img);
+	if (all->west.img)
+		mlx_destroy_image(all->mlx.mlx, all->east.img);
+	if (all->east.img)
+		mlx_destroy_image(all->mlx.mlx, all->west.img);
 }

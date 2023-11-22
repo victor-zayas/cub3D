@@ -6,7 +6,11 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:26 by vzayas-s          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/11/22 12:21:17 by lagonzal         ###   ########.fr       */
+=======
+/*   Updated: 2023/11/21 19:49:08 by vzayas-s         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +53,9 @@
 int	main(int argc, char **argv)
 {
 	t_all		all;
+	int			txt_size;
 
+	txt_size = 64;
 	if (argc == 2)
 	{
 		if (pthread_mutex_init(&all.mut, NULL) != 0)
@@ -61,7 +67,7 @@ int	main(int argc, char **argv)
 		ft_parse(&all);
 		//print_struct(&all);
 		get_mlx(&all.mlx);
-		ft_get_img(&all);
+		ft_get_img(&all, &txt_size);
 		search_playerpos(all.map.map, &all.player);
 		pthread_create(&all.thread, NULL, (void *)&color_evo, (void * ) &all);
 		raycaster(&all);

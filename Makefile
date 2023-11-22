@@ -6,7 +6,7 @@
 #    By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 15:10:33 by vzayas-s          #+#    #+#              #
-#    Updated: 2023/11/22 12:21:50 by lagonzal         ###   ########.fr        #
+#    Updated: 2023/11/22 12:38:08 by lagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,12 @@
 NAME = cub3D
 
 # FLAGS #
-CFLAGS = -Wall -Wextra -Werror -g3 -pthread #-fsanitize=address 
+CFLAGS = -Wall -Wextra -Werror -g3 -pthread -fsanitize=address 
 MLXFLAGS = -framework OpenGL -framework AppKit
+
+#ifeq ($(UNAME), Linux)
+#	MLXFLAGS = -lmlx -lXext -lX11 -lm
+#endif
 
 # INCLUDES #
 INCDIR = includes/
@@ -36,7 +40,7 @@ MAIN = main initial
 MAP = get_map check_map check_attrb
 TEXTURE = get_texture check_texture mlx_img
 RAYCAST = distance line_fixer raycaster
-DRAW = draw_columns player_poss color_evolution
+DRAW = draw_columns player_poss
 MLX_SRC = keyhooks
 
 PLAIN_SRCS =	$(addsuffix .c, $(addprefix error/, $(ERROR)))\
@@ -112,8 +116,6 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $^ $(LIBFT) $(MLXFLAGS) $(MLX) -o $(NAME)
 	echo "$(BLUE)༺ Program compiled༻$(END)"
 	echo "$$CUB3D"
-
-	
 
 # delete all objects
 clean:

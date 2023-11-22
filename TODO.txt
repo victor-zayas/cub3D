@@ -38,4 +38,8 @@ RAYCAST
 - put textures
 - solve sawteeth (optional)
 
+NORMA
+- no me acuerdo
+- documentar los keyhook
+
 valgrind --leak-check=full --track-origins=yes --log-file=log ./cub3D maps/valid/test.cub

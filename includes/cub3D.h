@@ -6,7 +6,7 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/22 12:13:16 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:38:45 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@
 # define ESC 53
 
 // MOVE SPEED
-# define MS 5
-# define MF 10
-# define RS 0.1
+# define MS 0.5
+# define MF 2
+# define RS 0.001
 
 // INCLUDES
 # include <fcntl.h>
@@ -162,6 +162,8 @@ void	keyrelease(int keycode, t_all *all);
 void	keypress(int keycode, t_all *all);
 void	move(t_all *all);
 void	move_manage(t_all *all);
+// -POSIBLE MOVES
+int		p_m(t_all *all, int direction, int rev);
 
 // TEXTURE
 // -GE_TEXTURE
@@ -172,7 +174,7 @@ void	ft_get_color(t_map *map, t_texture *texture);
 void	ft_check_texture(t_texture *texture);
 int		*ft_check_color(char *str);
 // -MLX IMG
-void	ft_get_img(t_all *all);
+void	ft_get_img(t_all *all, int *txt_size);
 void	ft_free_img(t_all *all);
 
 // ERROR
