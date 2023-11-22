@@ -6,7 +6,7 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 13:39:09 by lagonzal          #+#    #+#             */
-/*   Updated: 2023/11/21 17:02:27 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/11/22 11:22:58 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ int	calc_height(t_ray *ray)
 }
 
 /**
- * @brief Gets the pixel from the texture
+ * @brief Get the pixel object
  * 
  * @param n 
- * @param i 
+ * @param y_pos 
  * @param all 
  * @param dir 
- * @return int 
+ * @return unsigned int 
  */
 
 unsigned int	get_pixel(int n, int y_pos, t_all *all, char dir)
@@ -83,6 +83,16 @@ unsigned int	get_pixel(int n, int y_pos, t_all *all, char dir)
 	return (*(unsigned int *)(img.addr + addr));
 }
 
+/**
+ * @brief checks if the texture pixel needs to be reversed. This is needed
+ * because how raycasting works it inverts the textures from the west and
+ * the south.
+ * 
+ * @param rev the original pixel column that would be taken
+ * @param col the collision information
+ * @return int the value of the pixel column that will be taken
+ */
+
 int	rev_check(int rev, t_ray *col)
 {
 	if (col->tx == 'S' || col->tx == 'W')
@@ -90,6 +100,17 @@ int	rev_check(int rev, t_ray *col)
 	else
 		return (rev);
 }
+
+/**
+ * @brief This function calculates a value to scale the textures the propper
+ * way and calculates the pixel address that needs to be drawn in the window.
+ * 
+ * @param col the ray structure, in order to know which column to select.
+ * @param all the games info structure in order to have the mlx
+ * @param start_stop the columns start point and the columns stop point
+ * @param i the ray number. This is also the pixel column of the window that
+ * will be painted.
+ */
 
 void	draw_wall(t_ray *col, t_all *all, int *start_stop, int i)
 {
