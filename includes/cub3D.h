@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:10:29 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/22 14:55:39 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:29:04 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,8 @@ void	move(t_all *all);
 void	move_manage(t_all *all);
 // -POSIBLE MOVES
 int		p_m(t_all *all, int direction, int rev);
+int		move_variant1(t_all *all, int direction, int rev);
+int		move_variant2(t_all *all, int direction, int rev);
 
 // TEXTURE
 // -GE_TEXTURE

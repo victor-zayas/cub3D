@@ -6,11 +6,11 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:19:39 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/21 16:13:05 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:32:55 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../includes/cub3D.h"
+#include "../../includes/cub3D.h"
 
 /**
  * @brief check if there is space, '\n', '\0' next to wallkable space 

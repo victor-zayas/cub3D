@@ -6,11 +6,11 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:33:50 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/21 16:11:52 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:32:52 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../includes/cub3D.h"
+#include "../../includes/cub3D.h"
 
 /**
  * @brief read the map and count the start possition characters

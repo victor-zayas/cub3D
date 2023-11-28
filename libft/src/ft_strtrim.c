@@ -6,11 +6,11 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 14:10:36 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/09/28 23:10:49 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:32:03 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 int	ft_check(char c, const char *set)
 {

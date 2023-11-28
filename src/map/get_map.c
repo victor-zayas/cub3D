@@ -6,11 +6,11 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:42 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/22 14:56:46 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:10:40 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../includes/cub3D.h"
+#include "../../includes/cub3D.h"
 
 /**
  * @brief read the map and give the size of file
@@ -62,7 +62,7 @@ void	ft_get_data(t_map *map)
 	map->raw = ft_split(aux, '\n');
 	ft_empty_map(map);
 	i = -1;
-	while (++i < 6)
+	while (++i < 6 && map->raw[i])
 	{
 		tmp = ft_strtrim(map->raw[i], " ");
 		free(map->raw[i]);

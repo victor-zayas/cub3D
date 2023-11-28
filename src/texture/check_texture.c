@@ -6,11 +6,11 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 01:49:02 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/22 15:13:49 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:33:07 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../includes/cub3D.h"
+#include "../../includes/cub3D.h"
 
 /**
  * @brief check if the path in textures is correct

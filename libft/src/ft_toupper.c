@@ -6,11 +6,11 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 14:08:41 by vzayas-s          #+#    #+#             */
-/*   Updated: 2022/05/05 20:54:09 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:32:17 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 int	ft_toupper(int c)
 {

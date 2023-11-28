@@ -6,11 +6,11 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:05:34 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/08 12:05:49 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:30:44 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 int	ft_getfile_size(int fd)
 {

@@ -6,11 +6,11 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:09:31 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/11/21 16:17:39 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:09:20 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../includes/cub3D.h"
+#include "../../includes/cub3D.h"
 
 /**
  * @brief initialize map struct
@@ -77,4 +77,8 @@ void	ft_init_struct(t_all *all, char *name)
 	ft_init_attrb(&all->attrb);
 	ft_init_texture(&all->texture);
 	ft_init_img(&all->img);
+	ft_init_img(&all->north);
+	ft_init_img(&all->south);
+	ft_init_img(&all->east);
+	ft_init_img(&all->west);
 }
