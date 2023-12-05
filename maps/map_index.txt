@@ -12,6 +12,7 @@ VALID MAPS
 - empty_lines : have some empty lines betwen paths
 - mixed_imputs : have paths and colors mixed
 - spaces_betwen : have spaces and tabs betwen identifiers and paths
+- text : have textures with letters, it can be readed
 
 ERROR MAPS
 - char_in_color : have chars on RGB value

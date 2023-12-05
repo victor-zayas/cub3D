@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:52:30 by vzayas-s          #+#    #+#             */
-/*   Updated: 2023/10/18 18:36:17 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2023/12/05 11:51:15 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_substr_gnl(char *str, int start, int len)
 	{
 		free(str);
 		return (NULL);
-	}	
+	}
 	s = (char *)malloc((len - start + 1) * sizeof(char));
 	if (!s)
 		return (NULL);
