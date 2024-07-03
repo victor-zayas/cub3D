@@ -33,14 +33,14 @@ make
 ### Project structure
 
 cub3D/
-├── includes/ # Header files\n
-├── libft/ # Library created by us
-├── mlx/ # Campus's graphic library
-├── src/ # Source files
-├── texture/ # Texture files
-├── maps/ # Example map files
-├── Makefile # Makefile for building the project
-└── README.md # This README file
+- includes/ # Header files
+- libft/ # Library created by us
+- mlx/ # Campus's graphic library
+- src/ # Source files
+- texture/ # Texture files
+- maps/ # Example map files
+- Makefile # Makefile for building the project
+- README.md # This README file
 
 ### Controls
 
