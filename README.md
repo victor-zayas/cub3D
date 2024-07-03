@@ -23,13 +23,13 @@
 ```bash
 git clone https://github.com/your-username/cub3D.git
 cd cub3D
-
+```
 ### Usage
 
 ```bash
 make
 ./cub3D <path_to_the_selected_map>
-
+```
 ### Project structure
 
 cub3D/
