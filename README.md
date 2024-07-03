@@ -33,7 +33,7 @@ make
 ### Project structure
 
 cub3D/
-├── includes/ # Header files
+├── includes/ # Header files\n
 ├── libft/ # Library created by us
 ├── mlx/ # Campus's graphic library
 ├── src/ # Source files
